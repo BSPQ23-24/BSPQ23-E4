@@ -1,6 +1,7 @@
-package com.example.server;
+package com.example.server.repository;
 import java.util.Optional;
 
+import com.example.server.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
