@@ -1,7 +1,6 @@
 package com.example.client.view;
+
 import com.example.client.controller.ClientUserController;
-import com.example.client.model.UserModel;
-import com.example.client.service.UserService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,19 +10,13 @@ import java.awt.event.ActionEvent;
 
 @Getter
 @Setter
-public class LoginView extends JFrame {
+public class LoginView extends JPanel {
     private JTextField nameField, emailField;
     private JPasswordField passwordField;
     private JButton submitButton;
-    private UserService userService;
-
 
     public LoginView() {
-        super("User Form");
-        userService = new UserService();
-        initUI();
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.initUI();
     }
 
     private void initUI() {
@@ -51,12 +44,6 @@ public class LoginView extends JFrame {
         String name = nameField.getText();
         String email = emailField.getText();
         String password = new String(passwordField.getPassword());
-        UserModel user = new UserModel();
-        user.setName(name);
-        user.setPassword(password);
-        user.setEmail(email);
-        ClientUserController.createUser(user);
+        ClientUserController.createUser(name, email, password);
     }
-
 }
-

@@ -7,8 +7,13 @@ public class ClientUserController {
 
     private static UserService userService = new UserService();
 
-    public static void createUser(UserModel user) {
-        String response = userService.createUser(user);
+    public static void createUser(String name, String email, String password) {
+        UserModel user = new UserModel();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        userService.createUser(user);
     }
 }
 
