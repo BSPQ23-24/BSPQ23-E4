@@ -1,9 +1,0 @@
-com\example\server\service\UserService.class
-com\example\server\controller\UserController.class
-com\example\server\entity\Car$CarCondition.class
-com\example\server\repository\UserRepository.class
-com\example\server\service\CarService.class
-com\example\server\entity\User.class
-com\example\server\entity\Car.class
-com\example\server\repository\CarRepository.class
-com\example\server\ServerApplication.class
