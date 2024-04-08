@@ -6,8 +6,8 @@ import com.example.server.entity.Car;
 
 public interface CarRepository extends JpaRepository<Car, Integer>{
 
-	Optional<Car> findByLicensePlate(Integer lp);
+	Optional<Car> findByLicenseplate(Integer lp);
 
-	void deleteByLicensePlate(Integer lp);
+	void deleteByLicenseplate(Integer lp);
 
 }

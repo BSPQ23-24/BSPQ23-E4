@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS User (
 );
 
 CREATE TABLE IF NOT EXISTS Car (
-    LicensePlate INT PRIMARY KEY,
+    licensePlate INT AUTO_INCREMENT PRIMARY KEY,
     CarCondition ENUM('bad', 'standard', 'good'),
     Brand VARCHAR(255),
     Model VARCHAR(255),

@@ -15,10 +15,10 @@ import lombok.Setter;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer licensePlate;
+    private Integer licenseplate;
 
     @Enumerated(EnumType.STRING) // Maps the ENUM type in SQL to a Java Enum
-    private CarCondition carCondition;
+    private CarCondition carcondition;
 
     private String brand;
     private String model;
@@ -35,8 +35,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "licensePlate=" + licensePlate +
-                ", carCondition=" + carCondition +
+                "licensePlate=" + licenseplate +
+                ", carCondition=" + carcondition +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year='" + year + '\'' +

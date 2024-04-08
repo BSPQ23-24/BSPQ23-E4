@@ -21,15 +21,15 @@ public class CarService {
     }
 
     public Car getUserByLicensePlate(Integer lp) {
-        return carRepository.findByLicensePlate(lp).orElse(null);
+        return carRepository.findByLicenseplate(lp).orElse(null);
     }
 
     public Car updateCar(Integer lp, Car car) {
-        car.setLicensePlate(lp); //I think this fails due to the lack of getters and setters in Car class
+        car.setLicenseplate(lp); //I think this fails due to the lack of getters and setters in Car class
         return carRepository.save(car);
     }
 
     public void deleteUser(Integer lp) {
-        carRepository.deleteByLicensePlate(lp);
+        carRepository.deleteByLicenseplate(lp);
     }
 }
