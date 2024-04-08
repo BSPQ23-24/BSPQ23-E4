@@ -20,7 +20,7 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Car getUserByLicensePlate(Integer lp) {
+    public Car getCarByLicensePlate(Integer lp) {
         return carRepository.findByLicensePlate(lp).orElse(null);
     }
 
@@ -29,7 +29,7 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public void deleteUser(Integer lp) {
+    public void deleteCar(Integer lp) {
         carRepository.deleteByLicensePlate(lp);
     }
 }
