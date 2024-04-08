@@ -1,1 +1,5 @@
-com\example\client\ClientApplication.class
+com/example/client/ClientApplication.class
+com/example/client/controller/MainController$LoginListener.class
+com/example/client/controller/MainController.class
+com/example/client/model/UserModel.class
+com/example/client/view/LoginView.class
