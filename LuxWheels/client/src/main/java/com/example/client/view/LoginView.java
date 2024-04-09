@@ -131,7 +131,7 @@ public class LoginView extends JPanel {
         System.out.println("Sign up button clicked");
     }
 
-    /*
+    /* MAIN
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Welcome to LuxWheels");
@@ -143,5 +143,6 @@ public class LoginView extends JPanel {
         });
     }
     */
+    
     
 }
