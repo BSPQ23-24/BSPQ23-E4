@@ -73,7 +73,7 @@ public class RegisterView extends JFrame {
     protected JPanel pDNI = new JPanel(new FlowLayout());
     protected JPanel pCheckbox = new JPanel(new FlowLayout(FlowLayout.LEFT)); 
 
-    protected JLabel lsMail = new JLabel("Mail: ");
+    protected JLabel lsMail = new JLabel("Email: ");
     protected JLabel lsPass = new JLabel("Password: ");
     protected JLabel lssPass = new JLabel("Birthdate: ");
     protected JLabel lsNombre = new JLabel("Name:");
