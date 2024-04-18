@@ -1,6 +1,6 @@
 package com.example.server.service;
 import java.util.List;
-import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.server.entity.Car;
@@ -20,16 +20,25 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Car getCarByLicensePlate(Integer lp) {
-        return carRepository.findByLicenseplate(lp).orElse(null);
+    public Car getCarByLicensePlate(Integer licensePlate) {
+        return carRepository.findById(licensePlate).orElse(null);
     }
 
-    public Car updateCar(Integer lp, Car car) {
-        car.setLicenseplate(lp); //I think this fails due to the lack of getters and setters in Car class
-        return carRepository.save(car);
+    public Car updateCar(Integer licensePlate, Car updatedCar) {
+        return carRepository.findById(licensePlate).map(car -> {
+            car.setBrand(updatedCar.getBrand());
+            car.setModel(updatedCar.getModel());
+            car.setYear(updatedCar.getYear());
+            car.setCarCondition(updatedCar.getCarCondition());
+            car.setLocation(updatedCar.getLocation());
+            car.setUser(updatedCar.getUser());
+            return carRepository.save(car);
+        }).orElseGet(() -> {
+            updatedCar.setLicensePlate(licensePlate);
+            return carRepository.save(updatedCar);
+        });
     }
-
-    public void deleteCar(Integer lp) {
-        carRepository.deleteByLicenseplate(lp);
+    public void deleteCar(Integer licensePlate) {
+        carRepository.deleteById(licensePlate);
     }
 }
