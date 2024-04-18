@@ -15,16 +15,15 @@ import lombok.Setter;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer licenseplate;
+    private Integer licensePlate;
 
     @Enumerated(EnumType.STRING) // Maps the ENUM type in SQL to a Java Enum
-    private CarCondition carcondition;
+    private CarCondition carCondition;
 
     private String brand;
     private String model;
 
-    @Column(columnDefinition = "DATE")
-    private String year; // Consider using java.time.LocalDate for date fields
+    private String year;
 
     private String location;
 
@@ -35,8 +34,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "licensePlate=" + licenseplate +
-                ", carCondition=" + carcondition +
+                "licensePlate=" + licensePlate +
+                ", carCondition=" + carCondition +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year='" + year + '\'' +
