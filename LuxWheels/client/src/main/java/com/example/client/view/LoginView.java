@@ -109,7 +109,7 @@ public class LoginView extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 RegisterView registerView = RegisterView.getInstance();
                 registerView.setVisible(true);
-                closeWindow(signupButton);
+                //closeWindow(signupButton);
             }
         });
     }
@@ -125,7 +125,17 @@ public class LoginView extends JPanel {
         String name = nameField.getText();
         String email = emailField.getText();
         String password = new String(passwordField.getPassword());
+        Boolean success = ClientUserController.loginUser(name, email, password);
+        
+        if (success) {
+        	HomeView homeView = HomeView.getInstance();
+            homeView.setVisible(true);
+            closeWindow(this);
+        } else {
+        	JOptionPane.showMessageDialog(this, "Incorrect mail or password, try again", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
+
 
     private void Register(ActionEvent actionEvent) {
         System.out.println("Sign up button clicked");

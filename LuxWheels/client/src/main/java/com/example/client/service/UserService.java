@@ -35,6 +35,25 @@ public class UserService {
         }
     }
 
+    public String loginUser(UserModel user) {
+        String userJson = convertUserToJson(user);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + "/login"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(userJson))
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body());
+           
+            return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     private String convertUserToJson(UserModel user) {
         ObjectMapper mapper = new ObjectMapper();
         try {

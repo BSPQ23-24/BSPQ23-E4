@@ -15,46 +15,15 @@ import javax.swing.JTextField;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
 import javax.swing.text.MaskFormatter;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
-import javax.swing.*;
-import javax.swing.text.MaskFormatter;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import com.example.client.controller.ClientUserController;
 
-import javax.swing.*;
-import javax.swing.text.MaskFormatter;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
-import javax.swing.*;
-import javax.swing.text.MaskFormatter;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.*;
-import javax.swing.text.MaskFormatter;
-import java.awt.*;
-import java.awt.event.*;
 import java.util.Arrays;
 
 public class RegisterView extends JFrame {
@@ -73,7 +42,7 @@ public class RegisterView extends JFrame {
     protected JPanel pDNI = new JPanel(new FlowLayout());
     protected JPanel pCheckbox = new JPanel(new FlowLayout(FlowLayout.LEFT)); 
 
-    protected JLabel lsMail = new JLabel("Email: ");
+    protected JLabel lsMail = new JLabel("Mail: ");
     protected JLabel lsPass = new JLabel("Password: ");
     protected JLabel lssPass = new JLabel("Birthdate: ");
     protected JLabel lsNombre = new JLabel("Name:");
@@ -210,6 +179,13 @@ public class RegisterView extends JFrame {
 
         int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to sign up?", "Confirm Sign Up", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
+            String name = tsNombre.getText();
+            String surname = tsApellido.getText();
+            String email = tsMail.getText();
+            String password = new String(tsPass.getPassword());
+            String licenseNumber = tssPass.getText();
+            String DNI = tsDNI.getText();
+            ClientUserController.createUser(name, surname, email, password, licenseNumber, DNI);
             System.out.println("Register button clicked");
             closeWindow();
         }
