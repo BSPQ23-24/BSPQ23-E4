@@ -3,6 +3,7 @@ package com.example.server.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,28 +23,30 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @PostMapping("/create")
-    public Car create(@RequestBody Car car) {
-        return carService.createCar(car);
+    @PostMapping
+    public ResponseEntity<Car> create(@RequestBody Car car) {
+        return ResponseEntity.ok(carService.createCar(car));
     }
 
     @GetMapping
-    public List<Car> getAllCar() {
-        return carService.getAllCars();
+    public ResponseEntity<List<Car>> getAllCars() {
+        return ResponseEntity.ok(carService.getAllCars());
     }
 
-    @GetMapping("/{LicensePlate}")
-    public Car getUserByLicensePlate(@PathVariable Integer lp) {
-        return carService.getCarByLicensePlate(lp);
+    @GetMapping("/{licensePlate}")
+    public ResponseEntity<Car> getCarByLicensePlate(@PathVariable Integer licensePlate) {
+        return ResponseEntity.ok(carService.getCarByLicensePlate(licensePlate));
     }
 
-    @PutMapping("/{LicensePlate}")
-    public Car updateCar(@PathVariable Integer lp, @RequestBody Car car) {
-        return carService.updateCar(lp, car);
+    @PutMapping("/{licensePlate}")
+    public ResponseEntity<Car> updateCar(@PathVariable Integer licensePlate, @RequestBody Car car) {
+        Car updatedCar = carService.updateCar(licensePlate, car);
+        return ResponseEntity.ok(updatedCar);
     }
 
-    @DeleteMapping("/{LicensePlate}")
-    public void deleteCar(@PathVariable Integer lp) {
-        carService.deleteCar(lp);
+    @DeleteMapping("/{licensePlate}")
+    public ResponseEntity<Void> deleteCar(@PathVariable Integer licensePlate) {
+        carService.deleteCar(licensePlate);
+        return ResponseEntity.ok().build();
     }
 }

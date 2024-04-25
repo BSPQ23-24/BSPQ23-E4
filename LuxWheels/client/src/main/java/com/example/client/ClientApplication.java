@@ -1,5 +1,6 @@
 package com.example.client;
 
+import com.example.client.view.LoginView;
 import com.example.client.view.MainFrame;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

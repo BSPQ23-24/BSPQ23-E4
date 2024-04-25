@@ -15,18 +15,73 @@ import lombok.Setter;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer licenseplate;
+    private Integer licensePlate;
 
     @Enumerated(EnumType.STRING) // Maps the ENUM type in SQL to a Java Enum
-    private CarCondition carcondition;
+    private CarCondition carCondition;
 
     private String brand;
     private String model;
 
-    @Column(columnDefinition = "DATE")
-    private String year; // Consider using java.time.LocalDate for date fields
+    private String year;
 
-    private String location;
+    public Integer getLicensePlate() {
+		return licensePlate;
+	}
+
+	public void setLicensePlate(Integer licensePlate) {
+		this.licensePlate = licensePlate;
+	}
+
+	public CarCondition getCarCondition() {
+		return carCondition;
+	}
+
+	public void setCarCondition(CarCondition carCondition) {
+		this.carCondition = carCondition;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	private String location;
 
     @ManyToOne // Assuming many cars can be owned by one user
     @JoinColumn(name = "UserID", referencedColumnName = "id")
@@ -35,8 +90,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "licensePlate=" + licenseplate +
-                ", carCondition=" + carcondition +
+                "licensePlate=" + licensePlate +
+                ", carCondition=" + carCondition +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year='" + year + '\'' +
