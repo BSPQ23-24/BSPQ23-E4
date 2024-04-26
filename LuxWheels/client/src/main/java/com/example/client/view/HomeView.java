@@ -2,8 +2,7 @@ package com.example.client.view;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,11 +18,6 @@ import javax.swing.text.MaskFormatter;
 
 import com.example.client.controller.ClientUserController;
 
-import java.awt.event.ActionEvent;
-
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
 import java.util.Arrays;
 
 public class HomeView extends JFrame {
@@ -32,15 +26,31 @@ public class HomeView extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    protected JCheckBox acceptTermsCheckbox = new JCheckBox("I accept the terms and conditions");
+    private JButton btRegisterCar;
+    private JPanel buttonPanel;
 
     private HomeView() {
-        this.setTitle("Homepage - LuxWheels");
-        this.setSize(700, 550);
-        this.setLayout(new BorderLayout());
-        this.setLocationRelativeTo(null); 
+        setTitle("Homepage - LuxWheels");
+        setSize(700, 550);
+        setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
+
+        initUI();
     }
-        
+
+    public void initUI() {
+        buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        btRegisterCar = new JButton("Register your car!");
+        btRegisterCar.addActionListener(this::registerCar);
+
+        buttonPanel.add(btRegisterCar);
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    private void registerCar(ActionEvent actionEvent) {
+        RegisterCarView registerCarView = RegisterCarView.getInstance();
+        registerCarView.setVisible(true);
+    }
 
     public static HomeView getInstance() {
         if (HomeView.instance == null) {
