@@ -5,6 +5,7 @@ import com.example.client.controller.ClientUserController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -44,14 +45,25 @@ public class RegisterCarView extends JFrame {
 
     private void initUI() {
         JPanel formPanel = new JPanel(new GridLayout(7, 2, 10, 10)); // 7 rows, 2 columns, with gaps
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        Font labelFont = new Font("SansSerif", Font.BOLD, 12);
+
+        // --------- Form section ---------
 
         lsLicensePlate = new JLabel("License Plate:");
+        lsLicensePlate.setFont(labelFont);
         lsCarCondition = new JLabel("Car Condition:");
+        lsCarCondition.setFont(labelFont);
         lsBrand = new JLabel("Brand:");
+        lsBrand.setFont(labelFont);
         lsModel = new JLabel("Model:");
+        lsModel.setFont(labelFont);
         lsYear = new JLabel("Year:");
+        lsYear.setFont(labelFont);
         lsLocation = new JLabel("Location:");
+        lsLocation.setFont(labelFont);
         lsUser = new JLabel("User:");
+        lsUser.setFont(labelFont);
 
         tslicensePlate = new JTextField(15);
         tsCarCondition = new JTextField(15);
@@ -77,15 +89,46 @@ public class RegisterCarView extends JFrame {
         formPanel.add(lsUser);
         formPanel.add(tsUser);
 
-        registerButton = new JButton("Register Car");
-        registerButton.addActionListener(this::registerCarAction);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.add(registerButton);
-
-        add(formPanel, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.SOUTH);
-
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        formPanel.setBackground(Color.lightGray);
+
+        // --------- Buttons section ---------
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+        registerButton = new JButton("Register Car");
+        registerButton.setFont(new Font("SansSerif", Font.BOLD, 14));
+        registerButton.addActionListener(this::registerCarAction);
+
+        buttonPanel.add(registerButton);
+        buttonPanel.setBackground(Color.lightGray);
+
+        // --------- Car picture section ---------
+
+        JPanel imagePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+        URL carImageUrl = getClass().getResource("/bmw.jpg");
+        ImageIcon icon = new ImageIcon(carImageUrl);
+        Image image = icon.getImage();
+
+        Image newImage = image.getScaledInstance(400, 250, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(newImage);
+        JLabel imageLabel = new JLabel(scaledIcon);
+        imagePanel.add(imageLabel);
+        imagePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+        imagePanel.setBackground(Color.WHITE);
+
+        // --------- Add panels to layout ---------
+
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+
+        contentPanel.add(formPanel);
+        contentPanel.add(buttonPanel);
+
+        add(contentPanel, BorderLayout.NORTH);
+        add(imagePanel, BorderLayout.SOUTH);
+
     }
 
     private void registerCarAction(ActionEvent e) {
