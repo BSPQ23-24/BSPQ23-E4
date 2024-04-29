@@ -5,14 +5,19 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import com.example.client.model.CarModel;
+import com.example.client.model.CarModel.CarCondition;
 
 public class CarModificationView extends JPanel {
 
-    private JTextField nameField;
+    private JTextField licensePlateField;
+    private JTextField brandField;
     private JTextField modelField;
-    private JTextField cityField;
-    private JFormattedTextField startDateField;
-    private JFormattedTextField endDateField;
+    private JTextField yearField;
+    private JComboBox<CarCondition> conditionField;
+    private JTextField locationField;
+    private JTextField userIdField;
+
     private JButton submitButton;
 
     public CarModificationView() {
@@ -22,15 +27,6 @@ public class CarModificationView extends JPanel {
     private void initUI() {
         setLayout(new BorderLayout());
         setBackground(new Color(240, 240, 240));
-
-        // Create the date formatter for JFormattedTextField
-        MaskFormatter dateFormatter = null;
-        try {
-            dateFormatter = new MaskFormatter("##/##/####");
-            dateFormatter.setPlaceholderCharacter('_');
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
@@ -42,14 +38,18 @@ public class CarModificationView extends JPanel {
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         formPanel.add(titleLabel);
 
-        formPanel.add(createFieldPanel("Name:", nameField = new JTextField(15)));
+        formPanel.add(createFieldPanel("License Plate:", licensePlateField = new JTextField(10)));
+        formPanel.add(createFieldPanel("Brand:", brandField = new JTextField(15)));
         formPanel.add(createFieldPanel("Model:", modelField = new JTextField(15)));
-        formPanel.add(createFieldPanel("City:", cityField = new JTextField(15)));
+        formPanel.add(createFieldPanel("Year:", yearField = new JTextField(4)));
 
-        formPanel.add(createFieldPanel("Start Date:", startDateField = new JFormattedTextField(dateFormatter)));
-        formPanel.add(createFieldPanel("End Date:", endDateField = new JFormattedTextField(dateFormatter)));
+        conditionField = new JComboBox<>(CarCondition.values());
+        formPanel.add(createFieldPanel("Car Condition:", conditionField));
 
-        formPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        formPanel.add(createFieldPanel("Location:", locationField = new JTextField(15)));
+        formPanel.add(createFieldPanel("User ID:", userIdField = new JTextField(10)));
+
+        formPanel.add(Box.createRigidArea(new Dimension(0, 30)));
 
         submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(120, 40));
@@ -77,23 +77,27 @@ public class CarModificationView extends JPanel {
     }
 
     private void submitAction(ActionEvent e) {
-        String name = nameField.getText();
-        String model = modelField.getText();
-        String city = cityField.getText();
-        String startDate = startDateField.getText();
-        String endDate = endDateField.getText();
+        CarModel car = new CarModel();
 
-        // For now, I will just print out the results
+        car.setLicensePlate(Integer.parseInt(licensePlateField.getText()));
+        car.setBrand(brandField.getText());
+        car.setModel(modelField.getText());
+        car.setYear(yearField.getText());
+        car.setCarCondition((CarCondition) conditionField.getSelectedItem());
+        car.setLocation(locationField.getText());
+        car.setUserId(Integer.parseInt(userIdField.getText()));
+
         System.out.println("Car Modification Details:");
-        System.out.println("Name: " + name);
-        System.out.println("Model: " + model);
-        System.out.println("City: " + city);
-        System.out.println("Start Date: " + startDate);
-        System.out.println("End Date: " + endDate);
+        System.out.println("License Plate: " + car.getLicensePlate());
+        System.out.println("Brand: " + car.getBrand());
+        System.out.println("Model: " + car.getModel());
+        System.out.println("Year: " + car.getYear());
+        System.out.println("Car Condition: " + car.getCarCondition());
+        System.out.println("Location: " + car.getLocation());
+        System.out.println("User ID: " + car.getUserId());
 
         JOptionPane.showMessageDialog(this, "Car modification details submitted successfully!");
 
-        // Should go back to the previous windows
         closeWindow(submitButton);
     }
 
@@ -104,7 +108,6 @@ public class CarModificationView extends JPanel {
         }
     }
 
-    /* MAIN
     public static void main(String[] args) {
         JFrame frame = new JFrame("Car Modification");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,5 +116,4 @@ public class CarModificationView extends JPanel {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-     */
 }
