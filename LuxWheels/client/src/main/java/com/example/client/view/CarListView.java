@@ -1,25 +1,41 @@
 package com.example.client.view;
 
+import com.example.client.controller.ClientCarController;
+import com.example.client.model.CarModel;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.util.List;
+
+
 public class CarListView extends JPanel {
-    private JList<String> itemList;
-    private DefaultListModel<String> model;
+    private JList<CarModel> itemList;
+    private DefaultListModel<CarModel> model;
     private JTextArea infoPanel;
 
     public CarListView() {
         setLayout(new BorderLayout());
 
-        // Model to hold items
         model = new DefaultListModel<>();
-        addItem("Car 1 - BMW");
-        addItem("Car 2 - Audi");
-        addItem("Car 3 - Mercedes");
+        List<CarModel> cars = ClientCarController.getAllCars();
+        for (CarModel car : cars) {
+            model.addElement(car);
+        }
 
         itemList = new JList<>(model);
         itemList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        itemList.setCellRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof CarModel) {
+                    setText(((CarModel) value).getSummary());
+                }
+                return renderer;
+            }
+        });
 
         JScrollPane listScrollPane = new JScrollPane(itemList);
 
@@ -37,26 +53,19 @@ public class CarListView extends JPanel {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
-                    String selectedItem = itemList.getSelectedValue();
-                    updateInfoPanel(selectedItem);
+                    CarModel selectedCar = itemList.getSelectedValue();
+                    updateInfoPanel(selectedCar);
                 }
             }
         });
 
-        if (model.getSize() > 0) {
+        if (!model.isEmpty()) {
             itemList.setSelectedIndex(0);
             updateInfoPanel(itemList.getSelectedValue());
         }
     }
 
-    private void addItem(String item) {
-        model.addElement(item);
-    }
-
-    // Method to update the information panel based on the selected item
-    private void updateInfoPanel(String item) {
-        // Placeholder for actual content fetching logic
-        infoPanel.setText("Details of " + item + ":\n\nHere you can put more detailed information about the car.");
-        // Here you could add more detailed dynamic data, potentially fetching it from a database or a service
+    private void updateInfoPanel(CarModel car) {
+        infoPanel.setText("Details of " + car.getBrand());
     }
 }
