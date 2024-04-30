@@ -37,7 +37,8 @@ public class CarService {
 	
     public String updateCar(CarModel car) {
         String carJson = convertCarToJson(car);
-
+        client = HttpClient.newHttpClient();
+        
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(baseURL + car.getLicensePlate()))
                 .header("Content-Type", "application/json")
