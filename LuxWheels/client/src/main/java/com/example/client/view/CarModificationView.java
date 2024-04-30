@@ -107,7 +107,7 @@ public class CarModificationView extends JPanel {
             window.dispose();
         }
     }
-
+/*
     public static void main(String[] args) {
         JFrame frame = new JFrame("Car Modification");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,4 +116,5 @@ public class CarModificationView extends JPanel {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+ */
 }
