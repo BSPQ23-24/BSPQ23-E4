@@ -13,13 +13,8 @@ import java.nio.charset.StandardCharsets;
 
 public class CarService {
 	
-    private final String baseURL;
-    private final HttpClient client;
-
-    public CarService(String baseURL, HttpClient client) {
-        this.baseURL = baseURL;
-        this.client = client;
-    }
+    private final String baseURL =  "http://localhost:8080/api/cars/"; 
+    private HttpClient client;
 	
 	public String deleteCar(int licensePlate) {
 
