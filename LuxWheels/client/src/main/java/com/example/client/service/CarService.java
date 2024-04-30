@@ -1,5 +1,7 @@
 package com.example.client.service;
 import com.example.client.model.CarModel;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -18,11 +20,43 @@ public class CarService {
 	
 	public String deleteCar(int licensePlate) {
 		client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(baseURL + licensePlate)).header("Content-Type", "application/json").DELETE().build();
+        HttpRequest request = HttpRequest.newBuilder()
+        		.uri(URI.create(baseURL + licensePlate))
+        		.header("Content-Type", "application/json")
+        		.DELETE()
+        		.build();
 
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+	
+    public String updateCar(CarModel car) {
+        String carJson = convertCarToJson(car);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + car.getLicensePlate()))
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(carJson))
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    private String convertCarToJson(CarModel car) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(car);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
