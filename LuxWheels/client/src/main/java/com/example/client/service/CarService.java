@@ -17,7 +17,7 @@ public class CarService {
     private HttpClient client;
 	
 	public String deleteCar(int licensePlate) {
-
+		client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(baseURL + licensePlate)).header("Content-Type", "application/json").DELETE().build();
 
         try {
@@ -28,6 +28,5 @@ public class CarService {
             return null;
         }
     }
-
 }
 
