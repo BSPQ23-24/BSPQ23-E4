@@ -16,7 +16,7 @@ public class CarModificationView extends JPanel {
     private JTextField yearField;
     private JComboBox<CarCondition> conditionField;
     private JTextField locationField;
-    private JTextField userIdField;
+    //private JTextField userIdField;
 
     private JButton submitButton;
 
@@ -47,7 +47,7 @@ public class CarModificationView extends JPanel {
         formPanel.add(createFieldPanel("Car Condition:", conditionField));
 
         formPanel.add(createFieldPanel("Location:", locationField = new JTextField(15)));
-        formPanel.add(createFieldPanel("User ID:", userIdField = new JTextField(10)));
+        //formPanel.add(createFieldPanel("User ID:", userIdField = new JTextField(10)));
 
         formPanel.add(Box.createRigidArea(new Dimension(0, 30)));
 
@@ -85,7 +85,7 @@ public class CarModificationView extends JPanel {
         car.setYear(yearField.getText());
         car.setCarCondition((CarCondition) conditionField.getSelectedItem());
         car.setLocation(locationField.getText());
-        car.setUserId(Integer.parseInt(userIdField.getText()));
+        //car.setUser(Integer.parseInt(userIdField.getText()));
 
         System.out.println("Car Modification Details:");
         System.out.println("License Plate: " + car.getLicensePlate());
@@ -94,7 +94,7 @@ public class CarModificationView extends JPanel {
         System.out.println("Year: " + car.getYear());
         System.out.println("Car Condition: " + car.getCarCondition());
         System.out.println("Location: " + car.getLocation());
-        System.out.println("User ID: " + car.getUserId());
+        System.out.println("User ID: " + car.getUser().getId());
 
         JOptionPane.showMessageDialog(this, "Car modification details submitted successfully!");
 

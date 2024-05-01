@@ -50,7 +50,7 @@ public class HostedCarsView extends JPanel {
         carListModel.clear();
 
         for (CarModel car : allCars) {
-            if (car.getUserId() != null && car.getUserId().equals(currentUser.getId())) {
+            if (car.getUser().getId() != null && car.getUser().getId().equals(currentUser.getId())) {
                 carListModel.addElement(car);
             }
         }
