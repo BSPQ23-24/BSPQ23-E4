@@ -25,6 +25,8 @@ public class LoginView extends JPanel {
     }
 
     private void initUI() {
+        logger.info("LoginView generated");
+    
         setLayout(new BorderLayout());
         setBackground(new Color(240, 240, 240));
 

@@ -2,16 +2,21 @@ package com.example.client.view;
 
 import com.example.client.controller.ClientCarController;
 import com.example.client.model.CarModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import javax.swing.*;
 import java.awt.*;
 
 public class CarListView extends JPanel {
+	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private JList<CarModel> itemList;
     private DefaultListModel<CarModel> model;
     private JPanel infoPanel;
 
     public CarListView() {
+        logger.info("CarListView generated");
         setLayout(new BorderLayout());
 
         model = new DefaultListModel<>();

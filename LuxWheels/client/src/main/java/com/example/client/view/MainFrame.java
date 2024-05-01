@@ -2,8 +2,11 @@ package com.example.client.view;
 
 import javax.swing.*;
 import java.awt.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MainFrame extends JFrame {
+	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private CardLayout cardLayout;
     private JPanel cardPanel;
     private JMenuBar menuBar;

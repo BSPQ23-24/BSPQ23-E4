@@ -7,8 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.example.client.model.CarModel;
 import com.example.client.model.CarModel.CarCondition;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CarModificationView extends JPanel {
+	private static final Logger logger = LogManager.getLogger(LoginView.class);
 
     private JTextField licensePlateField;
     private JTextField brandField;
@@ -25,6 +28,7 @@ public class CarModificationView extends JPanel {
     }
 
     private void initUI() {
+        logger.info("CarModificationView generated");
         setLayout(new BorderLayout());
         setBackground(new Color(240, 240, 240));
 

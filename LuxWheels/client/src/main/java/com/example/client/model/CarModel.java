@@ -21,7 +21,23 @@ public class CarModel {
     private String model;
     private String year;
     private CarCondition carCondition;
-    private String location;
+    public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	private String location;
     private UserModel user;
     private String description;
     private Status status;

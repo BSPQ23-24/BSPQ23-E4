@@ -14,7 +14,7 @@ import com.example.server.repository.EmailRepository;
 
 @SpringBootTest
 public class UserServiceTests {
-
+	
     @Mock
     private EmailRepository emailRepository;
 
