@@ -1,4 +1,5 @@
 package com.example.server.service;
+
 import com.example.server.entity.User;
 import com.example.server.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,8 +7,6 @@ import com.example.server.repository.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
-import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +35,7 @@ public class UserService {
     }
 
     public String loginUser(User user) {
+
     	Optional<User> foundUser = emailRepository.findByEmail(user.getEmail());
     	ObjectMapper mapper = new ObjectMapper();
         try {

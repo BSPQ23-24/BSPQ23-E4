@@ -5,5 +5,6 @@ import com.example.server.entity.Car;
 
 
 public interface CarRepository extends JpaRepository<Car, Integer>{
+	
 
 }

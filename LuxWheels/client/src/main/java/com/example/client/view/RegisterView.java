@@ -1,6 +1,8 @@
 package com.example.client.view;
 
 import java.awt.FlowLayout;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -11,22 +13,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.text.MaskFormatter;
-
 import com.example.client.controller.ClientUserController;
-
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import java.util.Arrays;
 
 public class RegisterView extends JFrame {
+	
+	private static final Logger logger = LogManager.getLogger(RegisterView.class);
 
     private static RegisterView instance;
 
@@ -186,14 +184,8 @@ public class RegisterView extends JFrame {
             String licenseNumber = tssPass.getText();
             String DNI = tsDNI.getText();
             ClientUserController.createUser(name, surname, email, password, licenseNumber, DNI);
-            System.out.println("Register button clicked");
+            logger.info("Register button clicked");
             closeWindow();
         }
     }
-
-    /* MAIN
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(RegisterView::getInstance);
-    }
-    */
 }

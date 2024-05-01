@@ -22,6 +22,8 @@ public class User {
     private String licensenumber;
     private String email;
     private String password;
+    
+
 
     // toString method for easy printing
     @Override
