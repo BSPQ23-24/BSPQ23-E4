@@ -126,7 +126,7 @@ public class LoginView extends JPanel {
         String name = nameField.getText();
         String email = emailField.getText();
         String password = new String(passwordField.getPassword());
-        Boolean success = ClientUserController.loginUser(name, email, password);
+        boolean success = ClientUserController.loginUser(name, email, password);
         
         if (success) {
         	HomeView homeView = HomeView.getInstance();
