@@ -41,4 +41,53 @@ public class CarService {
             return Collections.emptyList();
         }
     }
+    
+	public String deleteCar(int licensePlate) {
+		client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+        		.uri(URI.create(baseURL + licensePlate))
+        		.header("Content-Type", "application/json")
+        		.DELETE()
+        		.build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+	
+    public String updateCar(CarModel car) {
+        String carJson = convertCarToJson(car);
+        client = HttpClient.newHttpClient();
+        
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + car.getLicensePlate()))
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(carJson))
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    private String convertCarToJson(CarModel car) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json = mapper.writeValueAsString(car);
+            System.out.println("Generated JSON: " + json); 
+            return json;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

@@ -5,8 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+import com.example.client.model.CarModel.Status;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CarModel {
     private Integer licensePlate;
     private String brand;
@@ -14,21 +24,25 @@ public class CarModel {
     private String year;
     private CarCondition carCondition;
     private String location;
-    private Integer userId;
+    private UserModel user;
+    private String description;
+    private Status status;
 
     public CarModel() {
         // Default constructor
     }
 
-    public CarModel(Integer licensePlate, String brand, String model, String year, CarCondition carCondition, String location, Integer userId) {
+    public CarModel(Integer licensePlate, String brand, String model, String year, CarCondition carCondition, String location, UserModel user, String description, Status status) {
         this.licensePlate = licensePlate;
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.carCondition = carCondition;
         this.location = location;
-        this.userId = userId;
-    }
+        this.user = user;
+        this.description = description;
+        this.status = status;
+        }
 
     public Integer getLicensePlate() {
         return licensePlate;
@@ -78,16 +92,24 @@ public class CarModel {
         this.location = location;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
-    // Enum to represent the CarCondition
     public enum CarCondition {
         bad, standard, good
     }
+    
+    public enum Status {
+        OPEN, BOOKED
+    }
+
+    public String getSummary() {
+        return brand + " - " + year + " " + model + " - " + carCondition;
+    }
+
 }
