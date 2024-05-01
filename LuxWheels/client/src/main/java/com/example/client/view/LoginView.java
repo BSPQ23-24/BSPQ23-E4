@@ -1,9 +1,10 @@
 package com.example.client.view;
 
 import com.example.client.controller.ClientUserController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 @Getter
 @Setter
 public class LoginView extends JPanel {
-
+	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private JTextField nameField;
     private JTextField emailField;
     private JPasswordField passwordField;
@@ -138,7 +139,7 @@ public class LoginView extends JPanel {
 
 
     private void Register(ActionEvent actionEvent) {
-        System.out.println("Sign up button clicked");
+        logger.info("Sign up button clicked");
     }
 
     /* MAIN
