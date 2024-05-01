@@ -1,6 +1,8 @@
 package com.example.client.view;
 
+import com.example.client.controller.ClientCarController;
 import com.example.client.controller.ClientUserController;
+import com.example.client.model.CarModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,15 +23,13 @@ public class RegisterCarView extends JFrame {
     private JLabel lsModel;
     private JLabel lsYear;
     private JLabel lsLocation;
-    private JLabel lsUser;
 
     private JTextField tslicensePlate;
-    private JTextField tsCarCondition;
+    private JComboBox<CarModel.CarCondition> conditionComboBox;
     private JTextField tsBrand;
     private JTextField tsModel;
     private JTextField tsYear;
     private JTextField tsLocation;
-    private JTextField tsUser;
 
     private JButton registerButton;
 
@@ -62,22 +62,21 @@ public class RegisterCarView extends JFrame {
         lsYear.setFont(labelFont);
         lsLocation = new JLabel("Location:");
         lsLocation.setFont(labelFont);
-        lsUser = new JLabel("User:");
-        lsUser.setFont(labelFont);
 
         tslicensePlate = new JTextField(15);
-        tsCarCondition = new JTextField(15);
+        conditionComboBox = new JComboBox<>(CarModel.CarCondition.values());
+        conditionComboBox.setSelectedIndex(1);
+
         tsBrand = new JTextField(15);
         tsModel = new JTextField(15);
         tsYear = new JFormattedTextField(new SimpleDateFormat("yyyy"));
         tsYear.setColumns(15);
         tsLocation = new JTextField(15);
-        tsUser = new JTextField(15);
 
         formPanel.add(lsLicensePlate);
         formPanel.add(tslicensePlate);
         formPanel.add(lsCarCondition);
-        formPanel.add(tsCarCondition);
+        formPanel.add(conditionComboBox);
         formPanel.add(lsBrand);
         formPanel.add(tsBrand);
         formPanel.add(lsModel);
@@ -86,8 +85,6 @@ public class RegisterCarView extends JFrame {
         formPanel.add(tsYear);
         formPanel.add(lsLocation);
         formPanel.add(tsLocation);
-        formPanel.add(lsUser);
-        formPanel.add(tsUser);
 
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         formPanel.setBackground(Color.lightGray);
@@ -132,7 +129,7 @@ public class RegisterCarView extends JFrame {
     }
 
     private void registerCarAction(ActionEvent e) {
-        if (Arrays.asList(tslicensePlate, tsCarCondition, tsBrand, tsModel, tsYear, tsLocation, tsUser)
+        if (Arrays.asList(tslicensePlate, tsBrand, tsModel, tsYear, tsLocation)
                 .stream().anyMatch(component -> component.getText().isEmpty())) {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -141,22 +138,22 @@ public class RegisterCarView extends JFrame {
         int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to register this car?", "Confirm Car Registration", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             // Extract data from text fields
-            String license = tslicensePlate.getText();
-            String condition = tsCarCondition.getText();
-            String brandText = tsBrand.getText();
-            String modelText = tsModel.getText();
-            String locationText = tsLocation.getText();
-            String userText = tsUser.getText();
-
+            Integer licensePlate = Integer.valueOf(tslicensePlate.getText());
+            CarModel.CarCondition selectedCondition = (CarModel.CarCondition) conditionComboBox.getSelectedItem();
+            String brand = tsBrand.getText();
+            String model = tsModel.getText();
+            String location = tsLocation.getText();
             String yearText = tsYear.getText();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+
+            /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
             try {
                 Date yearDate = sdf.parse(yearText);
             } catch (ParseException pe) {
                 JOptionPane.showMessageDialog(this, "Invalid year format. Please use YYYY.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
-            }
-            // ClientUserController.createUser(name, surname, email, password, licenseNumber, DNI);
+            }*/
+
+            ClientCarController.createCar(licensePlate, brand, location, model, yearText, selectedCondition);
             System.out.println("Car Registration button clicked");
             closeWindow();
         }

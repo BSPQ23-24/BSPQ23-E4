@@ -1,8 +1,12 @@
-com\example\client\model\UserModel.class
 com\example\client\view\RegisterView$1.class
+com\example\client\service\CarService.class
 com\example\client\controller\ClientUserController.class
 com\example\client\view\RegisterView.class
 com\example\client\service\UserService.class
+com\example\client\model\CarModel$CarCondition.class
 com\example\client\view\MainFrame.class
 com\example\client\ClientApplication.class
 com\example\client\view\LoginView.class
+com\example\client\model\UserModel.class
+com\example\client\model\CarModel.class
+com\example\client\controller\ClientCarController.class

@@ -2,6 +2,7 @@ package com.example.server.controller;
 
 import java.util.List;
 
+import com.example.server.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,9 +24,11 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @PostMapping
-    public ResponseEntity<Car> create(@RequestBody Car car) {
-        return ResponseEntity.ok(carService.createCar(car));
+    @PostMapping("/create")
+    public Car create(@RequestBody Car car) {
+
+        System.out.println(car);
+        return carService.createCar(car);
     }
 
     @GetMapping
@@ -44,9 +47,9 @@ public class CarController {
         return ResponseEntity.ok(updatedCar);
     }
 
-    @DeleteMapping("/{licensePlate}")
+    /*@DeleteMapping("/{licensePlate}")
     public ResponseEntity<Void> deleteCar(@PathVariable Integer licensePlate) {
         carService.deleteCar(licensePlate);
         return ResponseEntity.ok().build();
-    }
+    }*/
 }
