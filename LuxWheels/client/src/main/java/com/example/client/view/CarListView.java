@@ -17,7 +17,9 @@ public class CarListView extends JPanel {
         model = new DefaultListModel<>();
         java.util.List<CarModel> cars = ClientCarController.getAllCars();
         for (CarModel car : cars) {
-            model.addElement(car);
+            if (car.getStatus() == CarModel.Status.OPEN) {
+                model.addElement(car);
+            }
         }
 
         itemList = new JList<>(model);
@@ -80,7 +82,6 @@ public class CarListView extends JPanel {
 
         JButton rentButton = new JButton("Rent Now!");
         rentButton.setBackground(Color.GREEN);
-        rentButton.setEnabled(car.getStatus() == CarModel.Status.OPEN);
         rentButton.addActionListener(e -> {
             //TODO
         });
