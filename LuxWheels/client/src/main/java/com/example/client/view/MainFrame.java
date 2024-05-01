@@ -6,6 +6,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     private CardLayout cardLayout;
     private JPanel cardPanel;
+    private JMenuBar menuBar;
 
     public MainFrame() {
         setTitle("Car Rental Application");
@@ -16,22 +17,27 @@ public class MainFrame extends JFrame {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
-        JPanel loginView = new LoginView();
+        LoginView loginView = new LoginView(this);
         JPanel carListView = new CarListView();
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
 
-        JMenuBar menuBar = new JMenuBar();
+        menuBar = new JMenuBar();
         menuBar.setLayout(new BorderLayout());
+        menuBar.setVisible(false); // Initially invisible
 
-        // Navigation buttons
+        setupMenuBar();
+        cardLayout.show(cardPanel, "LoginView");
+        getContentPane().add(cardPanel);
+    }
+
+    private void setupMenuBar() {
         JButton carListButton = new JButton("Cars to Rent");
         carListButton.addActionListener(e -> cardLayout.show(cardPanel, "CarListView"));
         JButton carRentingButton = new JButton("Cars Currently Renting");
         JButton carOfferingButton = new JButton("Cars Offering for Rent");
 
-        // Panel to center navigation buttons
-        JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0)); // 5 is the horizontal gap between buttons
+        JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
         navPanel.add(carListButton);
         navPanel.add(carRentingButton);
         navPanel.add(carOfferingButton);
@@ -48,15 +54,17 @@ public class MainFrame extends JFrame {
         logoutPanel.add(logoutButton);
 
         menuBar.add(logoutPanel, BorderLayout.EAST);
+    }
 
-        setJMenuBar(menuBar);
-
+    public void onLoginSuccess() {
         cardLayout.show(cardPanel, "CarListView");
-        getContentPane().add(cardPanel);
+        menuBar.setVisible(true);
+        setJMenuBar(menuBar);
     }
 
     private void logout() {
-        // TODO
         JOptionPane.showMessageDialog(this, "You have been logged out.");
+        cardLayout.show(cardPanel, "LoginView");
+        menuBar.setVisible(false);
     }
 }

@@ -12,7 +12,6 @@ import java.time.LocalDate; // Importar LocalDate para el manejo de fechas
 @Table(name = "Rental")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Rental {
     @Id

@@ -17,9 +17,11 @@ public class LoginView extends JPanel {
     private JTextField nameField;
     private JTextField emailField;
     private JPasswordField passwordField;
+    private MainFrame mainFrame;
 
-    public LoginView() {
+    public LoginView(MainFrame mainFrame) {
         this.initUI();
+        this.mainFrame = mainFrame;
     }
 
     private void initUI() {
@@ -62,7 +64,7 @@ public class LoginView extends JPanel {
         passwordPanel.add(passwordField);
         inputPanel.add(passwordPanel);
 
-        ImageIcon icon = new ImageIcon("src/main/java/pics/audi.jpg");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/pics/audi.jpg"));
         Image image = icon.getImage();
         Image newImage = image.getScaledInstance(400, 125, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(newImage);
@@ -77,20 +79,20 @@ public class LoginView extends JPanel {
         buttonPanel.add(photoPanel, BorderLayout.CENTER);
 
         JButton loginButton = new JButton("Login");
-        loginButton.setPreferredSize(new Dimension(120, 40));
-        loginButton.setBackground(new Color(0, 93, 232));
-        loginButton.setForeground(Color.WHITE);
-        loginButton.setFocusPainted(false);
-        loginButton.setBorderPainted(false);
+//        loginButton.setPreferredSize(new Dimension(120, 40));
+//        loginButton.setBackground(new Color(0, 93, 232));
+//        loginButton.setForeground(Color.WHITE);
+//        loginButton.setFocusPainted(false);
+//        loginButton.setBorderPainted(false);
         loginButton.addActionListener(this::submitAction);
 
         JLabel signupLabel = new JLabel("Don't have an account? ");
         JButton signupButton = new JButton("Sign up");
-        signupButton.setPreferredSize(loginButton.getPreferredSize());
-        signupButton.setBackground(new Color(0, 93, 232));
-        signupButton.setForeground(Color.WHITE);
-        signupButton.setBorderPainted(false);
-        signupButton.setFocusPainted(false);
+       // signupButton.setPreferredSize(loginButton.getPreferredSize());
+       // signupButton.setBackground(new Color(0, 93, 232));
+//        signupButton.setForeground(Color.WHITE);
+//        signupButton.setBorderPainted(false);
+//        signupButton.setFocusPainted(false);
         signupButton.addActionListener(this::Register);
 
         JPanel buttonContainerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -127,11 +129,12 @@ public class LoginView extends JPanel {
         String email = emailField.getText();
         String password = new String(passwordField.getPassword());
         boolean success = ClientUserController.loginUser(name, email, password);
-        
+
         if (success) {
-        	HomeView homeView = HomeView.getInstance();
-            homeView.setVisible(true);
-            closeWindow(this);
+//        	HomeView homeView = HomeView.getInstance();
+//            homeView.setVisible(true);
+//            closeWindow(this);
+            this.mainFrame.onLoginSuccess();
         } else {
         	JOptionPane.showMessageDialog(this, "Incorrect mail or password, try again", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -142,18 +145,5 @@ public class LoginView extends JPanel {
         logger.info("Sign up button clicked");
     }
 
-    /* MAIN
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Welcome to LuxWheels");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(new LoginView());
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
-    }
-    */
-    
-    
+
 }
