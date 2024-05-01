@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.example.client.model.CarModel;
 import com.example.client.model.CarModel.CarCondition;
+import com.example.client.model.UserModel;
+import com.example.client.service.CarService;
 
 public class CarModificationView extends JPanel {
 
@@ -20,11 +22,11 @@ public class CarModificationView extends JPanel {
 
     private JButton submitButton;
 
-    public CarModificationView() {
-        initUI();
-    }
+    private UserModel currentUser;
 
-    private void initUI() {
+    public CarModificationView(UserModel user) {
+        this.currentUser = user;
+
         setLayout(new BorderLayout());
         setBackground(new Color(240, 240, 240));
 
@@ -78,6 +80,7 @@ public class CarModificationView extends JPanel {
 
     private void submitAction(ActionEvent e) {
         CarModel car = new CarModel();
+        CarService carService = new CarService();
 
         car.setLicensePlate(Integer.parseInt(licensePlateField.getText()));
         car.setBrand(brandField.getText());
@@ -86,19 +89,23 @@ public class CarModificationView extends JPanel {
         car.setCarCondition((CarCondition) conditionField.getSelectedItem());
         car.setLocation(locationField.getText());
         //car.setUser(Integer.parseInt(userIdField.getText()));
+        car.setUser(currentUser);
 
-        System.out.println("Car Modification Details:");
-        System.out.println("License Plate: " + car.getLicensePlate());
-        System.out.println("Brand: " + car.getBrand());
-        System.out.println("Model: " + car.getModel());
-        System.out.println("Year: " + car.getYear());
-        System.out.println("Car Condition: " + car.getCarCondition());
-        System.out.println("Location: " + car.getLocation());
-        System.out.println("User ID: " + car.getUser().getId());
+        carService.updateCar(car);
+
+        //Prints to check if it works
+        //System.out.println("Car Modification Details:");
+        //System.out.println("License Plate: " + car.getLicensePlate());
+        //System.out.println("Brand: " + car.getBrand());
+        //System.out.println("Model: " + car.getModel());
+        //System.out.println("Year: " + car.getYear());
+        //System.out.println("Car Condition: " + car.getCarCondition());
+        //System.out.println("Location: " + car.getLocation());
+        //System.out.println("User ID: " + car.getUser().getId());
 
         JOptionPane.showMessageDialog(this, "Car modification details submitted successfully!");
 
-        closeWindow(submitButton);
+        //closeWindow(submitButton);
     }
 
     private void closeWindow(Component component) {
