@@ -2,6 +2,8 @@ package com.example.client.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,11 +41,15 @@ public class MainFrame extends JFrame {
         carListButton.addActionListener(e -> cardLayout.show(cardPanel, "CarListView"));
         JButton carRentingButton = new JButton("Cars Currently Renting");
         JButton carOfferingButton = new JButton("Cars Offering for Rent");
+        JButton btRegisterCar = new JButton("Register your car!");
+        btRegisterCar.addActionListener(this::registerCar);
 
         JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
         navPanel.add(carListButton);
         navPanel.add(carRentingButton);
         navPanel.add(carOfferingButton);
+        navPanel.add(btRegisterCar);
+        navPanel.add(btRegisterCar);
 
         menuBar.add(navPanel, BorderLayout.CENTER);
 
@@ -69,5 +75,10 @@ public class MainFrame extends JFrame {
         JOptionPane.showMessageDialog(this, "You have been logged out.");
         cardLayout.show(cardPanel, "LoginView");
         menuBar.setVisible(false);
+    }
+
+    private void registerCar(ActionEvent actionEvent) {
+        RegisterCarView registerCarView = RegisterCarView.getInstance();
+        registerCarView.setVisible(true);
     }
 }
