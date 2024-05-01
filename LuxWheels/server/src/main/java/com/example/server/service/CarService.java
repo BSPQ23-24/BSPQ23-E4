@@ -41,4 +41,6 @@ public class CarService {
     public void deleteCar(Integer licensePlate) {
         carRepository.deleteById(licensePlate);
     }
+
+    public void deleteAll() { carRepository.deleteAll(); }
 }

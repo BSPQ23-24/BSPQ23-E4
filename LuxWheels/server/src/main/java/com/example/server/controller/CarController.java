@@ -49,4 +49,10 @@ public class CarController {
         carService.deleteCar(licensePlate);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAll() {
+        carService.deleteAll();
+        return ResponseEntity.ok().build();
+    }
 }
