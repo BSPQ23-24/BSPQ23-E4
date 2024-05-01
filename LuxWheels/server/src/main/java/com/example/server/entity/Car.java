@@ -24,6 +24,8 @@ public class Car {
     private String model;
 
     private String year;
+	private String description;
+	private Status status;
 
     public Integer getLicensePlate() {
 		return licensePlate;
@@ -104,4 +106,8 @@ public class Car {
     public enum CarCondition {
         bad, standard, good
     }
+
+	public enum Status {
+		OPEN, BOOKED
+	}
 }

@@ -17,9 +17,15 @@ public class CarModel {
     private CarCondition carCondition;
     private String location;
     private UserModel user;
+    private String description;
+    private Status status;
 
     public enum CarCondition {
         bad, standard, good
+    }
+
+    public enum Status {
+        OPEN, BOOKED
     }
 
     public String getSummary() {
