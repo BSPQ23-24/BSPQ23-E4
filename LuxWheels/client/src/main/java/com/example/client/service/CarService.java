@@ -81,10 +81,13 @@ public class CarService {
     private String convertCarToJson(CarModel car) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.writeValueAsString(car);
+            String json = mapper.writeValueAsString(car);
+            System.out.println("Generated JSON: " + json); 
+            return json;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
 }
