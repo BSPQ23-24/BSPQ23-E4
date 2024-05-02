@@ -48,7 +48,6 @@ public class RentalServiceTests {
 	private CarService carService;
 	
 	private Car car;
-	private User user;
 	private Rental rental;
 
     @BeforeEach
@@ -57,32 +56,39 @@ public class RentalServiceTests {
         User user = new User();
         user.setEmail("test@mail.com");
         user.setPassword("test");
-        userService.createUser(user);
-        this.user = user;
-       	Car car = new Car();
-    	car.setUser(user);
-    	carService.createCar(car);
-    	this.car = car;
+        
+        String isRegistered = userService.loginUser(user);
+        if (isRegistered.equals("{}")){
+        	userService.createUser(user);
+        	}
+
     }
 
 
     @Test
     public void testCreateRental() {
-    	Rental rental = new Rental();
-    	rental.setCar(this.car);
-    	rental.setUser(this.user);
-    	System.out.println(rental);
+    	
+        User user = emailRepository.findByEmail("test@mail.com")
+                .orElseGet(() -> {
+                    User newUser = new User();
+                    newUser.setEmail("test@mail.com");
+                    newUser.setPassword("test");
+                    return userRepository.save(newUser);
+                });
+        Car car = new Car();
 
+    	car.setUser(user);
+    	carService.createCar(car);
+        Rental rental = new Rental();
+        rental.setCar(car);
+        rental.setUser(user);
         rentalService.createRental(rental);
         this.rental = rental;
+        this.car = car;
+
         assertEquals(rental.toString(), rentalService.getRentalById(rental.getRentalID()).toString());
     }
     
-    @AfterEach
-    public void cleanup() {
-    	rentalService.deleteRental(this.rental.getRentalID());
-        carService.deleteCar(this.car.getLicensePlate());
-        userService.deleteUser(this.user.getId());
-    }
+
 
 }

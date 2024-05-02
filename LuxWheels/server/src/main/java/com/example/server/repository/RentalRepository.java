@@ -8,5 +8,5 @@ public interface RentalRepository extends JpaRepository<Rental, Integer>{
 
 	Optional<Rental> findById(Integer rentalID);
 
-	void deleteById(Integer rentalID);
+	void deleteByRentalID(Integer rentalID);
 }

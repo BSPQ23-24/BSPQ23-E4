@@ -62,8 +62,8 @@ public class UserServiceTests {
         String expectedJson = "\"name\":null,\"surname\":null,\"birthdate\":null,\"licensenumber\":null,\"email\":\"test@mail.com\",\"password\":\"test\"}";
 
         // Testing loginUser method
-        String result = userService.loginUser(user).substring(9);
-        
+        String result = userService.loginUser(user).substring(8);
+        System.out.println(result);
         assertEquals(expectedJson, result);
     }
 }

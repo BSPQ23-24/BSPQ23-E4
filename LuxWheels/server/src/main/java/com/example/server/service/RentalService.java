@@ -33,6 +33,6 @@ public class RentalService {
     }
 
     public void deleteRental(Integer id) {
-        rentalRepository.deleteById(id);
+        rentalRepository.deleteByRentalID(id);
     }
 }
