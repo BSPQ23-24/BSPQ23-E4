@@ -3,6 +3,7 @@ package com.example.client.view;
 import com.example.client.controller.ClientCarController;
 import com.example.client.controller.ClientUserController;
 import com.example.client.model.CarModel;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +24,7 @@ public class RegisterCarView extends JFrame {
     private JLabel lsModel;
     private JLabel lsYear;
     private JLabel lsLocation;
+    private JLabel lsDescription;
 
     private JTextField tslicensePlate;
     private JComboBox<CarModel.CarCondition> conditionComboBox;
@@ -30,21 +32,24 @@ public class RegisterCarView extends JFrame {
     private JTextField tsModel;
     private JTextField tsYear;
     private JTextField tsLocation;
+    private JTextField tsDescription;
+
 
     private JButton registerButton;
+    private MainFrame mainFrame;
 
-    public RegisterCarView() {
+    public RegisterCarView(MainFrame mainFrame) {
         setTitle("Car registration - LuxWheels");
         setSize(700, 550);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Ensure the application closes on window close
-
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.mainFrame = mainFrame;
         initUI();
     }
 
     private void initUI() {
-        JPanel formPanel = new JPanel(new GridLayout(7, 2, 10, 10)); // 7 rows, 2 columns, with gaps
+        JPanel formPanel = new JPanel(new GridLayout(8, 2, 10, 10));
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         Font labelFont = new Font("SansSerif", Font.BOLD, 12);
 
@@ -73,8 +78,13 @@ public class RegisterCarView extends JFrame {
         tsYear.setColumns(15);
         tsLocation = new JTextField(15);
 
-        formPanel.add(lsLicensePlate);
-        formPanel.add(tslicensePlate);
+        lsDescription = new JLabel("Description:");
+        lsDescription.setFont(labelFont);
+        tsDescription = new JTextField(15);
+
+
+//        formPanel.add(lsLicensePlate);
+//        formPanel.add(tslicensePlate);
         formPanel.add(lsCarCondition);
         formPanel.add(conditionComboBox);
         formPanel.add(lsBrand);
@@ -85,6 +95,8 @@ public class RegisterCarView extends JFrame {
         formPanel.add(tsYear);
         formPanel.add(lsLocation);
         formPanel.add(tsLocation);
+        formPanel.add(lsDescription);
+        formPanel.add(tsDescription);
 
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         formPanel.setBackground(Color.lightGray);
@@ -112,7 +124,7 @@ public class RegisterCarView extends JFrame {
         ImageIcon scaledIcon = new ImageIcon(newImage);
         JLabel imageLabel = new JLabel(scaledIcon);
         imagePanel.add(imageLabel);
-        imagePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+        imagePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 5, 0));
         imagePanel.setBackground(Color.WHITE);
 
         // --------- Add panels to layout ---------
@@ -129,7 +141,7 @@ public class RegisterCarView extends JFrame {
     }
 
     private void registerCarAction(ActionEvent e) {
-        if (Arrays.asList(tslicensePlate, tsBrand, tsModel, tsYear, tsLocation)
+        if (Arrays.asList(tsBrand, tsModel, tsYear, tsLocation, tsDescription)
                 .stream().anyMatch(component -> component.getText().isEmpty())) {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -138,12 +150,13 @@ public class RegisterCarView extends JFrame {
         int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to register this car?", "Confirm Car Registration", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             // Extract data from text fields
-            Integer licensePlate = Integer.valueOf(tslicensePlate.getText());
+            //Integer licensePlate = Integer.valueOf(tslicensePlate.getText());
             CarModel.CarCondition selectedCondition = (CarModel.CarCondition) conditionComboBox.getSelectedItem();
             String brand = tsBrand.getText();
             String model = tsModel.getText();
             String location = tsLocation.getText();
             String yearText = tsYear.getText();
+            String description = tsDescription.getText();
 
             /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
             try {
@@ -153,15 +166,17 @@ public class RegisterCarView extends JFrame {
                 return;
             }*/
 
-            ClientCarController.createCar(licensePlate, brand, location, model, yearText, selectedCondition);
+            ClientCarController.createCar(brand, location, model, yearText, selectedCondition, description);
             System.out.println("Car Registration button clicked");
             closeWindow();
+
+            this.mainFrame.getCarListView().updateCarList();
         }
     }
 
     public static RegisterCarView getInstance() {
         if (instance == null) {
-            instance = new RegisterCarView();
+            //instance = new RegisterCarView();
         }
         return instance;
     }

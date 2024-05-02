@@ -66,9 +66,12 @@ public class CarListView extends JPanel {
     }
 
     private void updateInfoPanel(CarModel car) {
+        if (car == null) {
+            System.out.println("No car selected or car data is null");
+            return;
+        }
         infoPanel.removeAll();
 
-        addLabelAndValue("License Plate:", String.valueOf(car.getLicensePlate()));
         addLabelAndValue("Brand:", car.getBrand());
         addLabelAndValue("Model:", car.getModel());
         addLabelAndValue("Year:", car.getYear());
@@ -102,4 +105,22 @@ public class CarListView extends JPanel {
         panel.add(new JLabel(value));
         infoPanel.add(panel);
     }
+
+    public void updateCarList() {
+        model.clear();
+        java.util.List<CarModel> cars = ClientCarController.getAllCars();
+        for (CarModel car : cars) {
+            if (car.getStatus() == CarModel.Status.OPEN) {
+                model.addElement(car);
+            }
+        }
+        if (!model.isEmpty()) {
+            itemList.setSelectedIndex(0);  // Set the selection to the first item after updating
+            updateInfoPanel(itemList.getSelectedValue());  // Update the info panel to reflect changes
+        } else {
+            infoPanel.removeAll();  // Clear the info panel if no cars are available
+            infoPanel.repaint();
+        }
+    }
+
 }

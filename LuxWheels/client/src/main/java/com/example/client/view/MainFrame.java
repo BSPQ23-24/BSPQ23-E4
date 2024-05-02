@@ -23,7 +23,7 @@ public class MainFrame extends JFrame {
         cardPanel = new JPanel(cardLayout);
 
         LoginView loginView = new LoginView(this);
-        JPanel carListView = new CarListView();
+        CarListView carListView = new CarListView();
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
 
@@ -78,7 +78,16 @@ public class MainFrame extends JFrame {
     }
 
     private void registerCar(ActionEvent actionEvent) {
-        RegisterCarView registerCarView = RegisterCarView.getInstance();
+        RegisterCarView registerCarView = new RegisterCarView(this);
         registerCarView.setVisible(true);
+    }
+
+    public CarListView getCarListView() {
+        for (Component comp : cardPanel.getComponents()) {
+            if (comp instanceof CarListView) {
+                return (CarListView) comp;
+            }
+        }
+        return null;
     }
 }
