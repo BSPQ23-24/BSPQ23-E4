@@ -59,6 +59,7 @@ public class RegisterView extends JFrame {
     protected JCheckBox acceptTermsCheckbox = new JCheckBox("I accept the terms and conditions");
 
     private RegisterView() {
+        logger.info("RegisterView generated");
         this.setTitle("Create an account - LuxWheels");
         this.setSize(400, 550);
         this.setLayout(new BorderLayout());

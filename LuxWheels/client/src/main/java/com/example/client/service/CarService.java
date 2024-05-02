@@ -11,6 +11,13 @@ import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
 
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.URI;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class CarService {
     private HttpClient client;
     private final String baseURL = "http://localhost:8080/api/cars";
@@ -41,7 +48,7 @@ public class CarService {
             return Collections.emptyList();
         }
     }
-    
+
 	public String deleteCar(int licensePlate) {
 		client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -58,11 +65,11 @@ public class CarService {
             return null;
         }
     }
-	
+
     public String updateCar(CarModel car) {
         String carJson = convertCarToJson(car);
         client = HttpClient.newHttpClient();
-        
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(baseURL + car.getLicensePlate()))
                 .header("Content-Type", "application/json")
@@ -77,17 +84,36 @@ public class CarService {
             return null;
         }
     }
-    
-    private String convertCarToJson(CarModel car) {
-        ObjectMapper mapper = new ObjectMapper();
+
+    public String createCar(CarModel car) {
+        String carJson = convertCarToJson(car);
+
+        System.out.println(carJson);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + "/create"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(carJson))
+                .build();
+
         try {
-            String json = mapper.writeValueAsString(car);
-            System.out.println("Generated JSON: " + json); 
-            return json;
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
+    private String convertCarToJson(CarModel car) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json = mapper.writeValueAsString(car);
+            System.out.println("Generated JSON: " + json);
+            return json;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -1,11 +1,11 @@
 package com.example.server.service;
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.example.server.entity.Car;
 import com.example.server.repository.CarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @Service
 public class CarService {
@@ -21,26 +21,15 @@ public class CarService {
     }
 
     public Car getCarByLicensePlate(Integer licensePlate) {
-        return carRepository.findById(licensePlate).orElse(null);
+        return carRepository.findByLicensePlate(licensePlate).orElse(null);
     }
 
-    public Car updateCar(Integer licensePlate, Car updatedCar) {
-        return carRepository.findById(licensePlate).map(car -> {
-            car.setBrand(updatedCar.getBrand());
-            car.setModel(updatedCar.getModel());
-            car.setYear(updatedCar.getYear());
-            car.setCarCondition(updatedCar.getCarCondition());
-            car.setLocation(updatedCar.getLocation());
-            car.setUser(updatedCar.getUser());
-            return carRepository.save(car);
-        }).orElseGet(() -> {
-            updatedCar.setLicensePlate(licensePlate);
-            return carRepository.save(updatedCar);
-        });
-    }
-    public void deleteCar(Integer licensePlate) {
-        carRepository.deleteById(licensePlate);
+    public Car updateCar(Integer licensePlate, Car car) {
+        car.setLicensePlate(licensePlate);
+        return carRepository.save(car);
     }
 
     public void deleteAll() { carRepository.deleteAll(); }
+
+    public void deleteCar( Integer licensePlate ) { carRepository.deleteByLicensePlate( licensePlate ); }
 }

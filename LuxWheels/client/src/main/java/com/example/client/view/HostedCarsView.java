@@ -3,18 +3,22 @@ package com.example.client.view;
 import com.example.client.controller.ClientCarController;
 import com.example.client.model.CarModel;
 import com.example.client.model.UserModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 public class HostedCarsView extends JPanel {
+	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private DefaultListModel<CarModel> carListModel;
     private JList<CarModel> carList;
     private JScrollPane scrollPane;
     private UserModel currentUser;
 
     public HostedCarsView(UserModel user) {
+        logger.info("HostedCarsView generated");
         this.currentUser = user;
         this.setLayout(new BorderLayout());
 
