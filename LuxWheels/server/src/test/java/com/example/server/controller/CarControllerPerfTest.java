@@ -35,7 +35,7 @@ public class CarControllerPerfTest {
 
     @BeforeEach
     public void setUp() {
-        Car car1 = new Car(); // Create mock Car instances
+        Car car1 = new Car();
         Car car2 = new Car();
         when(carService.getAllCars()).thenReturn(Arrays.asList(car1, car2));
     }
@@ -45,6 +45,6 @@ public class CarControllerPerfTest {
     public void testGetAllCarsPerformance() {
         ResponseEntity<List<Car>> response = controller.getAllCars();
         assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue()); // Check that the status code is OK
+        assertEquals(200, response.getStatusCodeValue());
     }
 }
