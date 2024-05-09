@@ -1,11 +1,13 @@
 package com.example.server.controller;
 
 import com.example.server.ServerApplication;
+import com.example.server.entity.Car;
 import com.example.server.entity.Rental;
 import com.example.server.service.RentalService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -47,5 +49,10 @@ public class RentalController {
     public void deleteRental(@PathVariable Integer rentalId) {
     	logger.info("delete rental request");
         rentalService.deleteRental(rentalId);;
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Car>> getAllRentedCarsByUserId(@PathVariable Integer userId) {
+        return ResponseEntity.ok(rentalService.getCarsRentedByUser(userId));
     }
 }
