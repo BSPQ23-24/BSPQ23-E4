@@ -14,6 +14,6 @@ public interface RentalRepository extends JpaRepository<Rental, Integer>{
 
 	void deleteById(Integer rentalID);
 
-	@Query("SELECT r.car FROM Rental r WHERE r.user.id = :userId")
-	List<Car> findAllCarsByUserId(Integer userId);
+	@Query("SELECT r.car FROM Rental r WHERE r.user.email = :email")
+	List<Car> findAllCarsByUserEmail(String email);
 }

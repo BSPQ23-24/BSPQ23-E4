@@ -51,8 +51,8 @@ public class RentalController {
         rentalService.deleteRental(rentalId);;
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Car>> getAllRentedCarsByUserId(@PathVariable Integer userId) {
-        return ResponseEntity.ok(rentalService.getCarsRentedByUser(userId));
+    @GetMapping("/user/{email}")
+    public ResponseEntity<List<Car>> getAllRentedCarsByUserEmail(@PathVariable String email) {
+        return ResponseEntity.ok(rentalService.getCarsRentedByUserEmail(email));
     }
 }

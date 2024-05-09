@@ -1,9 +1,12 @@
 package com.example.client.view;
 
+import com.example.client.controller.ClientRentalController;
 import com.example.client.model.CarModel;
+import com.example.client.model.UserSession;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class ManageRentedCarsView extends JPanel {
     private JList<CarModel> carList;
@@ -67,5 +70,16 @@ public class ManageRentedCarsView extends JPanel {
         } else {
             detailsArea.setText("Select a car to view details.");
         }
+    }
+
+    public List<CarModel> loadData() {
+        UserSession userSession = UserSession.getInstance();
+        String email = userSession.getEmail();
+        if (email != null) {
+            List<CarModel> cars = ClientRentalController.getAllRentedCarsByUserEmail(email);
+            carListModel.clear();
+            cars.forEach(carListModel::addElement);
+        }
+
     }
 }

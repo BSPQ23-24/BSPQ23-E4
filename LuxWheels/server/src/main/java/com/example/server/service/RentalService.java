@@ -36,7 +36,7 @@ public class RentalService {
         rentalRepository.deleteById(id);
     }
 
-    public List<Car> getCarsRentedByUser(Integer userId) {
-        return rentalRepository.findAllCarsByUserId(userId);
+    public List<Car> getCarsRentedByUserEmail(String email) {
+        return rentalRepository.findAllCarsByUserEmail(email);
     }
 }
