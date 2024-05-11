@@ -91,7 +91,7 @@ public class CarListView extends JPanel {
         JButton rentButton = new JButton("Rent Now!");
         rentButton.setBackground(Color.GREEN);
         rentButton.addActionListener(e -> {
-            //TODO
+
         });
         infoPanel.add(rentButton);
 

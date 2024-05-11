@@ -7,7 +7,9 @@ import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
 
+import com.example.client.model.CarModel;
 import com.example.client.model.RentalModel;
+import com.example.client.model.UserModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -32,6 +34,31 @@ public class RentalService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 200) {
                 return mapper.readValue(response.body(), new TypeReference<List<RentalModel>>() {});
+            } else {
+                System.err.println("Error: " + response);
+                return Collections.emptyList();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    public List<CarModel> getCarsRentedByUser(UserModel u) {
+        // Assuming UserModel has a getUserId() method that returns a string or similar identifier.
+        Integer userId = u.getId();
+        String requestURI = baseURL + "/getCar?userId=" + Integer.valueOf(userId);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(requestURI))
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                return mapper.readValue(response.body(), new TypeReference<List<CarModel>>() {});
             } else {
                 System.err.println("Error: " + response);
                 return Collections.emptyList();

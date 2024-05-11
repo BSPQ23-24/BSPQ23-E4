@@ -2,7 +2,6 @@ C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\model\CarModel.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\CarModificationView.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\model\RentalModel.java
-C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\HostedCarsView.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\HomeView.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\service\UserService.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\CarListView.java
@@ -10,6 +9,7 @@ C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\RegisterView.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\MainFrame.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\LoginView.java
+C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\CarsRentedByUserView.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\view\RegisterCarView.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\controller\ClientUserController.java
 C:\Users\inigo\Desktop\programming\code\java\BSPQ23-E4\LuxWheels\client\src\main\java\com\example\client\service\RentalService.java

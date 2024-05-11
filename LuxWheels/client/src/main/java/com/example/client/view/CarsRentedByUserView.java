@@ -10,16 +10,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class HostedCarsView extends JPanel {
+public class CarsRentedByUserView extends JPanel {
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private DefaultListModel<CarModel> carListModel;
     private JList<CarModel> carList;
     private JScrollPane scrollPane;
     private UserModel currentUser;
 
-    public HostedCarsView(UserModel user) {
-        logger.info("HostedCarsView generated");
-        this.currentUser = user;
+    public CarsRentedByUserView() {
+        logger.info("CarsRentedByUserView generated");
         this.setLayout(new BorderLayout());
 
         carListModel = new DefaultListModel<>();

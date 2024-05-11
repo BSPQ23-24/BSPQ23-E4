@@ -24,8 +24,12 @@ public class MainFrame extends JFrame {
 
         LoginView loginView = new LoginView(this);
         CarListView carListView = new CarListView();
+        // TODO
+        // CarsRentedByUserView carsRentedByUserView = new CarsRentedByUserView();
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
+        // TODO
+        //cardPanel.add(carsRentedByUserView, "carsRentedByUserView");
 
         menuBar = new JMenuBar();
         menuBar.setLayout(new BorderLayout());
@@ -39,7 +43,10 @@ public class MainFrame extends JFrame {
     private void setupMenuBar() {
         JButton carListButton = new JButton("Cars to Rent");
         carListButton.addActionListener(e -> cardLayout.show(cardPanel, "CarListView"));
+
         JButton carRentingButton = new JButton("Cars Currently Renting");
+        carRentingButton.addActionListener(e -> cardLayout.show(cardPanel, "CarsRentedByUserView"));
+
         JButton carOfferingButton = new JButton("Cars Offering for Rent");
         JButton btRegisterCar = new JButton("Register your car!");
         btRegisterCar.addActionListener(this::registerCar);
@@ -86,6 +93,15 @@ public class MainFrame extends JFrame {
         for (Component comp : cardPanel.getComponents()) {
             if (comp instanceof CarListView) {
                 return (CarListView) comp;
+            }
+        }
+        return null;
+    }
+
+    public CarsRentedByUserView getCarsRentedByUserView() {
+        for (Component comp : cardPanel.getComponents()) {
+            if (comp instanceof CarsRentedByUserView) {
+                return (CarsRentedByUserView) comp;
             }
         }
         return null;

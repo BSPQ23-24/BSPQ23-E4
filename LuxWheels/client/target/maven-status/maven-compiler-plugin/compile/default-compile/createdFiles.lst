@@ -5,6 +5,9 @@ com\example\client\ClientApplication.class
 com\example\client\view\LoginView.class
 com\example\client\view\RegisterView$2.class
 com\example\client\view\HomeView.class
+com\example\client\service\RentalService$2.class
+com\example\client\view\CarsRentedByUserView$1.class
+com\example\client\view\CarsRentedByUserView.class
 com\example\client\view\RegisterView$1.class
 com\example\client\view\LoginView$1.class
 com\example\client\view\RegisterView.class

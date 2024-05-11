@@ -1,5 +1,5 @@
 package com.example.server.service;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,22 @@ public class RentalService {
         rental.setRentalID(id);
         return rentalRepository.save(rental);
     }
-
+    /*
+    TODO
+    public List<Car> getCarsByUserId(String userId) {
+        List<Rental> userRentals = rentalRepository.getUserRentals(Integer.valueOf(userId));
+        List<Car> rentedCars = new ArrayList<>();
+        for(Rental rental : userRentals) {
+            Car car = rental.getCar();
+            if (car != null) {
+                rentedCars.add(car);
+            } else {
+                System.out.println("No car associated with this rental.");
+            }
+        }
+        return rentedCars;
+    }
+    */
     public void deleteRental(Integer id) {
         rentalRepository.deleteById(id);
     }
