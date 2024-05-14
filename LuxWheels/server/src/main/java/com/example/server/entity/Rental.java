@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate; // Importar LocalDate para el manejo de fechas
 
@@ -26,12 +27,12 @@ public class Rental {
     @JoinColumn(name = "carID", referencedColumnName = "licensePlate")
     private Car car;
 
-    private String startDate; // Cambiar el tipo de fecha a LocalDate
-    private String endDate;
+    private LocalDate startDate; // Cambiar el tipo de fecha a LocalDate
+    private LocalDate endDate;
     private Integer price;
     private String creationDate;
     
-    public Rental(User user, Car car, String startDate, String endDate, Integer price, String creationDate) {
+    public Rental(User user, Car car, LocalDate startDate, LocalDate endDate, Integer price, String creationDate) {
     	this.user = user;
     	this.car = car;
     	this.startDate = startDate;
@@ -69,19 +70,19 @@ public class Rental {
         this.car = car;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

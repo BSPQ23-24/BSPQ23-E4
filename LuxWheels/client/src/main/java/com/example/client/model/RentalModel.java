@@ -1,6 +1,9 @@
 package com.example.client.model;
 
 
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDate;
 
 public class RentalModel {
 
@@ -9,8 +12,8 @@ public class RentalModel {
 
     private CarModel car;
 
-    private String startDate; // Cambiar el tipo de fecha a LocalDate
-    private String endDate;
+    private LocalDate startDate; // Cambiar el tipo de fecha a LocalDate
+    private LocalDate endDate;
     private Integer price;
     private String creationDate;
     
@@ -42,19 +45,19 @@ public class RentalModel {
         this.car = car;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

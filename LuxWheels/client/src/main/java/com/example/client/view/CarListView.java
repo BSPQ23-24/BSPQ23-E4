@@ -19,6 +19,11 @@ public class CarListView extends JPanel {
         logger.info("CarListView generated");
         setLayout(new BorderLayout());
 
+        JLabel headingLabel = new JLabel("Available Cars for Rent");
+        headingLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        headingLabel.setHorizontalAlignment(JLabel.CENTER);
+        add(headingLabel, BorderLayout.NORTH);
+
         model = new DefaultListModel<>();
         java.util.List<CarModel> cars = ClientCarController.getAllCars();
         for (CarModel car : cars) {

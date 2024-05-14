@@ -11,6 +11,7 @@ import com.example.client.model.CarModel;
 import com.example.client.model.RentalModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 public class RentalService {
     private HttpClient client;
@@ -20,6 +21,7 @@ public class RentalService {
     public RentalService() {
         this.client = HttpClient.newHttpClient();
         this.mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
     }
 
     public List<RentalModel> getAllRentals() {
