@@ -1,6 +1,7 @@
 package com.example.client.view;
 
 import com.example.client.controller.ClientUserController;
+import com.example.client.model.UserSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import lombok.Getter;
@@ -133,9 +134,9 @@ public class LoginView extends JPanel {
         boolean success = ClientUserController.loginUser(name, email, password);
 
         if (success) {
-//        	HomeView homeView = HomeView.getInstance();
-//            homeView.setVisible(true);
-//            closeWindow(this);
+            UserSession userSession = UserSession.getInstance();
+            userSession.setEmail(email);
+            userSession.setPassword(password);
             this.mainFrame.onLoginSuccess();
         } else {
         	JOptionPane.showMessageDialog(this, "Incorrect mail or password, try again", "Error", JOptionPane.ERROR_MESSAGE);

@@ -24,8 +24,11 @@ public class MainFrame extends JFrame {
 
         LoginView loginView = new LoginView(this);
         CarListView carListView = new CarListView();
+        ManageRentedCarsView manageRentedCarsView = new ManageRentedCarsView();
+
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
+        cardPanel.add(manageRentedCarsView, "ManageRentedCarsView");
 
         menuBar = new JMenuBar();
         menuBar.setLayout(new BorderLayout());
@@ -40,6 +43,7 @@ public class MainFrame extends JFrame {
         JButton carListButton = new JButton("Cars to Rent");
         carListButton.addActionListener(e -> cardLayout.show(cardPanel, "CarListView"));
         JButton carRentingButton = new JButton("Cars Currently Renting");
+        carRentingButton.addActionListener(e -> cardLayout.show(cardPanel, "ManageRentedCarsView"));
         JButton carOfferingButton = new JButton("Cars Offering for Rent");
         JButton btRegisterCar = new JButton("Register your car!");
         btRegisterCar.addActionListener(this::registerCar);
