@@ -1,6 +1,9 @@
 package com.example.server.controller;
 
 import com.example.server.service.UserService;
+
+import jakarta.transaction.Transactional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

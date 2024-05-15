@@ -33,7 +33,7 @@ public class RentalService {
     }
 
     public void deleteRental(Integer id) {
-        rentalRepository.deleteByRentalID(id);
+        rentalRepository.deleteById(id);
     }
 
     public List<Car> getCarsRentedByUserEmail(String email) {

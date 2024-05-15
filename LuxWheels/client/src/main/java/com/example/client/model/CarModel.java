@@ -17,7 +17,6 @@ public class CarModel {
     private String year;
     private String location;
     private UserModel user;
-    private Status status;
     private String description;
 
 
@@ -77,13 +76,7 @@ public class CarModel {
 		this.user = user;
 	}
 
-	public Status getStatus() {
-		return status;
-	}
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
 
 	public String getDescription() {
 		return description;
@@ -97,10 +90,6 @@ public class CarModel {
         bad, standard, good
     }
     
-    public enum Status {
-        OPEN, BOOKED
-    }
-
     public String getSummary() {
         return brand + " - " + year + " " + model + " - " + carCondition;
     }

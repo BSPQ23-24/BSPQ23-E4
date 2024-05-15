@@ -83,7 +83,6 @@ public class ManageRentedCarsView extends JPanel {
                             "\nLicense Plate: " + selectedCar.getLicensePlate() +
                             "\nCondition: " + selectedCar.getCarCondition() +
                             "\nLocation: " + selectedCar.getLocation() +
-                            "\nStatus: " + selectedCar.getStatus() +
                             "\nUser: " + (selectedCar.getUser() != null ? selectedCar.getUser().getName() : "N/A") +
                             "\nDescription: " + selectedCar.getDescription() +
                             "\n\nRental Details:" +

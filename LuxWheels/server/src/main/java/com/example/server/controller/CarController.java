@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.server.entity.Car;
 import com.example.server.service.CarService;
 
+import jakarta.transaction.Transactional;
+
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
@@ -47,9 +49,10 @@ public class CarController {
         return ResponseEntity.ok(updatedCar);
     }
 
-    /*@DeleteMapping("/{licensePlate}")
+    @DeleteMapping("/{licensePlate}")
+    @Transactional
     public ResponseEntity<Void> deleteCar(@PathVariable Integer licensePlate) {
         carService.deleteCar(licensePlate);
-        return ResponseEntity.ok().build();
-    }*/
+        return ResponseEntity.noContent().build();
+    }
 }

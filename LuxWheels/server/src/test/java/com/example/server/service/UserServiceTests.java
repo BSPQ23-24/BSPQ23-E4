@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.example.server.entity.User;
@@ -20,6 +21,15 @@ public class UserServiceTests {
 
     @Autowired
     private UserService userService;
+    /*
+    @Rule
+    public JUnitPerfRule perfTestRule;
+    
+    public UserServiceTests() {
+        String reportPath = generateReportPath(UserServiceTests.class);
+        HtmlReportGenerator reportGenerator = new HtmlReportGenerator(reportPath);
+        this.perfTestRule = new JUnitPerfRule(reportGenerator);
+    }*/
 
     @Test
     public void testLoginUserWithInvalidCredentials() throws Exception {
