@@ -1,69 +1,110 @@
 package com.example.server.service;
 
-import static org.mockito.Mockito.*;
-import java.util.Optional;
+import com.example.server.entity.User;
+import com.example.server.repository.UserRepository;
+import com.example.server.repository.EmailRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.example.server.entity.User;
-import com.example.server.repository.EmailRepository;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class UserServiceTests {
-	
+
+    @Mock
+    private UserRepository userRepository;
+
     @Mock
     private EmailRepository emailRepository;
 
-    @Autowired
+    @InjectMocks
     private UserService userService;
 
-    @Test
-    public void testLoginUserWithInvalidCredentials() throws Exception {
-        // Mocking the user and its email
-        User user = new User();
-        user.setEmail("prueba@mail.com");
-        user.setPassword("prueba");
-
-        // Testing loginUser method
-        String expectedJson = "{}";
-        assertEquals(expectedJson, userService.loginUser(user));
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
-    
-    @Test
-    public void registerUser() throws Exception {
-        // Mocking the user and its email
-        User user = new User();
-        user.setEmail("test@mail.com");
-        user.setPassword("test");
-        
-        String isRegistered = userService.loginUser(user);
-        if (isRegistered.equals("{}")){
-        	userService.createUser(user);
-        	}
-        }
 
     @Test
-    public void testLoginUser() throws Exception {
-        // Mocking the user and its email
+    void createUser() {
         User user = new User();
-        user.setEmail("test@mail.com");
-        user.setPassword("test");
-        
-        String isRegistered = userService.loginUser(user);
-        if (isRegistered.equals("{}")){
-        	userService.createUser(user);
-        	}
+        when(userRepository.save(user)).thenReturn(user);
+        User createdUser = userService.createUser(user);
+        assertNotNull(createdUser);
+        verify(userRepository, times(1)).save(user);
+    }
 
-        // Creating the expected JSON string
-        String expectedJson = "\"name\":null,\"surname\":null,\"birthdate\":null,\"licensenumber\":null,\"email\":\"test@mail.com\",\"password\":\"test\"}";
+    @Test
+    void getAllUsers() {
+        List<User> users = Arrays.asList(new User(), new User());
+        when(userRepository.findAll()).thenReturn(users);
+        List<User> retrievedUsers = userService.getAllUsers();
+        assertEquals(2, retrievedUsers.size());
+        verify(userRepository, times(1)).findAll();
+    }
 
-        // Testing loginUser method
-        String result = userService.loginUser(user).substring(9);
-        
-        assertEquals(expectedJson, result);
+    @Test
+    void getUserById() {
+        User user = new User();
+        when(userRepository.findById(1)).thenReturn(Optional.of(user));
+        User retrievedUser = userService.getUserById(1);
+        assertNotNull(retrievedUser);
+        verify(userRepository, times(1)).findById(1);
+    }
+
+    @Test
+    void getUserById_NotFound() {
+        when(userRepository.findById(1)).thenReturn(Optional.empty());
+        User retrievedUser = userService.getUserById(1);
+        assertNull(retrievedUser);
+        verify(userRepository, times(1)).findById(1);
+    }
+
+    @Test
+    void updateUser() {
+        User user = new User();
+        user.setId(1);
+        when(userRepository.save(user)).thenReturn(user);
+        User updatedUser = userService.updateUser(1, user);
+        assertNotNull(updatedUser);
+        verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    void loginUser_Success() throws Exception {
+        User user = new User();
+        user.setEmail("test@example.com");
+        user.setPassword("password");
+        when(emailRepository.findByEmail("test@example.com")).thenReturn(Optional.of(user));
+        ObjectMapper mapper = new ObjectMapper();
+        String expectedResponse = mapper.writeValueAsString(user);
+        String response = userService.loginUser(user);
+        assertEquals(expectedResponse, response);
+    }
+
+    @Test
+    void loginUser_Failure() {
+        User user = new User();
+        user.setEmail("test@example.com");
+        user.setPassword("wrongpassword");
+        when(emailRepository.findByEmail("test@example.com")).thenReturn(Optional.empty());
+        String response = userService.loginUser(user);
+        assertEquals("{}", response);
+    }
+
+    @Test
+    void deleteUser() {
+        userService.deleteUser(1);
+        verify(userRepository, times(1)).deleteById(1);
     }
 }
