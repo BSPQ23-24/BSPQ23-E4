@@ -54,6 +54,23 @@ public class UserService {
             return null;
         }
     }
+
+    public boolean deleteUser(UserModel user) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + "/" + user.getId()))
+                .header("Content-Type", "application/json")
+                .DELETE()
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.statusCode() == 204;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private String convertUserToJson(UserModel user) {
         ObjectMapper mapper = new ObjectMapper();
         try {

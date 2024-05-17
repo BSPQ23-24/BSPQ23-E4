@@ -4,6 +4,7 @@ import com.example.server.entity.User;
 import com.example.server.repository.UserRepository;
 import com.example.server.repository.EmailRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -30,16 +32,31 @@ public class UserServiceTests {
     @InjectMocks
     private UserService userService;
 
+    private List<Integer> createdUserIds;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        createdUserIds = new ArrayList<>();
+    }
+
+    @AfterEach
+    void cleanUp() {
+        for (Integer id : createdUserIds) {
+            userService.deleteUser(id);
+        }
+        createdUserIds.clear();
     }
 
     @Test
     void createUser() {
         User user = new User();
-        when(userRepository.save(user)).thenReturn(user);
+        when(userRepository.save(user)).thenAnswer(invocation -> {
+            user.setId(1); // Set ID for the user
+            return user;
+        });
         User createdUser = userService.createUser(user);
+        createdUserIds.add(createdUser.getId());
         assertNotNull(createdUser);
         verify(userRepository, times(1)).save(user);
     }
@@ -56,6 +73,7 @@ public class UserServiceTests {
     @Test
     void getUserById() {
         User user = new User();
+        user.setId(1);
         when(userRepository.findById(1)).thenReturn(Optional.of(user));
         User retrievedUser = userService.getUserById(1);
         assertNotNull(retrievedUser);
@@ -76,6 +94,7 @@ public class UserServiceTests {
         user.setId(1);
         when(userRepository.save(user)).thenReturn(user);
         User updatedUser = userService.updateUser(1, user);
+        createdUserIds.add(updatedUser.getId());
         assertNotNull(updatedUser);
         verify(userRepository, times(1)).save(user);
     }

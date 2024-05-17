@@ -43,4 +43,8 @@ public class ClientUserController {
         return !u.equals("{}");
         
     }
+
+    public static boolean deleteUser(UserModel user) {
+        return userService.deleteUser(user);
+    }
 }
