@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ClientUserController {
 
     private static UserService userService = new UserService();
-    protected static UserModel loggedUser;
+    public static UserModel loggedUser;
 
     public static void createUser(String name, String surname, String email, String password, String birthdate, String licensenumber ) {
         UserModel user = new UserModel();

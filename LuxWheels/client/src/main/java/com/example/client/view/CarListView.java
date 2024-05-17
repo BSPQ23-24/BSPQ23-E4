@@ -19,12 +19,17 @@ public class CarListView extends JPanel {
         logger.info("CarListView generated");
         setLayout(new BorderLayout());
 
+        JLabel headingLabel = new JLabel("Available Cars for Rent");
+        headingLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        headingLabel.setHorizontalAlignment(JLabel.CENTER);
+        add(headingLabel, BorderLayout.NORTH);
+
         model = new DefaultListModel<>();
         java.util.List<CarModel> cars = ClientCarController.getAllCars();
         for (CarModel car : cars) {
-            if (car.getStatus() == CarModel.Status.OPEN) {
+            //if (car.getStatus() == CarModel.Status.OPEN) {
                 model.addElement(car);
-            }
+            //}
         }
 
         itemList = new JList<>(model);
@@ -80,7 +85,6 @@ public class CarListView extends JPanel {
         if (car.getUser() != null) {
             addLabelAndValue("Owner:", car.getUser().getName());
         }
-        addLabelAndValue("Status:", car.getStatus().toString());
 
         JTextArea descriptionArea = new JTextArea(car.getDescription());
         descriptionArea.setWrapStyleWord(true);
@@ -110,9 +114,9 @@ public class CarListView extends JPanel {
         model.clear();
         java.util.List<CarModel> cars = ClientCarController.getAllCars();
         for (CarModel car : cars) {
-            if (car.getStatus() == CarModel.Status.OPEN) {
+            //if (car.getStatus() == CarModel.Status.OPEN) {
                 model.addElement(car);
-            }
+            //}
         }
         if (!model.isEmpty()) {
             itemList.setSelectedIndex(0);  // Set the selection to the first item after updating

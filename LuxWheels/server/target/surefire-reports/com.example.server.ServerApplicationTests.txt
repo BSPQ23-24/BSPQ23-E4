@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 -------------------------------------------------------------------------------
 Test set: com.example.server.ServerApplicationTests
 -------------------------------------------------------------------------------
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.522 s -- in com.example.server.ServerApplicationTests
+=======
+-------------------------------------------------------------------------------
+Test set: com.example.server.ServerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.37 s -- in com.example.server.ServerApplicationTests
+>>>>>>> main

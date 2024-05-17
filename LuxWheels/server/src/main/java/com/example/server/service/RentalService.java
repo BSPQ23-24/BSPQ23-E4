@@ -35,4 +35,8 @@ public class RentalService {
     public void deleteRental(Integer id) {
         rentalRepository.deleteById(id);
     }
+
+    public List<Car> getCarsRentedByUserEmail(String email) {
+        return rentalRepository.findAllCarsByUserEmail(email);
+    }
 }

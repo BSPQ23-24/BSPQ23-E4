@@ -50,9 +50,10 @@ public class CarService {
     }
 
 	public String deleteCar(int licensePlate) {
-		client = HttpClient.newHttpClient();
+		System.out.println(URI.create(baseURL + licensePlate));
+		System.out.println(URI.create(baseURL + "/" + licensePlate));
         HttpRequest request = HttpRequest.newBuilder()
-        		.uri(URI.create(baseURL + licensePlate))
+        		.uri(URI.create(baseURL + "/" + licensePlate))
         		.header("Content-Type", "application/json")
         		.DELETE()
         		.build();

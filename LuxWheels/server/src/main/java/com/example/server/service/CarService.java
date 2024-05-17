@@ -2,6 +2,9 @@ package com.example.server.service;
 
 import com.example.server.entity.Car;
 import com.example.server.repository.CarRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,7 @@ public class CarService {
     }
 
     public void deleteAll() { carRepository.deleteAll(); }
-
+    
+    @Transactional
     public void deleteCar( Integer licensePlate ) { carRepository.deleteByLicensePlate( licensePlate ); }
 }

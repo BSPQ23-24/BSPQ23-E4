@@ -29,6 +29,15 @@ public class UserServiceTests {
 
     @InjectMocks
     private UserService userService;
+    /*
+    @Rule
+    public JUnitPerfRule perfTestRule;
+    
+    public UserServiceTests() {
+        String reportPath = generateReportPath(UserServiceTests.class);
+        HtmlReportGenerator reportGenerator = new HtmlReportGenerator(reportPath);
+        this.perfTestRule = new JUnitPerfRule(reportGenerator);
+    }*/
 
     @BeforeEach
     void setUp() {

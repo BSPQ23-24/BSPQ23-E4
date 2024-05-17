@@ -1,0 +1,16 @@
+com\example\server\entity\Car$Status.class
+com\example\server\controller\RentalController.class
+com\example\server\repository\RentalRepository.class
+com\example\server\entity\Car$CarCondition.class
+com\example\server\repository\UserRepository.class
+com\example\server\controller\CarController.class
+com\example\server\service\CarService.class
+com\example\server\entity\User.class
+com\example\server\repository\CarRepository.class
+com\example\server\ServerApplication.class
+com\example\server\service\RentalService.class
+com\example\server\service\UserService.class
+com\example\server\controller\UserController.class
+com\example\server\entity\Rental.class
+com\example\server\repository\EmailRepository.class
+com\example\server\entity\Car.class

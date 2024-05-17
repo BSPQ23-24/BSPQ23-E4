@@ -3,6 +3,9 @@ package com.example.server.service;
 import com.example.server.entity.User;
 import com.example.server.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.transaction.Transactional;
+
 import com.example.server.repository.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
