@@ -1,3 +1,5 @@
 /Users/koenigm/IdeaProjects/BSPQ23-E4/LuxWheels/server/src/test/java/com/example/server/ServerApplicationTests.java
+/Users/koenigm/IdeaProjects/BSPQ23-E4/LuxWheels/server/src/test/java/com/example/server/controller/UserControllerPerfTests.java
+/Users/koenigm/IdeaProjects/BSPQ23-E4/LuxWheels/server/src/test/java/com/example/server/controller/CarControllerPerfTests.java
 /Users/koenigm/IdeaProjects/BSPQ23-E4/LuxWheels/server/src/test/java/com/example/server/service/UserServiceTests.java
-/Users/koenigm/IdeaProjects/BSPQ23-E4/LuxWheels/server/src/test/java/com/example/server/controller/CarControllerPerfTest.java
+/Users/koenigm/IdeaProjects/BSPQ23-E4/LuxWheels/server/src/test/java/com/example/server/controller/RentalControllerPerfTests.java

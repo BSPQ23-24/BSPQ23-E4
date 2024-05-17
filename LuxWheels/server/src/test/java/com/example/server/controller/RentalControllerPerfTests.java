@@ -3,8 +3,8 @@ package com.example.server.controller;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.example.server.entity.User;
-import com.example.server.service.UserService;
+import com.example.server.entity.Rental;
+import com.example.server.service.RentalService;
 import com.github.noconnor.junitperf.JUnitPerfRule;
 import com.github.noconnor.junitperf.JUnitPerfTest;
 import com.github.noconnor.junitperf.data.EvaluationContext;
@@ -16,36 +16,34 @@ import org.junit.Rule;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-public class UserControllerPerfTests {
+public class RentalControllerPerfTests {
 
     @Rule
     public JUnitPerfRule perfTestRule = new JUnitPerfRule(new HtmlReportGenerator("performance_reports"));
 
     @Mock
-    private UserService userService;
+    private RentalService rentalService;
 
     @InjectMocks
-    private UserController controller;
+    private RentalController controller;
 
     @BeforeEach
     public void setUp() {
-        User user1 = new User();
-        User user2 = new User();
-        when(userService.getAllUsers()).thenReturn(Arrays.asList(user1, user2));
+        Rental rental1 = new Rental();
+        Rental rental2 = new Rental();
+        when(rentalService.getAllRental()).thenReturn(Arrays.asList(rental1, rental2));
     }
 
     @Test
     @JUnitPerfTest(threads = 10, durationMs = 5_000, warmUpMs = 2_000, maxExecutionsPerSecond = 50)
-    public void testGetAllUsersPerformance() {
-        ResponseEntity<List<User>> response = controller.getAllUsers();
-        assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue());
+    public void testGetAllRentalsPerformance() {
+        List<Rental> rentals = controller.getAllRentals();
+        assertNotNull(rentals);
+        assertEquals(2, rentals.size());
     }
-
 }

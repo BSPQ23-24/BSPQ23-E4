@@ -3,8 +3,8 @@ package com.example.server.controller;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.example.server.entity.User;
-import com.example.server.service.UserService;
+import com.example.server.entity.Car;
+import com.example.server.service.CarService;
 import com.github.noconnor.junitperf.JUnitPerfRule;
 import com.github.noconnor.junitperf.JUnitPerfTest;
 import com.github.noconnor.junitperf.data.EvaluationContext;
@@ -22,30 +22,29 @@ import java.util.Arrays;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-public class UserControllerPerfTests {
+public class CarControllerPerfTests {
 
     @Rule
     public JUnitPerfRule perfTestRule = new JUnitPerfRule(new HtmlReportGenerator("performance_reports"));
 
     @Mock
-    private UserService userService;
+    private CarService carService;
 
     @InjectMocks
-    private UserController controller;
+    private CarController controller;
 
     @BeforeEach
     public void setUp() {
-        User user1 = new User();
-        User user2 = new User();
-        when(userService.getAllUsers()).thenReturn(Arrays.asList(user1, user2));
+        Car car1 = new Car();
+        Car car2 = new Car();
+        when(carService.getAllCars()).thenReturn(Arrays.asList(car1, car2));
     }
 
     @Test
     @JUnitPerfTest(threads = 10, durationMs = 5_000, warmUpMs = 2_000, maxExecutionsPerSecond = 50)
-    public void testGetAllUsersPerformance() {
-        ResponseEntity<List<User>> response = controller.getAllUsers();
+    public void testGetAllCarsPerformance() {
+        ResponseEntity<List<Car>> response = controller.getAllCars();
         assertNotNull(response);
         assertEquals(200, response.getStatusCodeValue());
     }
-
 }
