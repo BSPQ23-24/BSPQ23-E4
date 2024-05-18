@@ -21,12 +21,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Arrays;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class RegisterView extends JFrame {
 	
 	private static final Logger logger = LogManager.getLogger(RegisterView.class);
 
     private static RegisterView instance;
+    private Locale locale;
+    private ResourceBundle messages;
 
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +58,7 @@ public class RegisterView extends JFrame {
     protected JTextField tsDNI = new JTextField(15);
     protected JButton bSignup = new JButton("Sign up");
     protected JLabel lsError = new JLabel("");
+    protected JLabel titleLabel;
 
 
     protected JCheckBox acceptTermsCheckbox = new JCheckBox("I accept the terms and conditions");
@@ -64,11 +69,6 @@ public class RegisterView extends JFrame {
         this.setSize(400, 550);
         this.setLayout(new BorderLayout());
         this.setLocationRelativeTo(null); 
-
-        JLabel titleLabel = new JLabel("Sign Up");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        pPrincipal.add(titleLabel, BorderLayout.NORTH);
 
         pSignup.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); 
         pSignup.setBackground(Color.WHITE); 
@@ -155,6 +155,28 @@ public class RegisterView extends JFrame {
                 closeWindow();
             }
         });
+    }
+    
+    public RegisterView(Locale locale, ResourceBundle messages) {
+        this(); 
+        this.locale = locale;
+        this.messages = messages;
+        titleLabel = new JLabel("Sign Up");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        pPrincipal.add(titleLabel, BorderLayout.NORTH);
+        lsMail.setText(messages.getString("label.email"));
+        lsPass.setText(messages.getString("label.password"));
+        lsNombre.setText(messages.getString("label.name"));
+        lsApellido.setText(messages.getString("label.surname"));
+        lsDNI.setText(messages.getString("label.licenseNumber"));
+        bSignup.setText(messages.getString("button.signup"));
+        acceptTermsCheckbox.setText(messages.getString("button.acceptTerms"));
+        lssPass.setText(messages.getString("label.birthdate"));
+        titleLabel.setText(messages.getString("title.signup"));
+
+       
+        
     }
 
     public static RegisterView getInstance() {

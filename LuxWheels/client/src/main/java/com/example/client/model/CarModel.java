@@ -1,6 +1,7 @@
 package com.example.client.model;
 
 import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -75,8 +76,6 @@ public class CarModel {
 	public void setUser(UserModel user) {
 		this.user = user;
 	}
-
-
 
 	public String getDescription() {
 		return description;
