@@ -73,7 +73,7 @@ public class HostedCarsView extends JPanel {
 
 
     // Loads the list of cars hosted by the current user
-    private void loadUserCars() {
+    public void loadUserCars() {
         List<CarModel> allCars = ClientCarController.getAllCars();
         carListModel.clear();
 

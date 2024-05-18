@@ -171,6 +171,7 @@ public class RegisterCarView extends JFrame {
             closeWindow();
 
             this.mainFrame.getCarListView().updateCarList();
+            this.mainFrame.getHostedCarsView().loadUserCars();
         }
     }
 

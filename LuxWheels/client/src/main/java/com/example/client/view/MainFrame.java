@@ -27,10 +27,12 @@ public class MainFrame extends JFrame {
         LoginView loginView = new LoginView(this);
         CarListView carListView = new CarListView();
         ManageRentedCarsView manageRentedCarsView = new ManageRentedCarsView();
+        
 
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
         cardPanel.add(manageRentedCarsView, "ManageRentedCarsView");
+        
         
         menuBar = new JMenuBar();
         menuBar.setLayout(new BorderLayout());
@@ -54,6 +56,8 @@ public class MainFrame extends JFrame {
         carOfferingButton.addActionListener(e -> cardLayout.show(cardPanel, "HostedCarsView"));
         JButton btRegisterCar = new JButton("Register your car!");
         btRegisterCar.addActionListener(this::registerCar);
+        JButton btUserData = new JButton("Modify you account");
+        btUserData.addActionListener(e -> cardLayout.show(cardPanel, "UserDataModificationView"));
 
         JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
         navPanel.add(carListButton);
@@ -61,6 +65,7 @@ public class MainFrame extends JFrame {
         navPanel.add(carOfferingButton);
         navPanel.add(btRegisterCar);
         navPanel.add(btRegisterCar);
+        navPanel.add(btUserData);
 
         menuBar.add(navPanel, BorderLayout.CENTER);
 
@@ -83,10 +88,19 @@ public class MainFrame extends JFrame {
         
         HostedCarsView hostedCarsView = new HostedCarsView(ClientUserController.loggedUser);
         cardPanel.add(hostedCarsView, "HostedCarsView");
+        
+        UserDataModificationView userDataModificationView = new UserDataModificationView(ClientUserController.loggedUser, this);
+        cardPanel.add(userDataModificationView, "UserDataModificationView");
     }
 
     private void logout() {
         JOptionPane.showMessageDialog(this, "You have been logged out.");
+        cardLayout.show(cardPanel, "LoginView");
+        menuBar.setVisible(false);
+    }
+    
+    public void logoutForUserDeleting() {
+        JOptionPane.showMessageDialog(this, "You have deleted you account");
         cardLayout.show(cardPanel, "LoginView");
         menuBar.setVisible(false);
     }
