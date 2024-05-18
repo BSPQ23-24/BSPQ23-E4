@@ -55,22 +55,6 @@ public class UserService {
         }
     }
 
-    public boolean deleteUser(UserModel user) {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(baseURL + "/" + user.getId()))
-                .header("Content-Type", "application/json")
-                .DELETE()
-                .build();
-
-        try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            return response.statusCode() == 204;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     private String convertUserToJson(UserModel user) {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -80,4 +64,41 @@ public class UserService {
             return null;
         }
     }
+    
+    public String updateUser(UserModel user) {
+    	System.out.println(user);
+        String jsonUser = convertUserToJson(user);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + "/" + user.getId())) // Suponiendo que user.getId() devuelve el ID del usuario
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(jsonUser))
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public String deleteUser(int userID) {
+        HttpRequest request = HttpRequest.newBuilder()
+        		.uri(URI.create(baseURL + "/" + userID))
+        		.header("Content-Type", "application/json")
+        		.DELETE()
+        		.build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 }
