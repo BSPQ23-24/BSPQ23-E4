@@ -143,6 +143,8 @@ public class RentCarView extends JFrame {
         LocalDate localDate = convertToLocalDate(selectedDate);
 
         if (localDate == null || unavailableDates.contains(localDate)) {
+            clearSelectedDates();
+            JOptionPane.showMessageDialog(this, "Unavailable date clicked. Please try again.");
             return;
         }
 
