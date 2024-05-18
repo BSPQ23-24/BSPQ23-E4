@@ -5,20 +5,13 @@ import com.example.client.controller.ClientRentalController;
 import com.example.client.model.CarModel;
 import com.example.client.model.RentalModel;
 import com.toedter.calendar.JCalendar;
-import org.jdatepicker.impl.DateComponentFormatter;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.SqlDateModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.List;
@@ -29,11 +22,8 @@ public class RentCarView extends JFrame {
     private MainFrame mainFrame;
     private CarModel selectedCar;
 
-    private JTextField carModelField;
-    private JTextField carBrandField;
-    private JTextField carPlateField;
-    private JDatePickerImpl startDatePicker;
-    private JDatePickerImpl endDatePicker;
+    private JTextField startDateField;
+    private JTextField endDateField;
     private JButton submitButton;
     private JButton cancelButton;
     private JCalendar availabilityCalendar;
@@ -42,27 +32,24 @@ public class RentCarView extends JFrame {
     private LocalDate endDate;
     private Set<LocalDate> selectedDates;
     private Set<LocalDate> unavailableDates;
+    private boolean selectingStartDate = true;
 
     public RentCarView(CarModel selectedCar) {
-        //this.mainFrame = mainFrame;
         this.selectedCar = selectedCar;
         this.selectedDates = new HashSet<>();
         this.unavailableDates = new HashSet<>();
 
         fillUnavailableDates(ClientRentalController.getRentalsByLicensePlate(selectedCar.getLicensePlate()));
 
-        System.out.println("Selected car: carLicensePlate=" + selectedCar.getLicensePlate());
-
         setTitle("Car registration - LuxWheels");
-        setSize(700, 600); // Increased size to accommodate the calendar
+        setSize(700, 500);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         initUI();
     }
 
-    private void fillUnavailableDates(List<RentalModel> rentals){
-
+    private void fillUnavailableDates(List<RentalModel> rentals) {
         for (RentalModel rental : rentals) {
             LocalDate firstDate = LocalDate.parse(rental.getStartDate());
             LocalDate lastDate = LocalDate.parse(rental.getEndDate());
@@ -70,11 +57,10 @@ public class RentCarView extends JFrame {
                 unavailableDates.add(d);
             }
         }
-
     }
 
     private void initUI() {
-        JPanel formPanel = new JPanel(new GridLayout(6, 2, 10, 10));
+        JPanel formPanel = new JPanel(new GridLayout(0, 2, 10, 10));
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         Font labelFont = new Font("SansSerif", Font.BOLD, 12);
 
@@ -97,67 +83,21 @@ public class RentCarView extends JFrame {
         formPanel.add(carPlateLabel);
         formPanel.add(selectedCarPlate);
 
-        // --------- JDatePicker section ---------
+        // Date text fields
+        JLabel startDateLabel = new JLabel("Start Date:");
+        startDateField = new JTextField();
+        startDateField.setEditable(false);
 
-        SqlDateModel startDateModel = new SqlDateModel();
-        Properties p = new Properties();
-        p.put("text.today", "Today");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
-        JDatePanelImpl startDatePanel = new JDatePanelImpl(startDateModel, p);
-        startDatePicker = new JDatePickerImpl(startDatePanel, new DateComponentFormatter());
+        JLabel endDateLabel = new JLabel("End Date:");
+        endDateField = new JTextField();
+        endDateField.setEditable(false);
 
-        SqlDateModel endDateModel = new SqlDateModel();
-        JDatePanelImpl endDatePanel = new JDatePanelImpl(endDateModel, p);
-        endDatePicker = new JDatePickerImpl(endDatePanel, new DateComponentFormatter());
+        formPanel.add(startDateLabel);
+        formPanel.add(startDateField);
+        formPanel.add(endDateLabel);
+        formPanel.add(endDateField);
 
-        formPanel.add(new JLabel("Select Start Date:"));
-        formPanel.add(startDatePicker);
-        formPanel.add(new JLabel("Select End Date:"));
-        formPanel.add(endDatePicker);
-
-        // --------- Availability Calendar section ---------
-
-        availabilityCalendar = new JCalendar();
-        availabilityCalendar.setFont(labelFont);
-        availabilityCalendar.getDayChooser().addPropertyChangeListener("day", evt -> updateCalendar());
-        updateCalendar();
-
-        // Add listeners to update the calendar when the month or year is changed
-        availabilityCalendar.getMonthChooser().addPropertyChangeListener("month", evt -> updateCalendar());
-        availabilityCalendar.getYearChooser().addPropertyChangeListener("year", evt -> updateCalendar());
-
-        // Add PropertyChangeListeners to the date pickers
-        startDatePicker.getModel().addChangeListener(e -> {
-            LocalDate newStartDate = convertToLocalDate((Date) startDatePicker.getModel().getValue());
-            if (newStartDate != null && (endDate == null || newStartDate.isBefore(endDate) || newStartDate.equals(endDate))) {
-                startDate = newStartDate;
-                updateSelectedDates();
-                if (datesIntersectWithUnavailableDates()) {
-                    JOptionPane.showMessageDialog(this, "Selected dates intersect with unavailable dates. Please choose different dates.");
-                    clearSelectedDates();
-                } else {
-                    updateCalendar();
-                }
-            }
-        });
-
-        endDatePicker.getModel().addChangeListener(e -> {
-            LocalDate newEndDate = convertToLocalDate((Date) endDatePicker.getModel().getValue());
-            if (newEndDate != null && (startDate == null || newEndDate.isAfter(startDate) || newEndDate.equals(startDate))) {
-                endDate = newEndDate;
-                updateSelectedDates();
-                if (datesIntersectWithUnavailableDates()) {
-                    JOptionPane.showMessageDialog(this, "Selected dates intersect with unavailable dates. Please choose different dates.");
-                    clearSelectedDates();
-                } else {
-                    updateCalendar();
-                }
-            }
-        });
-
-        // --------- Buttons section ---------
-
+        // Buttons
         submitButton = new JButton("Submit");
         cancelButton = new JButton("Cancel");
 
@@ -178,8 +118,17 @@ public class RentCarView extends JFrame {
         formPanel.add(submitButton);
         formPanel.add(cancelButton);
 
-        // --------- Add panels to layout ---------
+        // Availability Calendar
+        availabilityCalendar = new JCalendar();
+        availabilityCalendar.setFont(labelFont);
+        updateCalendar();
 
+        // Add listeners to update the calendar when the month or year is changed, and if day is clicked
+        availabilityCalendar.getDayChooser().addPropertyChangeListener("day", evt -> handleCalendarClick());
+        availabilityCalendar.getMonthChooser().addPropertyChangeListener("month", evt -> updateCalendar());
+        availabilityCalendar.getYearChooser().addPropertyChangeListener("year", evt -> updateCalendar());
+
+        // Add panels to layout
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
@@ -189,28 +138,58 @@ public class RentCarView extends JFrame {
         add(contentPanel, BorderLayout.NORTH);
     }
 
+    private void handleCalendarClick() {
+        Date selectedDate = availabilityCalendar.getDate();
+        LocalDate localDate = convertToLocalDate(selectedDate);
+
+        if (localDate == null || unavailableDates.contains(localDate)) {
+            return;
+        }
+
+        if (selectingStartDate) {
+            selectedDates.clear();
+            startDate = localDate;
+            endDate = null;
+            startDateField.setText(startDate.toString());
+            endDateField.setText("");
+            selectingStartDate = false;
+            selectedDates.add(localDate);
+            updateCalendar();
+        } else {
+            endDate = localDate;
+            if (endDate.isBefore(startDate) || endDate.isEqual(startDate)) {
+                JOptionPane.showMessageDialog(this, "End date must be after start date. Please select the dates again.");
+                startDate = null;
+                endDate = null;
+                startDateField.setText("");
+                endDateField.setText("");
+                selectingStartDate = true;
+            } else {
+                endDateField.setText(endDate.toString());
+                updateSelectedDates();
+                if (datesIntersectWithUnavailableDates()) {
+                    JOptionPane.showMessageDialog(this, "Selected dates intersect with unavailable dates. Please choose different dates.");
+                    clearSelectedDates();
+                } else {
+                    updateCalendar();
+                }
+                selectingStartDate = true; // Reset to allow new selection if needed
+            }
+        }
+    }
+
     private LocalDate convertToLocalDate(Date date) {
         if (date == null) {
             return null;
         }
-        if (date instanceof java.sql.Date) {
-            return ((java.sql.Date) date).toLocalDate();
-        } else {
-            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        }
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     private void updateSelectedDates() {
         selectedDates.clear();
-        if (startDate != null) {
-            selectedDates.add(startDate);
-        }
-        if (endDate != null) {
-            selectedDates.add(endDate);
-        }
         if (startDate != null && endDate != null) {
-            LocalDate date = startDate.plusDays(1);
-            while (date.isBefore(endDate)) {
+            LocalDate date = startDate;
+            while (!date.isAfter(endDate)) {
                 selectedDates.add(date);
                 date = date.plusDays(1);
             }
@@ -221,6 +200,8 @@ public class RentCarView extends JFrame {
         startDate = null;
         endDate = null;
         selectedDates.clear();
+        startDateField.setText("");
+        endDateField.setText("");
         updateCalendar();
     }
 
@@ -253,8 +234,7 @@ public class RentCarView extends JFrame {
                         year == availabilityCalendar.getYearChooser().getYear()) {
                     // Loop over all the components of the day panel
                     Component[] dayComponents = availabilityCalendar.getDayChooser().getDayPanel().getComponents();
-                    for (int i = 0; i < dayComponents.length; i++) {
-                        Component comp = dayComponents[i];
+                    for (Component comp : dayComponents) {
                         if (comp instanceof JButton) {
                             JButton button = (JButton) comp;
                             try {
@@ -286,8 +266,7 @@ public class RentCarView extends JFrame {
                         year == availabilityCalendar.getYearChooser().getYear()) {
                     // Loop over all the components of the day panel
                     Component[] dayComponents = availabilityCalendar.getDayChooser().getDayPanel().getComponents();
-                    for (int i = 0; i < dayComponents.length; i++) {
-                        Component comp = dayComponents[i];
+                    for (Component comp : dayComponents) {
                         if (comp instanceof JButton) {
                             JButton button = (JButton) comp;
                             try {
@@ -318,7 +297,6 @@ public class RentCarView extends JFrame {
             long daysBetween = 0;
 
             if (startDate != null && endDate != null) {
-
                 daysBetween = ChronoUnit.DAYS.between(startDate, endDate) + 1;
                 String carModelsModel = selectedCar.getModel();
                 String carBrand = selectedCar.getBrand();
@@ -337,8 +315,6 @@ public class RentCarView extends JFrame {
             ClientRentalController.createRental(selectedCar, startDate, endDate, carPrice * daysBetween);
             System.out.println("Rental creation button clicked");
             closeWindow();
-
-            // this.mainFrame.getCarListView().updateCarList();
         }
     }
 
@@ -357,13 +333,4 @@ public class RentCarView extends JFrame {
         this.dispose();
         RentCarView.instance = null;
     }
-
-    /* MAIN
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            RentCarView.getInstance().setVisible(true);
-        });
-    }
-     */
-
 }
