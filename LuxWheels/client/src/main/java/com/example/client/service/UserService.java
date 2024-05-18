@@ -54,8 +54,7 @@ public class UserService {
             return null;
         }
     }
-    
-    
+
     private String convertUserToJson(UserModel user) {
         ObjectMapper mapper = new ObjectMapper();
         try {
