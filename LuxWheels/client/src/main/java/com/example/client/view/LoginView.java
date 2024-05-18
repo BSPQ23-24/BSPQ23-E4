@@ -120,11 +120,11 @@ public class LoginView extends JPanel {
         signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Obtiene el idioma seleccionado
+
                 String selectedLanguage = (String) languageComboBox.getSelectedItem();
                 Locale locale = new Locale(selectedLanguage);
 
-                // Crea una instancia de RegisterView y pasa el idioma seleccionado
+
                 RegisterView registerView = new RegisterView(locale,messages);
                 registerView.setVisible(true);
 
