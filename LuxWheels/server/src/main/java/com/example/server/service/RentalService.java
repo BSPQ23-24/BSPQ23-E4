@@ -31,6 +31,11 @@ public class RentalService {
         rental.setRentalID(id);
         return rentalRepository.save(rental);
     }
+
+    public List<Rental> getRentalsByLicensePlate(Car car) {
+        return rentalRepository.findRentalsByCar(car);
+    }
+
     /*
     TODO
     public List<Car> getCarsByUserId(String userId) {

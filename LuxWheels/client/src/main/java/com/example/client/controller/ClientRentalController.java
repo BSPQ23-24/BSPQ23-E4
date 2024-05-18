@@ -13,6 +13,7 @@ public class ClientRentalController {
     public static List<RentalModel> getAllRentals() {
         return rentalService.getAllRentals();
     }
+    public static List<RentalModel> getRentalsByLicensePlate(Integer licensePlate) { return rentalService.getRentalsByLicensePlate(licensePlate); }
     public static List<CarModel> getRentedCarsByUser() { return rentalService.getCarsRentedByUser( ClientUserController.loggedUser ); }
 
     public static void createRental(CarModel car, LocalDate startDate, LocalDate endDate, Double price) {

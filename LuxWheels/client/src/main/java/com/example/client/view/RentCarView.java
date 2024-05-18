@@ -3,6 +3,7 @@ package com.example.client.view;
 import com.example.client.controller.ClientCarController;
 import com.example.client.controller.ClientRentalController;
 import com.example.client.model.CarModel;
+import com.example.client.model.RentalModel;
 import com.toedter.calendar.JCalendar;
 import org.jdatepicker.impl.DateComponentFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -17,8 +18,10 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class RentCarView extends JFrame {
@@ -46,6 +49,8 @@ public class RentCarView extends JFrame {
         this.selectedDates = new HashSet<>();
         this.unavailableDates = new HashSet<>();
 
+        fillUnavailableDates(ClientRentalController.getRentalsByLicensePlate(selectedCar.getLicensePlate()));
+
         System.out.println("Selected car: carLicensePlate=" + selectedCar.getLicensePlate());
 
         setTitle("Car registration - LuxWheels");
@@ -54,6 +59,18 @@ public class RentCarView extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         initUI();
+    }
+
+    private void fillUnavailableDates(List<RentalModel> rentals){
+
+        for (RentalModel rental : rentals) {
+            LocalDate firstDate = LocalDate.parse(rental.getStartDate());
+            LocalDate lastDate = LocalDate.parse(rental.getEndDate());
+            for (LocalDate d = firstDate; !d.isAfter(lastDate); d = d.plusDays(1)) {
+                unavailableDates.add(d);
+            }
+        }
+
     }
 
     private void initUI() {

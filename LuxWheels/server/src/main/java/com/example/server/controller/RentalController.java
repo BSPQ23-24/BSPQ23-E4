@@ -3,6 +3,7 @@ package com.example.server.controller;
 import com.example.server.ServerApplication;
 import com.example.server.entity.Car;
 import com.example.server.entity.Rental;
+import com.example.server.repository.CarRepository;
 import com.example.server.service.CarService;
 import com.example.server.service.RentalService;
 
@@ -22,6 +23,9 @@ public class RentalController {
 
     @Autowired
     private RentalService rentalService;
+
+    @Autowired
+    private CarService carService;
 
     @PostMapping("/create")
     public Rental create(@RequestBody Rental rental) {
@@ -49,6 +53,11 @@ public class RentalController {
         rentalService.deleteRental(rentalId);;
     }
 
-
-
+    @GetMapping("/car/{licensePlate}")
+    public List<Rental> getRentalsByLicensePlate(@PathVariable Integer licensePlate) {
+        System.out.println("Getting rentals matching license plate: " + licensePlate);
+        Car car = carService.getCarByLicensePlate(licensePlate);
+        System.out.println("Car with license plate " + licensePlate + ": " + car);
+        return rentalService.getRentalsByLicensePlate(car);
+    }
 }

@@ -69,6 +69,27 @@ public class RentalService {
         }
     }
 
+    public List<RentalModel> getRentalsByLicensePlate(Integer licensePlate) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + "/car/" + licensePlate))
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                return mapper.readValue(response.body(), new TypeReference<List<RentalModel>>() {});
+            } else {
+                System.err.println("Error: " + response);
+                return Collections.emptyList();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
     public String createRental(RentalModel rental) {
         String rentalJson = convertRentalToJson(rental);
 

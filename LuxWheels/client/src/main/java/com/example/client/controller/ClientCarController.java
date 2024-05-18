@@ -11,6 +11,10 @@ public class ClientCarController {
         return carService.getAllCars();
     }
 
+    public static CarModel getCarByLicensePlate(Integer licensePlate) {
+        return carService.getCarByLicensePlate(licensePlate);
+    }
+
     public static void createCar(String brand, String location, String model, String year, CarModel.CarCondition condition, String description, Double pricePerDay) {
 
         System.out.println("Creating car! - Owner: " + ClientUserController.loggedUser.toString());
