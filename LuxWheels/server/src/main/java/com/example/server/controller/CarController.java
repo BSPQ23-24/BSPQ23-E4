@@ -2,6 +2,7 @@ package com.example.server.controller;
 
 import java.util.List;
 
+import com.example.server.entity.Rental;
 import com.example.server.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

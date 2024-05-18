@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.stream.Stream;
 
 public class RegisterCarView extends JFrame {
 
@@ -25,6 +26,7 @@ public class RegisterCarView extends JFrame {
     private JLabel lsYear;
     private JLabel lsLocation;
     private JLabel lsDescription;
+    private JLabel lsPricePerDay;
 
     private JTextField tslicensePlate;
     private JComboBox<CarModel.CarCondition> conditionComboBox;
@@ -33,6 +35,7 @@ public class RegisterCarView extends JFrame {
     private JTextField tsYear;
     private JTextField tsLocation;
     private JTextField tsDescription;
+    private JTextField tsPricePerDay;
 
 
     private JButton registerButton;
@@ -56,17 +59,16 @@ public class RegisterCarView extends JFrame {
         // --------- Form section ---------
 
         lsLicensePlate = new JLabel("License Plate:");
-        lsLicensePlate.setFont(labelFont);
         lsCarCondition = new JLabel("Car Condition:");
-        lsCarCondition.setFont(labelFont);
         lsBrand = new JLabel("Brand:");
-        lsBrand.setFont(labelFont);
         lsModel = new JLabel("Model:");
-        lsModel.setFont(labelFont);
         lsYear = new JLabel("Year:");
-        lsYear.setFont(labelFont);
         lsLocation = new JLabel("Location:");
-        lsLocation.setFont(labelFont);
+        lsPricePerDay = new JLabel("Rent price per day: ");
+        lsDescription = new JLabel("Description:");
+
+        Stream.of(lsLicensePlate, lsCarCondition, lsBrand, lsModel, lsYear, lsLocation, lsPricePerDay, lsDescription)
+                .forEach(label -> label.setFont(labelFont));
 
         tslicensePlate = new JTextField(15);
         conditionComboBox = new JComboBox<>(CarModel.CarCondition.values());
@@ -77,11 +79,8 @@ public class RegisterCarView extends JFrame {
         tsYear = new JFormattedTextField(new SimpleDateFormat("yyyy"));
         tsYear.setColumns(15);
         tsLocation = new JTextField(15);
-
-        lsDescription = new JLabel("Description:");
-        lsDescription.setFont(labelFont);
+        tsPricePerDay = new JTextField(5);
         tsDescription = new JTextField(15);
-
 
 //        formPanel.add(lsLicensePlate);
 //        formPanel.add(tslicensePlate);
@@ -95,6 +94,8 @@ public class RegisterCarView extends JFrame {
         formPanel.add(tsYear);
         formPanel.add(lsLocation);
         formPanel.add(tsLocation);
+        formPanel.add(lsPricePerDay);
+        formPanel.add(tsPricePerDay);
         formPanel.add(lsDescription);
         formPanel.add(tsDescription);
 
@@ -141,7 +142,7 @@ public class RegisterCarView extends JFrame {
     }
 
     private void registerCarAction(ActionEvent e) {
-        if (Arrays.asList(tsBrand, tsModel, tsYear, tsLocation, tsDescription)
+        if (Arrays.asList(tsBrand, tsModel, tsYear, tsLocation, tsDescription, tsPricePerDay)
                 .stream().anyMatch(component -> component.getText().isEmpty())) {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -157,6 +158,14 @@ public class RegisterCarView extends JFrame {
             String location = tsLocation.getText();
             String yearText = tsYear.getText();
             String description = tsDescription.getText();
+            Double pricePerDay;
+
+            try {
+                pricePerDay = Double.parseDouble(tsPricePerDay.getText());
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(this, "Price per day should be in Float format.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
             /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
             try {
@@ -166,7 +175,7 @@ public class RegisterCarView extends JFrame {
                 return;
             }*/
 
-            ClientCarController.createCar(brand, location, model, yearText, selectedCondition, description);
+            ClientCarController.createCar(brand, location, model, yearText, selectedCondition, description, pricePerDay);
             System.out.println("Car Registration button clicked");
             closeWindow();
 

@@ -75,6 +75,7 @@ public class CarListView extends JPanel {
 
         addLabelAndValue("Brand:", car.getBrand());
         addLabelAndValue("Model:", car.getModel());
+        addLabelAndValue("Price per day:", String.valueOf(car.getPricePerDay()));
         addLabelAndValue("Year:", car.getYear());
         addLabelAndValue("Condition:", car.getCarCondition().toString());
         addLabelAndValue("Location:", car.getLocation());

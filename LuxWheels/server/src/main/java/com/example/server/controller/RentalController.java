@@ -3,10 +3,12 @@ package com.example.server.controller;
 import com.example.server.ServerApplication;
 import com.example.server.entity.Car;
 import com.example.server.entity.Rental;
+import com.example.server.service.CarService;
 import com.example.server.service.RentalService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,20 +18,16 @@ import java.util.List;
 @RequestMapping("/api/rentals")
 public class RentalController {
 	
-	private static final Logger logger = LogManager.getLogger(ServerApplication.class);
+	private static final Logger logger = LogManager.getLogger(RentalController.class);
 
-    private final RentalService rentalService;
+    @Autowired
+    private RentalService rentalService;
 
-    public RentalController(RentalService rentalService) {
-        this.rentalService = rentalService;
-    }
+    @PostMapping("/create")
+    public Rental create(@RequestBody Rental rental) {
+        System.out.println(rental);
 
-    @PostMapping
-    public Rental createRental(@RequestBody Rental rental) {
-        Rental createdRental = rentalService.createRental(rental);
-        logger.info("new rental request");
-    	logger.info(createdRental);
-        return createdRental;
+        return rentalService.createRental(rental);
     }
 
     @GetMapping("/{rentalId}")
@@ -51,15 +49,6 @@ public class RentalController {
         rentalService.deleteRental(rentalId);;
     }
 
-    /*
-    TODO
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Car>> getCarsByUser(@PathVariable String userId) {
-        List<Car> cars = rentalService.getCarsByUserId(userId);
-        if (cars.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(cars);
-    }
-    */
+
+
 }

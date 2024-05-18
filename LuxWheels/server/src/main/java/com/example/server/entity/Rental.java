@@ -28,10 +28,10 @@ public class Rental {
 
     private String startDate; // Cambiar el tipo de fecha a LocalDate
     private String endDate;
-    private Integer price;
+    private Double price;
     private String creationDate;
     
-    public Rental(User user, Car car, String startDate, String endDate, Integer price, String creationDate) {
+    public Rental(User user, Car car, String startDate, String endDate, Double price, String creationDate) {
     	this.user = user;
     	this.car = car;
     	this.startDate = startDate;
@@ -86,16 +86,23 @@ public class Rental {
     }
 
     @Override
-	public String toString() {
-		return "Rental [rentalID=" + rentalID + ", user=" + user + ", car=" + car + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", price=" + price + ", creationDate=" + creationDate + "]";
-	}
+    public String toString() {
+        return "Rental{" +
+                "rentalID=" + rentalID +
+                ", user=" + user +
+                ", car=" + car +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", price=" + price +
+                ", creationDate='" + creationDate + '\'' +
+                '}';
+    }
 
-	public Integer getPrice() {
+	public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

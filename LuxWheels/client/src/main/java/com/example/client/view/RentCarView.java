@@ -1,5 +1,7 @@
 package com.example.client.view;
 
+import com.example.client.controller.ClientCarController;
+import com.example.client.controller.ClientRentalController;
 import com.example.client.model.CarModel;
 import com.toedter.calendar.JCalendar;
 import org.jdatepicker.impl.DateComponentFormatter;
@@ -11,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -42,11 +46,7 @@ public class RentCarView extends JFrame {
         this.selectedDates = new HashSet<>();
         this.unavailableDates = new HashSet<>();
 
-        unavailableDates.add(LocalDate.of(2024, 5, 20));
-        unavailableDates.add(LocalDate.of(2024, 5, 21));
-        unavailableDates.add(LocalDate.of(2024, 6, 15));
-        unavailableDates.add(LocalDate.of(2024, 6, 16));
-        unavailableDates.add(LocalDate.of(2024, 6, 17));
+        System.out.println("Selected car: carLicensePlate=" + selectedCar.getLicensePlate());
 
         setTitle("Car registration - LuxWheels");
         setSize(700, 600); // Increased size to accommodate the calendar
@@ -290,23 +290,43 @@ public class RentCarView extends JFrame {
     }
 
     private void handleSubmit() {
-        if (startDate != null && endDate != null) {
-            long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
-            System.out.println("Car Model: " + selectedCar.getModel());
-            System.out.println("Car Brand: " + selectedCar.getBrand());
-            System.out.println("Car Plate: " + String.valueOf(selectedCar.getLicensePlate()));
-            System.out.println("Rental Period: " + daysBetween + " days");
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
+        int option = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to register this car?",
+                "Confirm Car Registration",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (option == JOptionPane.YES_OPTION) {
+            Double carPrice = 0.0;
+            long daysBetween = 0;
+
+            if (startDate != null && endDate != null) {
+
+                daysBetween = ChronoUnit.DAYS.between(startDate, endDate) + 1;
+                String carModelsModel = selectedCar.getModel();
+                String carBrand = selectedCar.getBrand();
+                String carPlate = String.valueOf(selectedCar.getLicensePlate());
+                carPrice = selectedCar.getPricePerDay();
+                System.out.println("-------- Renting car --------");
+                System.out.println("Rented car: " + carBrand + " " + carModelsModel);
+                System.out.println("Car Plate: " + carPlate);
+                System.out.println("Start date: " + startDate.toString() + " - End date: " + endDate.toString());
+                System.out.println("Rental Period: " + String.valueOf(daysBetween) + " days");
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
+            }
+
+            ClientRentalController.createRental(selectedCar, startDate, endDate, carPrice * daysBetween);
+            System.out.println("Rental creation button clicked");
+            closeWindow();
+
+            // this.mainFrame.getCarListView().updateCarList();
         }
     }
 
     private void handleCancel() {
         clearSelectedDates();
-    }
-
-    private void createRental(ActionEvent e) {
-
     }
 
     public static RentCarView getInstance(MainFrame mainFrame) {

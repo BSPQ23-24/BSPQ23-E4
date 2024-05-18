@@ -26,13 +26,22 @@ public class Car {
     private String year;
 	private String description;
 	private Status status;
+	private Double pricePerDay;
 
     public Integer getLicensePlate() {
 		return licensePlate;
 	}
 
-	public void setLicensePlate(Integer licensePlate) {
+	public void setLicensePlate(Integer price) {
 		this.licensePlate = licensePlate;
+	}
+
+	public Double getPricePerDay() {
+		return pricePerDay;
+	}
+
+	public void setPricePerDay(Double pricePerDay) {
+		this.pricePerDay = pricePerDay;
 	}
 
 	public CarCondition getCarCondition() {

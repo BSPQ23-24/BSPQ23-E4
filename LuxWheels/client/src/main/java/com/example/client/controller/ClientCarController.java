@@ -11,9 +11,9 @@ public class ClientCarController {
         return carService.getAllCars();
     }
 
-    public static void createCar(String brand, String location, String model, String year, CarModel.CarCondition condition, String description) {
+    public static void createCar(String brand, String location, String model, String year, CarModel.CarCondition condition, String description, Double pricePerDay) {
 
-        System.out.println(ClientUserController.loggedUser.getName());
+        System.out.println("Creating car! - Owner: " + ClientUserController.loggedUser.toString());
 
         CarModel car = new CarModel();
         //car.setLicensePlate(licensePlate);
@@ -25,6 +25,7 @@ public class ClientCarController {
         car.setUser(ClientUserController.loggedUser);
         car.setStatus(CarModel.Status.OPEN);
         car.setDescription(description);
+        car.setPricePerDay(pricePerDay);
 
         carService.createCar(car);
     }

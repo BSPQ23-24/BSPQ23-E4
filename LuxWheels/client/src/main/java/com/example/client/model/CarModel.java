@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CarModel {
     private Integer licensePlate;
+    private Double pricePerDay;
     private CarCondition carCondition;
     private String brand;
     private String model;
