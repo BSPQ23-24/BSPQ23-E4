@@ -108,7 +108,7 @@ public class UserDataModificationView extends JPanel {
 		lsDNI.setFont(new Font("Arial", Font.BOLD, 20));
 
 		// Initialize labels and buttons with localized strings
-		lsMail = new JLabel(messages.getString("label.mail"));
+		lsMail = new JLabel(messages.getString("label.email"));
 		lsPass = new JLabel(messages.getString("label.password"));
 		lssPass = new JLabel(messages.getString("label.birthdate"));
 		lsNombre = new JLabel(messages.getString("label.name"));
@@ -156,7 +156,7 @@ public class UserDataModificationView extends JPanel {
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 
-    	JButton modifyButton = new JButton("Modify");
+    	JButton modifyButton = new JButton(messages.getString("button.modify"));
     	modifyButton.setPreferredSize(new Dimension(120, 40));
     	modifyButton.setBackground(new Color(34, 177, 76));
     	modifyButton.setForeground(Color.WHITE);
@@ -164,7 +164,7 @@ public class UserDataModificationView extends JPanel {
     	modifyButton.setBorderPainted(false);
     	modifyButton.addActionListener(e -> this.modifyUser());
     	
-    	JButton deleteButton = new JButton("Delete");
+    	JButton deleteButton = new JButton(messages.getString("button.delete"));
     	deleteButton.setPreferredSize(new Dimension(120, 40));
     	deleteButton.setBackground(new Color(255, 0, 0));
     	deleteButton.setForeground(Color.WHITE);
