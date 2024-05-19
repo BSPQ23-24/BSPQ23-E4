@@ -62,6 +62,9 @@ jobs:
           sleep 60
           curl --fail http://localhost:8080 || (echo 'Server did not start' && exit 1)
 
+      - name: Verify server accessibility
+        run: |
+          curl -v http://localhost:8080
 
       - name: Build client module
         run: mvn clean install --file LuxWheels/client/pom.xml
