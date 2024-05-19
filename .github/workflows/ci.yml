@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=10
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: luxwheels
+        ports:
+          - 3306:3306
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {120..0}; do
+            if echo 'SELECT 1' | mysql -u root -proot -h 127.0.0.1 luxwheels &> /dev/null; then
+              break
+            fi
+            echo 'MySQL is unavailable - sleeping'
+            sleep 1
+          done
+          if [ "$i" = 0 ]; then
+            echo 'MySQL did not start up in time'
+            exit 1
+          fi
+
+      - name: Build root project
+        run: mvn clean install --file LuxWheels/pom.xml
+
+      - name: Build client module
+        run: mvn clean install --file LuxWheels/client/pom.xml
+
+      - name: Build server module
+        run: mvn clean install --file LuxWheels/server/pom.xml
+
+      - name: Run tests for root project
+        run: mvn test --file LuxWheels/pom.xml
+
+      - name: Run tests for client module
+        run: mvn test --file LuxWheels/client/pom.xml
+
+      - name: Run tests for server module
+        env:
+          DB_URL: jdbc:mysql://127.0.0.1:3306/luxwheels
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: mvn test --file LuxWheels/server/pom.xml

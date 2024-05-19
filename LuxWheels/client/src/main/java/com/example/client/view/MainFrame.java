@@ -3,6 +3,8 @@ package com.example.client.view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +18,10 @@ public class MainFrame extends JFrame {
     private JMenuBar menuBar;
 
     public MainFrame() {
+        Locale locale = new Locale("en");
+        ResourceBundle messages = ResourceBundle.getBundle("messages/messages", locale);
+        LoginView loginView = new LoginView(this,messages);
+
         setTitle("Car Rental Application");
         setSize(800, 600);
         setLocationRelativeTo(null);
@@ -24,10 +30,9 @@ public class MainFrame extends JFrame {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
-        LoginView loginView = new LoginView(this);
+        //LoginView loginView = new LoginView(this);
         CarListView carListView = new CarListView();
         ManageRentedCarsView manageRentedCarsView = new ManageRentedCarsView();
-        
 
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
