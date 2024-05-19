@@ -34,7 +34,6 @@ public class MainFrame extends JFrame {
         CarListView carListView = new CarListView();
         ManageRentedCarsView manageRentedCarsView = new ManageRentedCarsView();
         
-
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
         cardPanel.add(manageRentedCarsView, "ManageRentedCarsView");
