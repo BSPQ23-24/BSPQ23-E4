@@ -29,19 +29,19 @@ jobs:
           restore-keys: ${{ runner.os }}-maven
 
       - name: Build root project
-        run: mvn clean install --file pom.xml
-
-      - name: Build client module
-        run: mvn clean install --file client/pom.xml
+        run: mvn clean install --file LuxWheels/pom.xml
 
       - name: Build server module
-        run: mvn clean install --file server/pom.xml
+        run: mvn clean install --file LuxWheels/server/pom.xml
+
+      - name: Build client module
+        run: mvn clean install --file LuxWheels/client/pom.xml
 
       - name: Run tests for root project
-        run: mvn test --file pom.xml
-
-      - name: Run tests for client module
-        run: mvn test --file client/pom.xml
+        run: mvn test --file LuxWheels/pom.xml
 
       - name: Run tests for server module
-        run: mvn test --file server/pom.xml
+        run: mvn test --file LuxWheels/server/pom.xml
+
+      - name: Run tests for client module
+        run: mvn test --file LuxWheels/client/pom.xml
