@@ -52,9 +52,6 @@ jobs:
             exit 1
           fi
 
-      - name: Build root project
-        run: mvn clean install --file LuxWheels/pom.xml
-
       - name: Build and start server
         run: |
           mvn clean install --file LuxWheels/server/pom.xml
