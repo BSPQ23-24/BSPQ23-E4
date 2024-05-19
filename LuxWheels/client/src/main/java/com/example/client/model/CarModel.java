@@ -12,7 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CarModel {
     private Integer licensePlate;
+    private Double pricePerDay;
     private CarCondition carCondition;
+	private Status status;
     private String brand;
     private String model;
     private String year;
@@ -88,6 +90,10 @@ public class CarModel {
 	public enum CarCondition {
         bad, standard, good
     }
+
+	public enum Status {
+		OPEN, BOOKED
+	}
     
     public String getSummary() {
         return brand + " - " + year + " " + model + " - " + carCondition;

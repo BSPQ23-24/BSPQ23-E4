@@ -37,8 +37,7 @@ public class MainFrame extends JFrame {
         cardPanel.add(loginView, "LoginView");
         cardPanel.add(carListView, "CarListView");
         cardPanel.add(manageRentedCarsView, "ManageRentedCarsView");
-        
-        
+
         menuBar = new JMenuBar();
         menuBar.setLayout(new BorderLayout());
         menuBar.setVisible(false); // Initially invisible
@@ -50,6 +49,7 @@ public class MainFrame extends JFrame {
 
     private void setupMenuBar() {
         JButton carListButton = new JButton("Cars to Rent");
+
         carListButton.addActionListener(e -> {
         	CarListView carListView = new CarListView();
             cardPanel.add(carListView, "CarListView");
@@ -57,6 +57,7 @@ public class MainFrame extends JFrame {
         });
         JButton carRentingButton = new JButton("Cars Currently Renting");
         carRentingButton.addActionListener(e -> cardLayout.show(cardPanel, "ManageRentedCarsView"));
+
         JButton carOfferingButton = new JButton("Cars Offering for Rent");
         carOfferingButton.addActionListener(e -> cardLayout.show(cardPanel, "HostedCarsView"));
         JButton btRegisterCar = new JButton("Register your car!");
@@ -90,7 +91,7 @@ public class MainFrame extends JFrame {
         cardLayout.show(cardPanel, "CarListView");
         menuBar.setVisible(true);
         setJMenuBar(menuBar);
-        
+
         HostedCarsView hostedCarsView = new HostedCarsView(ClientUserController.loggedUser);
         cardPanel.add(hostedCarsView, "HostedCarsView");
         

@@ -27,12 +27,12 @@ public class Rental {
     @JoinColumn(name = "carID", referencedColumnName = "licensePlate")
     private Car car;
 
-    private LocalDate startDate; // Cambiar el tipo de fecha a LocalDate
-    private LocalDate endDate;
-    private Integer price;
+    private String startDate; // Cambiar el tipo de fecha a LocalDate
+    private String endDate;
+    private Double price;
     private String creationDate;
     
-    public Rental(User user, Car car, LocalDate startDate, LocalDate endDate, Integer price, String creationDate) {
+    public Rental(User user, Car car, String startDate, String endDate, Double price, String creationDate) {
     	this.user = user;
     	this.car = car;
     	this.startDate = startDate;
@@ -70,33 +70,40 @@ public class Rental {
         this.car = car;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
     @Override
-	public String toString() {
-		return "Rental [rentalID=" + rentalID + ", user=" + user + ", car=" + car + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", price=" + price + ", creationDate=" + creationDate + "]";
-	}
+    public String toString() {
+        return "Rental{" +
+                "rentalID=" + rentalID +
+                ", user=" + user +
+                ", car=" + car +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", price=" + price +
+                ", creationDate='" + creationDate + '\'' +
+                '}';
+    }
 
-	public Integer getPrice() {
+	public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

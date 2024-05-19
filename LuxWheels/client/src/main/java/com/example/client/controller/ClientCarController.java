@@ -17,10 +17,13 @@ public class ClientCarController {
     }
 
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
-	
-    public static void createCar(String brand, String location, String model, String year, CarModel.CarCondition condition, String description) {
+    public static CarModel getCarByLicensePlate(Integer licensePlate) {
+        return carService.getCarByLicensePlate(licensePlate);
+    }
 
-        System.out.println(ClientUserController.loggedUser.getName());
+    public static void createCar(String brand, String location, String model, String year, CarModel.CarCondition condition, String description, Double pricePerDay) {
+
+        System.out.println("Creating car! - Owner: " + ClientUserController.loggedUser.toString());
 
         CarModel car = new CarModel();
         //car.setLicensePlate(licensePlate);
@@ -31,6 +34,7 @@ public class ClientCarController {
         car.setCarCondition(condition);
         car.setUser(ClientUserController.loggedUser);
         car.setDescription(description);
+        car.setPricePerDay(pricePerDay);
 
         carService.createCar(car);
     }

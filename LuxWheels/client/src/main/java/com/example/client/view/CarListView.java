@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class CarListView extends JPanel {
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
@@ -79,6 +80,7 @@ public class CarListView extends JPanel {
 
         addLabelAndValue("Brand:", car.getBrand());
         addLabelAndValue("Model:", car.getModel());
+        addLabelAndValue("Price per day:", String.valueOf(car.getPricePerDay()));
         addLabelAndValue("Year:", car.getYear());
         addLabelAndValue("Condition:", car.getCarCondition().toString());
         addLabelAndValue("Location:", car.getLocation());
@@ -94,9 +96,7 @@ public class CarListView extends JPanel {
 
         JButton rentButton = new JButton("Rent Now!");
         rentButton.setBackground(Color.GREEN);
-        rentButton.addActionListener(e -> {
-            //TODO
-        });
+        rentButton.addActionListener(this::launchRentingView);
         infoPanel.add(rentButton);
 
         infoPanel.revalidate();
@@ -108,6 +108,12 @@ public class CarListView extends JPanel {
         panel.add(new JLabel(label));
         panel.add(new JLabel(value));
         infoPanel.add(panel);
+    }
+
+    private void launchRentingView(ActionEvent actionEvent){
+        CarModel selectedCar = itemList.getSelectedValue();
+        RentCarView registerCarView = new RentCarView(selectedCar);
+        registerCarView.setVisible(true);
     }
 
     public void updateCarList() {

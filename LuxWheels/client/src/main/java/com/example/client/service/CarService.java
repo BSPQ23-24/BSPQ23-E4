@@ -49,9 +49,33 @@ public class CarService {
         }
     }
 
+    public CarModel getCarByLicensePlate(Integer licensePlate){
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseURL + "/" + licensePlate))
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                return mapper.readValue(response.body(), new TypeReference<CarModel>() {});
+            } else {
+                System.err.println("Error: " + response);
+                return new CarModel();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new CarModel();
+        }
+    }
+
 	public String deleteCar(int licensePlate) {
+
 		System.out.println(URI.create(baseURL + licensePlate));
 		System.out.println(URI.create(baseURL + "/" + licensePlate));
+
         HttpRequest request = HttpRequest.newBuilder()
         		.uri(URI.create(baseURL + "/" + licensePlate))
         		.header("Content-Type", "application/json")

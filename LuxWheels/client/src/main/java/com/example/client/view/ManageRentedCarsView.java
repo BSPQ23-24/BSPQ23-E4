@@ -71,8 +71,8 @@ public class ManageRentedCarsView extends JPanel {
         RentalModel selectedRental = rentalList.getSelectedValue();
         if (selectedRental != null) {
             CarModel selectedCar = selectedRental.getCar();
-            LocalDate startDate = selectedRental.getStartDate();
-            LocalDate endDate = selectedRental.getEndDate();
+            LocalDate startDate = LocalDate.parse(selectedRental.getStartDate());
+            LocalDate endDate = LocalDate.parse(selectedRental.getEndDate());
             LocalDate creationDate = LocalDate.parse(selectedRental.getCreationDate(), formatter);
             String rentalStatus = determineRentalStatus(startDate, endDate);
 

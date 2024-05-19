@@ -16,4 +16,5 @@ public interface RentalRepository extends JpaRepository<Rental, Integer>{
 
 	@Query("SELECT r.car FROM Rental r WHERE r.user.email = :email")
 	List<Car> findAllCarsByUserEmail(String email);
+	List<Rental> findRentalsByCar(Car car);
 }
