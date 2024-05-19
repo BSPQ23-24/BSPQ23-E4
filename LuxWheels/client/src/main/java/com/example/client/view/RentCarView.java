@@ -99,7 +99,7 @@ public class RentCarView extends JFrame {
 
         // Buttons
         submitButton = new JButton("Submit");
-        cancelButton = new JButton("Cancel");
+        cancelButton = new JButton("Clear selection");
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -150,7 +150,7 @@ public class RentCarView extends JFrame {
         }
 
         if (selectingStartDate) {
-            selectedDates.clear();
+            clearSelectedDates();
             startDate = localDate;
             endDate = null;
             startDateField.setText(startDate.toString());
@@ -162,11 +162,7 @@ public class RentCarView extends JFrame {
             endDate = localDate;
             if (endDate.isBefore(startDate) || endDate.isEqual(startDate)) {
                 JOptionPane.showMessageDialog(this, "End date must be after start date. Please select the dates again.");
-                startDate = null;
-                endDate = null;
-                startDateField.setText("");
-                endDateField.setText("");
-                selectingStartDate = true;
+                clearSelectedDates();
             } else {
                 endDateField.setText(endDate.toString());
                 updateSelectedDates();
@@ -176,8 +172,8 @@ public class RentCarView extends JFrame {
                 } else {
                     updateCalendar();
                 }
-                selectingStartDate = true; // Reset to allow new selection if needed
             }
+            selectingStartDate = true;
         }
     }
 

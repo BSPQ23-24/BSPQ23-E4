@@ -73,12 +73,12 @@ public class RentalServiceTests {
     	RentalRequest rentalRequest = new RentalRequest();
     	rentalRequest.setCarId(this.car.getLicensePlate());
     	rentalRequest.setUserId(this.user.getId());
+		rentalRequest.setStartDate("2024-05-25");
+		rentalRequest.setEndDate("2024-05-28");
+		rentalRequest.setPrice(599.99);
+		rentalRequest.setCreationDate("2024-05-22");
 
-        rentalService.createRental(rentalRequest);
-
-		Rental rental = new Rental();
-		rental.setCar(this.car);
-		rental.setUser(this.user);
+        Rental rental = rentalService.createRental(rentalRequest);
 
         this.rental = rental;
 
