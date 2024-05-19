@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.server.helper.RentalRequest;
+import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -68,13 +70,18 @@ public class RentalServiceTests {
 
     @Test
     public void testCreateRental() {
-    	Rental rental = new Rental();
-    	rental.setCar(this.car);
-    	rental.setUser(this.user);
-    	System.out.println(rental);
+    	RentalRequest rentalRequest = new RentalRequest();
+    	rentalRequest.setCarId(this.car.getLicensePlate());
+    	rentalRequest.setUserId(this.user.getId());
 
-        rentalService.createRental(rental);
+        rentalService.createRental(rentalRequest);
+
+		Rental rental = new Rental();
+		rental.setCar(this.car);
+		rental.setUser(this.user);
+
         this.rental = rental;
+
         assertEquals(rental.toString(), rentalService.getRentalById(rental.getRentalID()).toString());
     }
     

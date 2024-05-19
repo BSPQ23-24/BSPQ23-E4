@@ -145,6 +145,7 @@ public class RentCarView extends JFrame {
         if (localDate == null || unavailableDates.contains(localDate)) {
             clearSelectedDates();
             JOptionPane.showMessageDialog(this, "Unavailable date clicked. Please try again.");
+            selectingStartDate = true;
             return;
         }
 
@@ -220,6 +221,9 @@ public class RentCarView extends JFrame {
         // Clear previous selections
         for (Component comp : availabilityCalendar.getDayChooser().getDayPanel().getComponents()) {
             comp.setBackground(Color.WHITE);
+            if (comp instanceof JButton) {
+                ((JButton) comp).setForeground(Color.BLACK);
+            }
         }
 
         // Highlight unavailable dates
@@ -242,7 +246,8 @@ public class RentCarView extends JFrame {
                             try {
                                 int day = Integer.parseInt(button.getText());
                                 if (day == dayOfMonth) {
-                                    button.setBackground(Color.BLUE);
+                                    button.setBackground(new Color(10, 7, 56));
+                                    button.setForeground(new Color(245, 245, 245));
                                     break; // Exit loop once the date is found and highlighted
                                 }
                             } catch (NumberFormatException e) {
@@ -274,7 +279,7 @@ public class RentCarView extends JFrame {
                             try {
                                 int day = Integer.parseInt(button.getText());
                                 if (day == dayOfMonth) {
-                                    button.setBackground(Color.LIGHT_GRAY);
+                                    button.setBackground(new Color(54, 209, 96));
                                     break; // Exit loop once the date is found and highlighted
                                 }
                             } catch (NumberFormatException e) {
@@ -288,35 +293,35 @@ public class RentCarView extends JFrame {
     }
 
     private void handleSubmit() {
-        int option = JOptionPane.showConfirmDialog(
-                this,
-                "Are you sure you want to register this car?",
-                "Confirm Car Registration",
-                JOptionPane.YES_NO_OPTION
-        );
-        if (option == JOptionPane.YES_OPTION) {
-            Double carPrice = 0.0;
-            long daysBetween = 0;
+        if (startDate != null && endDate != null) {
 
-            if (startDate != null && endDate != null) {
-                daysBetween = ChronoUnit.DAYS.between(startDate, endDate) + 1;
+            long daysBetween = ChronoUnit.DAYS.between(startDate, endDate) + 1;
+            Double rentalPrice = selectedCar.getPricePerDay() * daysBetween;
+
+            int option = JOptionPane.showConfirmDialog(
+                    this,
+                    "Final rental price: " + rentalPrice + " - Please confirm by clicking 'Yes'",
+                    "Confirm Car Rental",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (option == JOptionPane.YES_OPTION) {
                 String carModelsModel = selectedCar.getModel();
                 String carBrand = selectedCar.getBrand();
                 String carPlate = String.valueOf(selectedCar.getLicensePlate());
-                carPrice = selectedCar.getPricePerDay();
                 System.out.println("-------- Renting car --------");
                 System.out.println("Rented car: " + carBrand + " " + carModelsModel);
                 System.out.println("Car Plate: " + carPlate);
                 System.out.println("Start date: " + startDate.toString() + " - End date: " + endDate.toString());
                 System.out.println("Rental Period: " + String.valueOf(daysBetween) + " days");
 
-            } else {
-                JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
+                ClientRentalController.createRental(selectedCar, startDate, endDate, rentalPrice);
+                System.out.println("Rental creation button clicked");
+                closeWindow();
             }
-            carPrice = 5.0;
-            ClientRentalController.createRental(selectedCar, startDate, endDate, carPrice * daysBetween);
-            System.out.println("Rental creation button clicked");
-            closeWindow();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
+            return;
         }
     }
 
