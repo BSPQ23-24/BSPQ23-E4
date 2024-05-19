@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ github-actions ]
+  pull_request:
+    branches: [ github-actions ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven
+
+      - name: Build root project
+        run: mvn clean install --file pom.xml
+
+      - name: Build client module
+        run: mvn clean install --file client/pom.xml
+
+      - name: Build server module
+        run: mvn clean install --file server/pom.xml
+
+      - name: Run tests for root project
+        run: mvn test --file pom.xml
+
+      - name: Run tests for client module
+        run: mvn test --file client/pom.xml
+
+      - name: Run tests for server module
+        run: mvn test --file server/pom.xml
