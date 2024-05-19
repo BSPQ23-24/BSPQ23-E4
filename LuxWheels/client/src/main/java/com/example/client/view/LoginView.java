@@ -34,7 +34,7 @@ public class LoginView extends JPanel {
     private JComboBox<String> languageComboBox;
     private ResourceBundle messages;
     private MainFrame mainFrame;
-    
+
     public LoginView(MainFrame mainFrame, ResourceBundle messages) {
         this.messages = messages;
         this.initUI();
