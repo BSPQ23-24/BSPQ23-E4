@@ -9,8 +9,5 @@ import com.example.server.entity.Rental;
 
 public interface RentalRepository extends JpaRepository<Rental, Integer>{
 
-	Optional<Rental> findById(Integer rentalID);
-	//TODO List<Rental> getUserRentals(Integer userId);
-	void deleteById(Integer rentalID);
 	List<Rental> findRentalsByCar(Car car);
 }

@@ -313,7 +313,7 @@ public class RentCarView extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
             }
-
+            carPrice = 5.0;
             ClientRentalController.createRental(selectedCar, startDate, endDate, carPrice * daysBetween);
             System.out.println("Rental creation button clicked");
             closeWindow();

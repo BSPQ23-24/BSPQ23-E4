@@ -3,6 +3,7 @@ package com.example.client.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.example.client.helper.ClientRentalRequest;
 import com.example.client.model.CarModel;
 import com.example.client.model.RentalModel;
 import com.example.client.model.UserModel;
@@ -17,16 +18,14 @@ public class ClientRentalController {
     public static List<CarModel> getRentedCarsByUser() { return rentalService.getCarsRentedByUser( ClientUserController.loggedUser ); }
 
     public static void createRental(CarModel car, LocalDate startDate, LocalDate endDate, Double price) {
+        ClientRentalRequest request = new ClientRentalRequest();
+        request.setCarId(car.getLicensePlate());
+        request.setStartDate(startDate.toString());
+        request.setEndDate(endDate.toString());
+        request.setPrice(price);
+        request.setCreationDate(LocalDate.now().toString());
+        request.setUserId(ClientUserController.loggedUser.getId());
 
-        RentalModel rentalModel = new RentalModel();
-        //rentalModel.setRentalID();
-        rentalModel.setCar(car);
-        rentalModel.setStartDate(startDate.toString());
-        rentalModel.setEndDate(endDate.toString());
-        rentalModel.setPrice(price);
-        rentalModel.setCreationDate(LocalDate.now().toString());
-        rentalModel.setUser(ClientUserController.loggedUser);
-
-        rentalService.createRental(rentalModel);
+        rentalService.createRental(request);
     }
 }

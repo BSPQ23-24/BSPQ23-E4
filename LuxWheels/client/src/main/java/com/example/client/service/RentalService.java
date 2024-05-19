@@ -7,6 +7,7 @@ import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
 
+import com.example.client.helper.ClientRentalRequest;
 import com.example.client.model.CarModel;
 import com.example.client.model.RentalModel;
 import com.example.client.model.UserModel;
@@ -90,8 +91,8 @@ public class RentalService {
         }
     }
 
-    public String createRental(RentalModel rental) {
-        String rentalJson = convertRentalToJson(rental);
+    public String createRental(ClientRentalRequest rentalRequest) {
+        String rentalJson = convertRentalRequestToJson(rentalRequest);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(baseURL + "/create"))
@@ -109,6 +110,18 @@ public class RentalService {
     }
 
     private String convertRentalToJson(RentalModel rental) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json = mapper.writeValueAsString(rental);
+            System.out.println("Generated JSON: " + json);
+            return json;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private String convertRentalRequestToJson(ClientRentalRequest rental) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             String json = mapper.writeValueAsString(rental);

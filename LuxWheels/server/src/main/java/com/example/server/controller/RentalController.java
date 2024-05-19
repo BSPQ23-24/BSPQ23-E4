@@ -1,19 +1,16 @@
 package com.example.server.controller;
 
-import com.example.server.ServerApplication;
 import com.example.server.entity.Car;
 import com.example.server.entity.Rental;
-import com.example.server.repository.CarRepository;
+import com.example.server.helper.RentalRequest;
 import com.example.server.service.CarService;
 import com.example.server.service.RentalService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/api/rentals")
@@ -28,10 +25,8 @@ public class RentalController {
     private CarService carService;
 
     @PostMapping("/create")
-    public Rental create(@RequestBody Rental rental) {
-        System.out.println(rental);
-
-        return rentalService.createRental(rental);
+    public Rental create(@RequestBody RentalRequest rentalRequest) {
+        return rentalService.createRental(rentalRequest);
     }
 
     @GetMapping("/{rentalId}")
