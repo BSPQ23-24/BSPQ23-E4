@@ -39,7 +39,7 @@ public class ClientUserControllerIntegrationTests {
         deleteUser(user);
     }
 
-    //@Test
+    @Test
     @Order(1)
     public void testCreateUser() throws Exception {
         String userJson = new ObjectMapper().writeValueAsString(user);
@@ -59,7 +59,7 @@ public class ClientUserControllerIntegrationTests {
         user.setId(createdUser.getId());
     }
 
-    //@Test
+    @Test
     @Order(2)
     public void testLoginUser() throws Exception {
         String userJson = objectMapper.writeValueAsString(user);

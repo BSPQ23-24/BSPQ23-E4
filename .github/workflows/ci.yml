@@ -52,19 +52,20 @@ jobs:
             exit 1
           fi
 
-      - name: Build root project
-        run: mvn clean install --file LuxWheels/pom.xml
+      - name: Build and start server
+        run: |
+          mvn clean install --file LuxWheels/server/pom.xml
+          mvn spring-boot:run --file LuxWheels/server/pom.xml &
+          sleep 30
 
       - name: Build client module
         run: mvn clean install --file LuxWheels/client/pom.xml
 
-      - name: Build server module
-        run: mvn clean install --file LuxWheels/server/pom.xml
-
-      - name: Run tests for root project
-        run: mvn test --file LuxWheels/pom.xml
-
       - name: Run tests for client module
+        env:
+          DB_URL: jdbc:mysql://127.0.0.1:3306/luxwheels
+          DB_USERNAME: root
+          DB_PASSWORD: root
         run: mvn test --file LuxWheels/client/pom.xml
 
       - name: Run tests for server module
