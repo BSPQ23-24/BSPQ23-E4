@@ -21,6 +21,8 @@ public class RentCarView extends JFrame {
     public static RentCarView instance;
     private MainFrame mainFrame;
     private CarModel selectedCar;
+    private ResourceBundle messages;
+    private Locale locale;
 
     private JTextField startDateField;
     private JTextField endDateField;
@@ -34,14 +36,16 @@ public class RentCarView extends JFrame {
     private Set<LocalDate> unavailableDates;
     private boolean selectingStartDate = true;
 
-    public RentCarView(CarModel selectedCar) {
+    public RentCarView(CarModel selectedCar, Locale locale, ResourceBundle messages) {
         this.selectedCar = selectedCar;
         this.selectedDates = new HashSet<>();
         this.unavailableDates = new HashSet<>();
+        this.messages = messages;
+        this.locale = locale;
 
         fillUnavailableDates(ClientRentalController.getRentalsByLicensePlate(selectedCar.getLicensePlate()));
 
-        setTitle("Car registration - LuxWheels");
+        setTitle(messages.getString("title.carRegistration"));
         setSize(700, 500);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
@@ -64,13 +68,13 @@ public class RentCarView extends JFrame {
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         Font labelFont = new Font("SansSerif", Font.BOLD, 12);
 
-        JLabel carModelLabel = new JLabel("Car Model:");
+        JLabel carModelLabel = new JLabel(messages.getString("label.carModel") + ":");
         JLabel selectedCarModel = new JLabel(this.selectedCar.getModel());
 
-        JLabel carBrandLabel = new JLabel("Car Brand:");
+        JLabel carBrandLabel = new JLabel(messages.getString("label.carBrand") + ":");
         JLabel selectedCarBrand = new JLabel(this.selectedCar.getBrand());
 
-        JLabel carPlateLabel = new JLabel("Car Plate:");
+        JLabel carPlateLabel = new JLabel(messages.getString("label.carPlate") + ":");
         JLabel selectedCarPlate = new JLabel(String.valueOf(this.selectedCar.getLicensePlate()));
 
         Stream.of(carModelLabel, selectedCarModel, carBrandLabel, selectedCarBrand, carPlateLabel, selectedCarPlate)
@@ -84,11 +88,11 @@ public class RentCarView extends JFrame {
         formPanel.add(selectedCarPlate);
 
         // Date text fields
-        JLabel startDateLabel = new JLabel("Start Date:");
+        JLabel startDateLabel = new JLabel(messages.getString("label.startDate") + ":");
         startDateField = new JTextField();
         startDateField.setEditable(false);
 
-        JLabel endDateLabel = new JLabel("End Date:");
+        JLabel endDateLabel = new JLabel(messages.getString("label.endDate") + ":");
         endDateField = new JTextField();
         endDateField.setEditable(false);
 
@@ -98,8 +102,8 @@ public class RentCarView extends JFrame {
         formPanel.add(endDateField);
 
         // Buttons
-        submitButton = new JButton("Submit");
-        cancelButton = new JButton("Cancel");
+        submitButton = new JButton(messages.getString("button.submit"));
+        cancelButton = new JButton(messages.getString("button.cancel"));
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -144,7 +148,7 @@ public class RentCarView extends JFrame {
 
         if (localDate == null || unavailableDates.contains(localDate)) {
             clearSelectedDates();
-            JOptionPane.showMessageDialog(this, "Unavailable date clicked. Please try again.");
+            JOptionPane.showMessageDialog(this, messages.getString("message.unavailableDate"));
             selectingStartDate = true;
             return;
         }
@@ -161,7 +165,7 @@ public class RentCarView extends JFrame {
         } else {
             endDate = localDate;
             if (endDate.isBefore(startDate) || endDate.isEqual(startDate)) {
-                JOptionPane.showMessageDialog(this, "End date must be after start date. Please select the dates again.");
+                JOptionPane.showMessageDialog(this, messages.getString("message.endDateError"));
                 startDate = null;
                 endDate = null;
                 startDateField.setText("");
@@ -171,7 +175,7 @@ public class RentCarView extends JFrame {
                 endDateField.setText(endDate.toString());
                 updateSelectedDates();
                 if (datesIntersectWithUnavailableDates()) {
-                    JOptionPane.showMessageDialog(this, "Selected dates intersect with unavailable dates. Please choose different dates.");
+                    JOptionPane.showMessageDialog(this, messages.getString("message.intersectUnavailableDates"));
                     clearSelectedDates();
                 } else {
                     updateCalendar();
@@ -216,6 +220,7 @@ public class RentCarView extends JFrame {
         }
         return false;
     }
+
 
     private void updateCalendar() {
         // Clear previous selections
@@ -300,8 +305,9 @@ public class RentCarView extends JFrame {
 
             int option = JOptionPane.showConfirmDialog(
                     this,
-                    "Final rental price: " + rentalPrice + " - Please confirm by clicking 'Yes'",
-                    "Confirm Car Rental",
+                    messages.getString("message.rentalPrice") + rentalPrice + " - " +
+                            messages.getString("message.confirmRental"),
+                    messages.getString("title.confirmRental"),
                     JOptionPane.YES_NO_OPTION
             );
             if (option == JOptionPane.YES_OPTION) {
@@ -320,7 +326,7 @@ public class RentCarView extends JFrame {
             }
 
         } else {
-            JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
+            JOptionPane.showMessageDialog(this, messages.getString("message.selectDates"));
             return;
         }
     }
@@ -329,7 +335,7 @@ public class RentCarView extends JFrame {
         clearSelectedDates();
     }
 
-    public static RentCarView getInstance(MainFrame mainFrame) {
+    public static RentCarView getInstance(MainFrame mainFrame, Locale locale, ResourceBundle messages) {
         if (instance == null) {
             //instance = new RentCarView(mainFrame);
         }

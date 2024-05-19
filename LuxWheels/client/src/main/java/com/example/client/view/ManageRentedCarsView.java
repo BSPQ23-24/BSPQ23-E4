@@ -13,20 +13,26 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class ManageRentedCarsView extends JPanel {
     private JList<RentalModel> rentalList;
     private DefaultListModel<RentalModel> rentalListModel;
     private JTextArea detailsArea;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private ResourceBundle messages;
+    private Locale locale;
 
-    public ManageRentedCarsView() {
+    public ManageRentedCarsView(Locale locale, ResourceBundle messages) {
+        this.messages = messages;
+        this.locale = locale;
         setLayout(new BorderLayout());
         initializeUI();
     }
 
     private void initializeUI() {
-        JLabel headingLabel = new JLabel("Manage Your Rented Cars");
+        JLabel headingLabel = new JLabel(messages.getString("label.manageRentedCars"));
         headingLabel.setFont(new Font("Arial", Font.BOLD, 16));
         headingLabel.setHorizontalAlignment(JLabel.CENTER);
         add(headingLabel, BorderLayout.NORTH);
@@ -77,33 +83,33 @@ public class ManageRentedCarsView extends JPanel {
             String rentalStatus = determineRentalStatus(startDate, endDate);
 
             detailsArea.setText(
-                    "Brand: " + selectedCar.getBrand() +
-                            "\nModel: " + selectedCar.getModel() +
-                            "\nYear: " + selectedCar.getYear() +
-                            "\nLicense Plate: " + selectedCar.getLicensePlate() +
-                            "\nCondition: " + selectedCar.getCarCondition() +
-                            "\nLocation: " + selectedCar.getLocation() +
-                            "\nUser: " + (selectedCar.getUser() != null ? selectedCar.getUser().getName() : "N/A") +
-                            "\nDescription: " + selectedCar.getDescription() +
-                            "\n\nRental Details:" +
-                            "\nStart Date: " + startDate.format(formatter) +
-                            "\nEnd Date: " + endDate.format(formatter) +
-                            "\nCreation Date: " + creationDate.format(formatter) +
-                            "\nRental Status: " + rentalStatus
+                    messages.getString("label.brand") + ": " + selectedCar.getBrand() +
+                            "\n" + messages.getString("label.model") + ": " + selectedCar.getModel() +
+                            "\n" + messages.getString("label.year") + ": " + selectedCar.getYear() +
+                            "\n" + messages.getString("label.licensePlate") + ": " + selectedCar.getLicensePlate() +
+                            "\n" + messages.getString("label.condition") + ": " + selectedCar.getCarCondition() +
+                            "\n" + messages.getString("label.location") + ": " + selectedCar.getLocation() +
+                            "\n" + messages.getString("label.user") + ": " + (selectedCar.getUser() != null ? selectedCar.getUser().getName() : "N/A") +
+                            "\n" + messages.getString("label.description") + ": " + selectedCar.getDescription() +
+                            "\n\n" + messages.getString("label.rentalDetails") +
+                            "\n" + messages.getString("label.startDate") + ": " + startDate.format(formatter) +
+                            "\n" + messages.getString("label.endDate") + ": " + endDate.format(formatter) +
+                            "\n" + messages.getString("label.creationDate") + ": " + creationDate.format(formatter) +
+                            "\n" + messages.getString("label.rentalStatus") + ": " + rentalStatus
             );
         } else {
-            detailsArea.setText("Select a car to view details.");
+            detailsArea.setText(messages.getString("message.selectCar"));
         }
     }
 
     private String determineRentalStatus(LocalDate startDate, LocalDate endDate) {
         LocalDate today = LocalDate.now();
         if (today.isBefore(startDate)) {
-            return "Not yet started";
+            return messages.getString("label.notStarted");
         } else if (today.isAfter(endDate)) {
-            return "Ended";
+            return messages.getString("label.ended");
         } else {
-            return "Currently active";
+            return messages.getString("label.active");
         }
     }
 

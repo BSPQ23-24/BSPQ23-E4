@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class RegisterCarView extends JFrame {
 
@@ -40,14 +42,18 @@ public class RegisterCarView extends JFrame {
 
     private JButton registerButton;
     private MainFrame mainFrame;
+    private ResourceBundle messages;
+    private Locale locale;
 
-    public RegisterCarView(MainFrame mainFrame) {
-        setTitle("Car registration - LuxWheels");
+    public RegisterCarView(MainFrame mainFrame, Locale locale, ResourceBundle messages) {
+        setTitle(messages.getString("title.carRegistration"));
         setSize(700, 550);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.mainFrame = mainFrame;
+        this.messages = messages;
+        this.locale = locale;
         initUI();
     }
 
@@ -58,14 +64,14 @@ public class RegisterCarView extends JFrame {
 
         // --------- Form section ---------
 
-        lsLicensePlate = new JLabel("License Plate:");
-        lsCarCondition = new JLabel("Car Condition:");
-        lsBrand = new JLabel("Brand:");
-        lsModel = new JLabel("Model:");
-        lsYear = new JLabel("Year:");
-        lsLocation = new JLabel("Location:");
-        lsPricePerDay = new JLabel("Rent price per day: ");
-        lsDescription = new JLabel("Description:");
+        lsLicensePlate = new JLabel(messages.getString("label.licensePlate"));
+        lsCarCondition = new JLabel(messages.getString("label.carCondition"));
+        lsBrand = new JLabel(messages.getString("label.brand"));
+        lsModel = new JLabel(messages.getString("label.model"));
+        lsYear = new JLabel(messages.getString("label.year"));
+        lsLocation = new JLabel(messages.getString("label.location"));
+        lsPricePerDay = new JLabel(messages.getString("label.pricePerDay"));
+        lsDescription = new JLabel(messages.getString("label.description"));
 
         Stream.of(lsLicensePlate, lsCarCondition, lsBrand, lsModel, lsYear, lsLocation, lsPricePerDay, lsDescription)
                 .forEach(label -> label.setFont(labelFont));
@@ -82,8 +88,6 @@ public class RegisterCarView extends JFrame {
         tsPricePerDay = new JTextField(5);
         tsDescription = new JTextField(15);
 
-//        formPanel.add(lsLicensePlate);
-//        formPanel.add(tslicensePlate);
         formPanel.add(lsCarCondition);
         formPanel.add(conditionComboBox);
         formPanel.add(lsBrand);
@@ -106,7 +110,7 @@ public class RegisterCarView extends JFrame {
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        registerButton = new JButton("Register Car");
+        registerButton = new JButton(messages.getString("button.registerCar"));
         registerButton.setFont(new Font("SansSerif", Font.BOLD, 14));
         registerButton.addActionListener(this::registerCarAction);
 
@@ -144,14 +148,12 @@ public class RegisterCarView extends JFrame {
     private void registerCarAction(ActionEvent e) {
         if (Arrays.asList(tsBrand, tsModel, tsYear, tsLocation, tsDescription, tsPricePerDay)
                 .stream().anyMatch(component -> component.getText().isEmpty())) {
-            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, messages.getString("message.fillAllFields"), messages.getString("message.error"), JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to register this car?", "Confirm Car Registration", JOptionPane.YES_NO_OPTION);
+        int option = JOptionPane.showConfirmDialog(this, messages.getString("message.confirmRegistration"), messages.getString("title.confirmCarRegistration"), JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
-            // Extract data from text fields
-            //Integer licensePlate = Integer.valueOf(tslicensePlate.getText());
             CarModel.CarCondition selectedCondition = (CarModel.CarCondition) conditionComboBox.getSelectedItem();
             String brand = tsBrand.getText();
             String model = tsModel.getText();
@@ -163,20 +165,11 @@ public class RegisterCarView extends JFrame {
             try {
                 pricePerDay = Double.parseDouble(tsPricePerDay.getText());
             } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Price per day should be in Float format.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, messages.getString("message.priceFormatError"), messages.getString("message.error"), JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-            try {
-                Date yearDate = sdf.parse(yearText);
-            } catch (ParseException pe) {
-                JOptionPane.showMessageDialog(this, "Invalid year format. Please use YYYY.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }*/
-
             ClientCarController.createCar(brand, location, model, yearText, selectedCondition, description, pricePerDay);
-            System.out.println("Car Registration button clicked");
             closeWindow();
 
             this.mainFrame.getCarListView().updateCarList();
@@ -195,7 +188,6 @@ public class RegisterCarView extends JFrame {
         this.dispose();
         RegisterCarView.instance = null;
     }
-
     /* MAIN
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

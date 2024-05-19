@@ -6,23 +6,28 @@ import com.example.client.model.UserModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class HostedCarsView extends JPanel {
-	private static final Logger logger = LogManager.getLogger(LoginView.class);
+    private static final Logger logger = LogManager.getLogger(LoginView.class);
     private DefaultListModel<CarModel> carListModel;
     private JList<CarModel> carList;
     private JPanel infoPanel;
     private UserModel currentUser;
+    private Locale locale;
+    private ResourceBundle messages;
 
-    public HostedCarsView(UserModel user) {
-        logger.info("CarListView generated");
+    public HostedCarsView(UserModel user, Locale locale, ResourceBundle messages) {
+        this.locale = locale;
+        this.messages = messages;
+        logger.info("HostedCarsView generated");
         setLayout(new BorderLayout());
 
-        JLabel headingLabel = new JLabel("Available Cars for Rent");
+        JLabel headingLabel = new JLabel(messages.getString("label.availableCars"));
         headingLabel.setFont(new Font("Arial", Font.BOLD, 16));
         headingLabel.setHorizontalAlignment(JLabel.CENTER);
         add(headingLabel, BorderLayout.NORTH);
@@ -66,11 +71,10 @@ public class HostedCarsView extends JPanel {
         });
 
         if (!carListModel.isEmpty()) {
-        	carList.setSelectedIndex(0);
+            carList.setSelectedIndex(0);
             updateInfoPanel(carList.getSelectedValue());
         }
     }
-
 
     // Loads the list of cars hosted by the current user
     public void loadUserCars() {
@@ -83,21 +87,21 @@ public class HostedCarsView extends JPanel {
             }
         }
     }
-    
+
     private void updateInfoPanel(CarModel car) {
         if (car == null) {
-            System.out.println("No car selected or car data is null");
+            System.out.println(messages.getString("message.noCarSelected"));
             return;
         }
         infoPanel.removeAll();
 
-        addLabelAndValue("Brand:", car.getBrand());
-        addLabelAndValue("Model:", car.getModel());
-        addLabelAndValue("Year:", car.getYear());
-        addLabelAndValue("Condition:", car.getCarCondition().toString());
-        addLabelAndValue("Location:", car.getLocation());
+        addLabelAndValue(messages.getString("label.brand"), car.getBrand());
+        addLabelAndValue(messages.getString("label.model"), car.getModel());
+        addLabelAndValue(messages.getString("label.year"), car.getYear());
+        addLabelAndValue(messages.getString("label.condition"), car.getCarCondition().toString());
+        addLabelAndValue(messages.getString("label.location"), car.getLocation());
         if (car.getUser() != null) {
-            addLabelAndValue("Owner:", car.getUser().getName());
+            addLabelAndValue(messages.getString("label.owner"), car.getUser().getName());
         }
 
         JTextArea descriptionArea = new JTextArea(car.getDescription());
@@ -107,37 +111,33 @@ public class HostedCarsView extends JPanel {
         infoPanel.add(new JScrollPane(descriptionArea));
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING)); 
-        
-        JButton modifyButton = new JButton("Modify car");
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+
+        JButton modifyButton = new JButton(messages.getString("button.modifyCar"));
         modifyButton.setBackground(Color.GREEN);
-        JButton deleteButton = new JButton("Delete car");
+        JButton deleteButton = new JButton(messages.getString("button.deleteCar"));
         deleteButton.setBackground(Color.RED);
-        
+
         deleteButton.addActionListener(e -> {
             ClientCarController.deleteCar(car.getLicensePlate());
             logger.info("Delete Car");
             logger.info(car.getLicensePlate());
             this.loadUserCars();
-            
         });
-        
+
         buttonPanel.add(modifyButton);
-        buttonPanel.add(Box.createHorizontalStrut(10)); 
+        buttonPanel.add(Box.createHorizontalStrut(10));
         buttonPanel.add(deleteButton);
-        
-        
+
         infoPanel.add(buttonPanel);
         infoPanel.revalidate();
         infoPanel.repaint();
     }
-    
+
     private void addLabelAndValue(String label, String value) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panel.add(new JLabel(label));
         panel.add(new JLabel(value));
         infoPanel.add(panel);
     }
-    
-    
 }
