@@ -34,13 +34,9 @@ public class LoginView extends JPanel {
     private JComboBox<String> languageComboBox;
     private ResourceBundle messages;
     private MainFrame mainFrame;
-
-    public LoginView(ResourceBundle messages) {
-        this.messages = messages;
-        this.initUI();
-    }
     
-    public LoginView(MainFrame mainFrame) {
+    public LoginView(MainFrame mainFrame, ResourceBundle messages) {
+        this.messages = messages;
         this.initUI();
         this.mainFrame = mainFrame;
     }
@@ -192,18 +188,6 @@ public class LoginView extends JPanel {
         loginButton.setText(messages.getString("button.login"));
         signupLabel.setText(messages.getString("label.signup"));
         signupButton.setText(messages.getString("button.signup"));
-    }
-
-    public static void main(String[] args) {
-        Locale locale = new Locale("en");
-        ResourceBundle messages = ResourceBundle.getBundle("messages/messages", locale);
-        LoginView loginView = new LoginView(messages);
-        JFrame frame = new JFrame(messages.getString("title.welcome"));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(loginView);
-        frame.pack(); 
-        frame.setLocationRelativeTo(null); 
-        frame.setVisible(true);
     }
 
 }
