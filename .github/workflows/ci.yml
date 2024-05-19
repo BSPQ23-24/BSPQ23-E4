@@ -16,8 +16,8 @@ jobs:
         image: mysql:8.0
         options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
         env:
-          MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: test_db
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: luxwheels
         ports:
           - 3306:3306
 
@@ -69,7 +69,7 @@ jobs:
 
       - name: Run tests for server module
         env:
-          DB_URL: jdbc:mysql://127.0.0.1:3306/test_db
+          DB_URL: jdbc:mysql://127.0.0.1:3306/luxwheels
           DB_USERNAME: root
-          DB_PASSWORD: root_password
+          DB_PASSWORD: root
         run: mvn test --file LuxWheels/server/pom.xml
