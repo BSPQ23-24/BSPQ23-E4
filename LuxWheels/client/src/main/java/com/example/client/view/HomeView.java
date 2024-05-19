@@ -31,7 +31,7 @@ public class HomeView extends JFrame {
 
     private void initUI() {
         buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        btRegisterCar = new JButton(messages.getString("button.registerCar"));
+        btRegisterCar = new JButton(messages.getString("button.registerYourCar"));
         btRegisterCar.addActionListener(this::registerCar);
         buttonPanel.add(btRegisterCar);
         add(buttonPanel, BorderLayout.SOUTH);
