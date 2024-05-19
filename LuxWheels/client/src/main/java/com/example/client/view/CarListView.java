@@ -9,18 +9,24 @@ import org.apache.logging.log4j.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class CarListView extends JPanel {
-	private static final Logger logger = LogManager.getLogger(LoginView.class);
+    private static final Logger logger = LogManager.getLogger(CarListView.class);
     private JList<CarModel> itemList;
     private DefaultListModel<CarModel> model;
     private JPanel infoPanel;
+    private Locale locale;
+    private ResourceBundle messages;
 
-    public CarListView() {
+    public CarListView(Locale locale, ResourceBundle messages) {
+        this.locale = locale;
+        this.messages = messages;
         logger.info("CarListView generated");
         setLayout(new BorderLayout());
 
-        JLabel headingLabel = new JLabel("Available Cars for Rent");
+        JLabel headingLabel = new JLabel(messages.getString("label.availableCars"));
         headingLabel.setFont(new Font("Arial", Font.BOLD, 16));
         headingLabel.setHorizontalAlignment(JLabel.CENTER);
         add(headingLabel, BorderLayout.NORTH);
@@ -29,7 +35,7 @@ public class CarListView extends JPanel {
         java.util.List<CarModel> cars = ClientCarController.getAllCars();
         for (CarModel car : cars) {
             //if (car.getStatus() == CarModel.Status.OPEN) {
-                model.addElement(car);
+            model.addElement(car);
             //}
         }
 
@@ -73,19 +79,19 @@ public class CarListView extends JPanel {
 
     private void updateInfoPanel(CarModel car) {
         if (car == null) {
-            System.out.println("No car selected or car data is null");
+            System.out.println(messages.getString("label.noCarSelected"));
             return;
         }
         infoPanel.removeAll();
 
-        addLabelAndValue("Brand:", car.getBrand());
-        addLabelAndValue("Model:", car.getModel());
-        addLabelAndValue("Price per day:", String.valueOf(car.getPricePerDay()));
-        addLabelAndValue("Year:", car.getYear());
-        addLabelAndValue("Condition:", car.getCarCondition().toString());
-        addLabelAndValue("Location:", car.getLocation());
+        addLabelAndValue(messages.getString("label.brand"), car.getBrand());
+        addLabelAndValue(messages.getString("label.model"), car.getModel());
+        addLabelAndValue(messages.getString("label.pricePerDay"), String.valueOf(car.getPricePerDay()));
+        addLabelAndValue(messages.getString("label.year"), car.getYear());
+        addLabelAndValue(messages.getString("label.condition"), car.getCarCondition().toString());
+        addLabelAndValue(messages.getString("label.location"), car.getLocation());
         if (car.getUser() != null) {
-            addLabelAndValue("Owner:", car.getUser().getName());
+            addLabelAndValue(messages.getString("label.owner"), car.getUser().getName());
         }
 
         JTextArea descriptionArea = new JTextArea(car.getDescription());
@@ -94,7 +100,7 @@ public class CarListView extends JPanel {
         descriptionArea.setEditable(false);
         infoPanel.add(new JScrollPane(descriptionArea));
 
-        JButton rentButton = new JButton("Rent Now!");
+        JButton rentButton = new JButton(messages.getString("button.rentNow"));
         rentButton.setBackground(Color.GREEN);
         rentButton.addActionListener(this::launchRentingView);
         infoPanel.add(rentButton);
@@ -112,8 +118,8 @@ public class CarListView extends JPanel {
 
     private void launchRentingView(ActionEvent actionEvent){
         CarModel selectedCar = itemList.getSelectedValue();
-        RentCarView registerCarView = new RentCarView(selectedCar);
-        registerCarView.setVisible(true);
+        RentCarView rentCarView = new RentCarView(selectedCar, locale, messages);
+        rentCarView.setVisible(true);
     }
 
     public void updateCarList() {
@@ -121,7 +127,7 @@ public class CarListView extends JPanel {
         java.util.List<CarModel> cars = ClientCarController.getAllCars();
         for (CarModel car : cars) {
             //if (car.getStatus() == CarModel.Status.OPEN) {
-                model.addElement(car);
+            model.addElement(car);
             //}
         }
         if (!model.isEmpty()) {
