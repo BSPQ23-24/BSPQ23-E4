@@ -50,7 +50,11 @@ public class MainFrame extends JFrame {
 
     private void setupMenuBar() {
         JButton carListButton = new JButton(messages.getString("button.carsToRent"));
-        carListButton.addActionListener(e -> cardLayout.show(cardPanel, "CarListView"));
+        carListButton.addActionListener(e -> {
+            CarListView carListView = new CarListView(locale, messages);
+            cardPanel.add(carListView, "CarListView");
+            cardLayout.show(cardPanel, "CarListView");
+        });
 
         JButton carRentingButton = new JButton(messages.getString("button.carsCurrentlyRenting"));
         carRentingButton.addActionListener(e -> cardLayout.show(cardPanel, "ManageRentedCarsView"));
