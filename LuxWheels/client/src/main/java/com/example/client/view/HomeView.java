@@ -38,7 +38,7 @@ public class HomeView extends JFrame {
     }
 
     private void registerCar(ActionEvent actionEvent) {
-        RegisterCarView registerCarView = RegisterCarView.getInstance(locale, messages);
+        RegisterCarView registerCarView = RegisterCarView.getInstance(/*MainFrame, */locale, messages);
         registerCarView.setVisible(true);
     }
 
