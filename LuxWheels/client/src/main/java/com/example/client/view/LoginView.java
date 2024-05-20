@@ -124,7 +124,7 @@ public class LoginView extends JPanel {
                 RegisterView registerView = new RegisterView(locale,messages);
                 registerView.setVisible(true);
 
-                closeWindow(signupButton);
+                //closeWindow(signupButton);
             }
         });
     }
@@ -155,9 +155,9 @@ public class LoginView extends JPanel {
             UserSession userSession = UserSession.getInstance();
             userSession.setEmail(email);
             userSession.setPassword(password);
-            this.mainFrame.onLoginSuccess();      
+            this.mainFrame.onLoginSuccess();
         } else {
-            JOptionPane.showMessageDialog(this, messages.getString("error.login"), "Error", JOptionPane.ERROR_MESSAGE);
+        	JOptionPane.showMessageDialog(this, "Incorrect mail or password, try again", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     

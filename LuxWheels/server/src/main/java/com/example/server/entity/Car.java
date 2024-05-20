@@ -33,7 +33,7 @@ public class Car {
 		return licensePlate;
 	}
 
-	public void setLicensePlate(Integer price) {
+	public void setLicensePlate(Integer licensePlate) {
 		this.licensePlate = licensePlate;
 	}
 

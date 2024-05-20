@@ -208,7 +208,7 @@ public class RegisterView extends JFrame {
             String DNI = tsDNI.getText();
             ClientUserController.createUser(name, surname, email, password, licenseNumber, DNI);
             logger.info("Register button clicked");
-            closeWindow();
+            //closeWindow();
         }
     }
 }

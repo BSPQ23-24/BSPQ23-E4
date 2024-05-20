@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.example.client.controller.ClientUserController;
+import com.example.client.model.UserSession;
 
 public class MainFrame extends JFrame {
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
@@ -31,11 +32,11 @@ public class MainFrame extends JFrame {
         cardPanel = new JPanel(cardLayout);
 
         //LoginView loginView = new LoginView(this);
-        CarListView carListView = new CarListView();
+
         ManageRentedCarsView manageRentedCarsView = new ManageRentedCarsView();
 
         cardPanel.add(loginView, "LoginView");
-        cardPanel.add(carListView, "CarListView");
+
         cardPanel.add(manageRentedCarsView, "ManageRentedCarsView");
 
         menuBar = new JMenuBar();
@@ -88,9 +89,13 @@ public class MainFrame extends JFrame {
     }
 
     public void onLoginSuccess() {
+        CarListView carListView = new CarListView();
+        cardPanel.add(carListView, "CarListView");
+        
         cardLayout.show(cardPanel, "CarListView");
         menuBar.setVisible(true);
         setJMenuBar(menuBar);
+        
 
         HostedCarsView hostedCarsView = new HostedCarsView(ClientUserController.loggedUser);
         cardPanel.add(hostedCarsView, "HostedCarsView");

@@ -1,7 +1,10 @@
 package com.example.client.view;
 
 import com.example.client.controller.ClientCarController;
+import com.example.client.controller.ClientUserController;
 import com.example.client.model.CarModel;
+import com.example.client.service.UserService;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,8 +31,9 @@ public class CarListView extends JPanel {
         model = new DefaultListModel<>();
         java.util.List<CarModel> cars = ClientCarController.getAllCars();
         for (CarModel car : cars) {
+        	if (car.getUser().getId() != null && !car.getUser().getId().equals(ClientUserController.loggedUser.getId())) {
             //if (car.getStatus() == CarModel.Status.OPEN) {
-                model.addElement(car);
+                model.addElement(car);}
             //}
         }
 

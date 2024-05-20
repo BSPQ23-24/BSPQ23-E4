@@ -45,6 +45,7 @@ import javax.swing.text.MaskFormatter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.example.client.controller.ClientCarController;
 import com.example.client.controller.ClientRentalController;
 import com.example.client.controller.ClientUserController;
 import com.example.client.model.CarModel;
@@ -199,6 +200,17 @@ public class UserDataModificationView extends JPanel{
     private void deleteUser() {
     	this.mainframe.logoutForUserDeleting();
     	System.out.println(this.user.getId());
+    	
+        List<CarModel> allCars = ClientCarController.getAllCars();
+
+        for (CarModel car : allCars) {
+            if (car.getUser().getId() != null && car.getUser().getId().equals(this.user.getId())) {
+            	ClientCarController.deleteCar(car.getLicensePlate());
+            }
+            }
+        this.mainframe.getHostedCarsView().loadUserCars();
+        this.mainframe.getCarListView().updateCarList();
+    	
     	ClientUserController.deleteUser(this.user.getId());
     }
 }

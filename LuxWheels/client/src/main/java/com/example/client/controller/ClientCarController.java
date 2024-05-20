@@ -44,4 +44,13 @@ public class ClientCarController {
         logger.info(licensePlate);
     	carService.deleteCar(licensePlate);
     }
+    
+    public static void updateCar(CarModel car) {
+    	logger.info("Modify Car");
+        logger.info(car.getLicensePlate());
+    	carService.updateCar(car);
+    	
+    }
+    
+
 }

@@ -92,11 +92,11 @@ public class CarService {
     }
 
     public String updateCar(CarModel car) {
+    	System.out.println(car.getLicensePlate());
         String carJson = convertCarToJson(car);
-        client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(baseURL + car.getLicensePlate()))
+                .uri(URI.create(baseURL + "/" + car.getLicensePlate()))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(carJson))
                 .build();

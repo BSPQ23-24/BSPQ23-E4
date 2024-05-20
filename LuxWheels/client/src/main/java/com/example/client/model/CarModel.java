@@ -23,7 +23,23 @@ public class CarModel {
     private String description;
 
 
-    public Integer getLicensePlate() {
+    public Double getPricePerDay() {
+		return pricePerDay;
+	}
+
+	public void setPricePerDay(Double pricePerDay) {
+		this.pricePerDay = pricePerDay;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public Integer getLicensePlate() {
 		return licensePlate;
 	}
 

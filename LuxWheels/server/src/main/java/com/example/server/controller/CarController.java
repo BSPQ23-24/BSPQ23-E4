@@ -46,7 +46,11 @@ public class CarController {
 
     @PutMapping("/{licensePlate}")
     public ResponseEntity<Car> updateCar(@PathVariable Integer licensePlate, @RequestBody Car car) {
+    	System.out.println(licensePlate);
+    	car.setLicensePlate(licensePlate);
+        System.out.println(car);
         Car updatedCar = carService.updateCar(licensePlate, car);
+        System.out.println(car);
         return ResponseEntity.ok(updatedCar);
     }
 

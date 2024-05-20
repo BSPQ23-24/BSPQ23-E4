@@ -2,6 +2,7 @@ package com.example.client.view;
 
 import com.example.client.controller.ClientCarController;
 import com.example.client.model.CarModel;
+import com.example.client.model.CarModel.CarCondition;
 import com.example.client.model.UserModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -91,20 +92,15 @@ public class HostedCarsView extends JPanel {
         }
         infoPanel.removeAll();
 
-        addLabelAndValue("Brand:", car.getBrand());
-        addLabelAndValue("Model:", car.getModel());
-        addLabelAndValue("Year:", car.getYear());
-        addLabelAndValue("Condition:", car.getCarCondition().toString());
-        addLabelAndValue("Location:", car.getLocation());
-        if (car.getUser() != null) {
-            addLabelAndValue("Owner:", car.getUser().getName());
-        }
 
-        JTextArea descriptionArea = new JTextArea(car.getDescription());
-        descriptionArea.setWrapStyleWord(true);
-        descriptionArea.setLineWrap(true);
-        descriptionArea.setEditable(false);
-        infoPanel.add(new JScrollPane(descriptionArea));
+        addLabelAndTextField("Brand:", car.getBrand());
+        addLabelAndTextField("Model:", car.getModel());
+        addLabelAndTextField("Year:", car.getYear());
+        addLabelAndTextField("Condition:", car.getCarCondition().toString());
+        addLabelAndTextField("Location:", car.getLocation());
+        if (car.getUser() != null) {
+            addLabelAndTextField("Owner:", car.getUser().getName());
+        }
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING)); 
@@ -122,6 +118,8 @@ public class HostedCarsView extends JPanel {
             
         });
         
+        modifyButton.addActionListener(e -> this.modifyCar());
+        
         buttonPanel.add(modifyButton);
         buttonPanel.add(Box.createHorizontalStrut(10)); 
         buttonPanel.add(deleteButton);
@@ -131,13 +129,72 @@ public class HostedCarsView extends JPanel {
         infoPanel.revalidate();
         infoPanel.repaint();
     }
-    
-    private void addLabelAndValue(String label, String value) {
+
+    private void addLabelAndTextField(String label, String value) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel(label));
-        panel.add(new JLabel(value));
+        JLabel labelComponent = new JLabel(label);
+        JTextField textField = new JTextField(value, 20); // Establece el ancho preferido a 20 caracteres
+        panel.add(labelComponent);
+        panel.add(textField);
         infoPanel.add(panel);
     }
+    
+    private void modifyCar() {
+        CarModel car = carList.getSelectedValue(); // Obtén el coche seleccionado en la lista
+
+        if (car != null) { // Asegúrate de que se haya seleccionado un coche
+            for (Component component : infoPanel.getComponents()) {
+                if (component instanceof JPanel) {
+                    JPanel panel = (JPanel) component;
+                    for (Component innerComponent : panel.getComponents()) {
+                        if (innerComponent instanceof JTextField) {
+                            JTextField textField = (JTextField) innerComponent;
+                            String label = ((JLabel) panel.getComponent(0)).getText();
+                            String valor = textField.getText();
+                            System.out.println(label);
+                            if(label.equals("Owner:")) {
+                            	 textField.setEditable(false);
+                            }
+                            
+                            // Actualiza los atributos correspondientes del objeto CarModel
+                            switch(label) {
+                                case "Brand:":
+                                    car.setBrand(valor);
+                                    break;
+                                case "Model:":
+                                    car.setModel(valor);
+                                    break;
+                                case "Year:":
+                                    car.setYear(valor);
+                                    break;
+                                case "Condition:":
+                                	CarCondition condition = CarCondition.valueOf(valor);
+                                    car.setCarCondition(condition);
+                                    break;
+                                case "Location:":
+                                    car.setLocation(valor);
+                                    break;
+                            }
+                        }
+                    }
+                }
+                
+            }
+            System.out.println(car.getBrand());
+            ClientCarController.updateCar(car);
+            this.loadUserCars();
+            
+            
+
+        } else {
+            System.out.println("No car selected");
+        }
+    }
+
+
+    
+
+
     
     
 }

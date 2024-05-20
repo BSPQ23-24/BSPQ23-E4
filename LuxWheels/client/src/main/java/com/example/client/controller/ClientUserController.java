@@ -37,10 +37,15 @@ public class ClientUserController {
         user.setName(name);
         user.setEmail(email);
         user.setPassword(password);
-
+        
         String u = userService.loginUser(user);
-        loggedUser = parseUserModel(u);
-        return !u.equals("{}");
+        System.out.println(u);
+        if(u.equals("Invalid email or password")) {
+        	return false;
+        } else {
+        	loggedUser = parseUserModel(u);
+        	return true;
+        }
         
     }
     
