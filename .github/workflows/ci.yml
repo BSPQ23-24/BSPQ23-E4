@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ Dockerization ]
   pull_request:
-    branches: [ main ]
+    branches: [ Dockerization ]
 
 jobs:
   build:
@@ -52,11 +52,14 @@ jobs:
             exit 1
           fi
 
-      - name: Build and start server
-        run: |
-          mvn clean install --file LuxWheels/server/pom.xml
-          mvn spring-boot:run --file LuxWheels/server/pom.xml &
-          sleep 30
+      - name: Build server JAR
+        run: mvn clean package --file LuxWheels/server/pom.xml
+
+      - name: Build Docker image for server
+        run: docker build -t lux-wheels-server -f LuxWheels/server/Dockerfile .
+
+      - name: Run server container
+        run: docker run -d --name spring-boot-container --network host lux-wheels-server
 
       - name: Build client module
         run: mvn clean install --file LuxWheels/client/pom.xml
