@@ -21,9 +21,13 @@ public class CarListView extends JPanel {
     private DefaultListModel<CarModel> model;
     private JPanel infoPanel;
     private JTextArea detailsArea;
-    public CarListView() {
+    private MainFrame mainFrame;
+
+    public CarListView(MainFrame mainframe) {
         logger.info("CarListView generated");
         setLayout(new BorderLayout());
+
+        this.mainFrame = mainframe;
 
         JLabel headingLabel = new JLabel("Available cars for rent");
         headingLabel.setFont(new Font("Arial", Font.BOLD, 18));
@@ -142,8 +146,8 @@ public class CarListView extends JPanel {
 
     private void launchRentingView(ActionEvent actionEvent){
         CarModel selectedCar = itemList.getSelectedValue();
-        RentCarView registerCarView = new RentCarView(selectedCar);
-        registerCarView.setVisible(true);
+        RentCarView rentCarView = new RentCarView(selectedCar, mainFrame);
+        rentCarView.setVisible(true);
     }
 
     public void updateCarList() {

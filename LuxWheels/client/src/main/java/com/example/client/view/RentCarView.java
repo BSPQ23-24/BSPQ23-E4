@@ -34,8 +34,9 @@ public class RentCarView extends JFrame {
     private Set<LocalDate> unavailableDates;
     private boolean selectingStartDate = true;
 
-    public RentCarView(CarModel selectedCar) {
+    public RentCarView(CarModel selectedCar, MainFrame mainFrame) {
         this.selectedCar = selectedCar;
+        this.mainFrame = mainFrame;
         this.selectedDates = new HashSet<>();
         this.unavailableDates = new HashSet<>();
 
@@ -319,6 +320,8 @@ public class RentCarView extends JFrame {
             JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
             return;
         }
+
+        this.mainFrame.getManageRentedCarsView().loadData();
     }
 
     private void handleCancel() {

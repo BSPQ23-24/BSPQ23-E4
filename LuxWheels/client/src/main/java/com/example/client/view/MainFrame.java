@@ -52,7 +52,7 @@ public class MainFrame extends JFrame {
         JButton carListButton = new JButton("Cars to Rent");
 
         carListButton.addActionListener(e -> {
-        	CarListView carListView = new CarListView();
+        	CarListView carListView = new CarListView(this);
             cardPanel.add(carListView, "CarListView");
         	cardLayout.show(cardPanel, "CarListView");
         });
@@ -89,7 +89,7 @@ public class MainFrame extends JFrame {
     }
 
     public void onLoginSuccess() {
-        CarListView carListView = new CarListView();
+        CarListView carListView = new CarListView(this);
         cardPanel.add(carListView, "CarListView");
         
         cardLayout.show(cardPanel, "CarListView");
@@ -134,6 +134,15 @@ public class MainFrame extends JFrame {
         for (Component comp : cardPanel.getComponents()) {
             if (comp instanceof HostedCarsView) {
                 return (HostedCarsView) comp;
+            }
+        }
+        return null;
+    }
+
+    public ManageRentedCarsView getManageRentedCarsView() {
+        for (Component comp : cardPanel.getComponents()) {
+            if (comp instanceof ManageRentedCarsView) {
+                return (ManageRentedCarsView) comp;
             }
         }
         return null;
