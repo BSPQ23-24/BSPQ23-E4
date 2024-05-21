@@ -10,7 +10,7 @@ services:
     networks:
       - luxwheels-network
     ports:
-      - "3306:3306"
+      - "3307:3306"
 
   server:
     image: lux-wheels-server
