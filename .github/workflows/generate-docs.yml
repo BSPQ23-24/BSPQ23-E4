@@ -10,7 +10,6 @@ on:
 
 jobs:
   generate-documentation:
-    needs: test
     runs-on: ubuntu-latest
 
     steps:
