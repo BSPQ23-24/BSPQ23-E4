@@ -1,0 +1,36 @@
+name: Generate Documentation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  generate-documentation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install doxygen
+        run: sudo apt-get install -y doxygen
+
+      - name: Install graphviz
+        run: sudo apt-get install -y graphviz
+
+      - name: Generate documentation
+        run: |
+          cd LuxWheels
+          mvn com.soebes.maven.plugins:doxygen-maven-plugin:1.1.0:report
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: LuxWheels/docs/html
+          publish_branch: gh-pages
+          destination_dir: docs
