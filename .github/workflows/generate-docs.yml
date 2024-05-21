@@ -33,4 +33,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: LuxWheels/docs/html
           publish_branch: gh-pages
-          destination_dir: doxygen
+          destination_dir: docs
