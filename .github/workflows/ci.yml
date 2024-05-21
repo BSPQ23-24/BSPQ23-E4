@@ -2,13 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ improve_github_action ]
   pull_request:
-    branches: [ main ]
+    branches: [ improve_github_action ]
 
 jobs:
-  build:
-
+  build-server-client:
     runs-on: ubuntu-latest
 
     services:
@@ -74,3 +73,33 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: root
         run: mvn test --file LuxWheels/server/pom.xml
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Lint Java code with Checkstyle
+        run: mvn checkstyle:check --file LuxWheels/pom.xml
+
+      - name: Static analysis with PMD
+        run: mvn pmd:check --file LuxWheels/pom.xml
+
+      - name: Security analysis with OWASP Dependency Check
+        run: mvn org.owasp:dependency-check-maven:check --file LuxWheels/pom.xml
+
+  notify:
+    needs: [build-and-test, lint]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify build status
+        run: echo "Build completed for all jobs"
