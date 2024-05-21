@@ -97,7 +97,7 @@ jobs:
         run: mvn org.owasp:dependency-check-maven:check --file LuxWheels/pom.xml
 
   notify:
-    needs: [build-and-test, lint]
+    needs: [build-server-client, lint]
     runs-on: ubuntu-latest
 
     steps:
