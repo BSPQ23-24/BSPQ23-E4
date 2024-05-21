@@ -25,7 +25,7 @@ jobs:
       - name: Generate documentation
         run: |
           cd LuxWheels
-          mvn doxygen:report -f pom.xml
+          mvn com.soebes.maven.plugins:doxygen-maven-plugin:1.1.0:report
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
