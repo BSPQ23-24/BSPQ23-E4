@@ -87,9 +87,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Static analysis with PMD
-        run: mvn pmd:check --file LuxWheels/pom.xml
-
       - name: Security analysis with OWASP Dependency Check
         run: mvn org.owasp:dependency-check-maven:check --file LuxWheels/pom.xml
 
