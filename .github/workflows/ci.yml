@@ -2,13 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ improve_github_action ]
   pull_request:
-    branches: [ main ]
+    branches: [ improve_github_action ]
 
 jobs:
-  build:
-
+  build-server-client:
     runs-on: ubuntu-latest
 
     services:
@@ -61,16 +60,25 @@ jobs:
       - name: Build client module
         run: mvn clean install --file LuxWheels/client/pom.xml
 
-      - name: Run tests for client module
+      - name: Run tests for client module with JaCoCo
         env:
           DB_URL: jdbc:mysql://127.0.0.1:3306/luxwheels
           DB_USERNAME: root
           DB_PASSWORD: root
-        run: mvn test --file LuxWheels/client/pom.xml
+        run: mvn test jacoco:report --file LuxWheels/client/pom.xml
 
-      - name: Run tests for server module
+      - name: Run tests for server module with JaCoCo
         env:
           DB_URL: jdbc:mysql://127.0.0.1:3306/luxwheels
           DB_USERNAME: root
           DB_PASSWORD: root
-        run: mvn test --file LuxWheels/server/pom.xml
+        run: mvn test jacoco:report --file LuxWheels/server/pom.xml
+
+      - name: Upload code coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jacoco-report
+          path: |
+            LuxWheels/client/target/site/jacoco
+            LuxWheels/server/target/site/jacoco
+
