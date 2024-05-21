@@ -52,6 +52,12 @@ jobs:
             exit 1
           fi
 
+      - name: Build server JAR
+        run: mvn clean package --file LuxWheels/server/pom.xml
+
+      - name: list target directory
+        run: ls -la LuxWheels/server/target
+
       - name: Build Docker image for server
         run: docker build -t lux-wheels-server -f LuxWheels/server/Dockerfile .
 
