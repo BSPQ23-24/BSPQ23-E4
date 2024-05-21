@@ -21,6 +21,7 @@ public class CarListView extends JPanel {
     private DefaultListModel<CarModel> model;
     private JPanel infoPanel;
     private JTextArea detailsArea;
+    private JTable infoTable;
     public CarListView() {
         logger.info("CarListView generated");
         setLayout(new BorderLayout());

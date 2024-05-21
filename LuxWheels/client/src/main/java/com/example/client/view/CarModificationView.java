@@ -10,7 +10,9 @@ import com.example.client.model.CarModel.CarCondition;
 import com.example.client.model.UserModel;
 import com.example.client.service.CarService;
 
-
+/**
+ * The carModificationView is a UI that once a car is created allows to modifie its attributes
+ */
 public class CarModificationView extends JPanel {
 
 

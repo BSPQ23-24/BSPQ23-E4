@@ -23,7 +23,9 @@ import java.awt.event.ItemListener;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
+/**
+ * The registerView is a UI that adds a new user to the database
+ */
 public class RegisterView extends JFrame {
 	
 	private static final Logger logger = LogManager.getLogger(RegisterView.class);
