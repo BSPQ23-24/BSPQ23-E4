@@ -1,12 +1,12 @@
-name: Generate Doxygen Documentation
+name: Generate Documentation
 
 on:
   push:
     branches:
-      - doxygen
+      - main
   pull_request:
     branches:
-      - doxygen
+      - main
 
 jobs:
   generate-documentation:
