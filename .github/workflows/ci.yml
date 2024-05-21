@@ -59,7 +59,23 @@ jobs:
         run: docker build -t lux-wheels-server -f LuxWheels/server/Dockerfile LuxWheels/server
 
       - name: Run server container
-        run: docker run -d --name spring-boot-container --network host lux-wheels-server
+        run: docker run -d --name spring-boot-container -p 8080:8080 lux-wheels-server
+
+      - name: Wait for server to be ready
+        run: |
+          echo "Waiting for server to be ready..."
+          for i in {120..0}; do
+            if curl -s http://localhost:8080/actuator/health | grep 'UP'; then
+              break
+            fi
+            echo 'Server is unavailable - sleeping'
+            sleep 1
+          done
+          if [ "$i" = 0 ]; then
+            echo 'Server did not start up in time'
+            docker logs spring-boot-container
+            exit 1
+          fi
 
       - name: Build client module
         run: mvn clean install --file LuxWheels/client/pom.xml
@@ -77,3 +93,6 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: root
         run: mvn test --file LuxWheels/server/pom.xml
+
+      - name: Stop and remove server container
+        run: docker stop spring-boot-container && docker rm spring-boot-container
