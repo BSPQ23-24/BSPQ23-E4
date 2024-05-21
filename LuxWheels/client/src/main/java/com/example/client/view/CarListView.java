@@ -12,20 +12,23 @@ import org.apache.logging.log4j.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class CarListView extends JPanel {
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private JList<CarModel> itemList;
     private DefaultListModel<CarModel> model;
     private JPanel infoPanel;
-
+    private JTextArea detailsArea;
     public CarListView() {
         logger.info("CarListView generated");
         setLayout(new BorderLayout());
 
-        JLabel headingLabel = new JLabel("Available Cars for Rent");
-        headingLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        JLabel headingLabel = new JLabel("Available cars for rent");
+        headingLabel.setFont(new Font("Arial", Font.BOLD, 18));
         headingLabel.setHorizontalAlignment(JLabel.CENTER);
+        headingLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(headingLabel, BorderLayout.NORTH);
 
         model = new DefaultListModel<>();
@@ -51,14 +54,37 @@ public class CarListView extends JPanel {
         });
 
         JScrollPane listScrollPane = new JScrollPane(itemList);
+        listScrollPane.setPreferredSize(new Dimension(200, 150));
 
-        infoPanel = new JPanel();
-        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
-        JScrollPane infoScrollPane = new JScrollPane(infoPanel);
+        detailsArea = new JTextArea();
+        detailsArea.setEditable(false);
+        detailsArea.setFont(new Font("Arial", Font.PLAIN, 14));
+        detailsArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JScrollPane infoScrollPane = new JScrollPane(detailsArea);
+        infoScrollPane.setPreferredSize(new Dimension(300, 150));
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listScrollPane, infoScrollPane);
-        splitPane.setDividerLocation(250);
-        splitPane.setResizeWeight(0.5);
+        infoPanel = new JPanel(new BorderLayout());
+        infoScrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        infoPanel.add(infoScrollPane, BorderLayout.CENTER);
+
+        JButton rentButton = new JButton(" Rent Now! ");
+        rentButton.setBackground(Color.GREEN);
+        rentButton.addActionListener(this::launchRentingView);
+        rentButton.setForeground(Color.WHITE);
+        rentButton.setFont(new Font("Arial", Font.BOLD, 14));
+        rentButton.setFocusPainted(false);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        buttonPanel.add(rentButton);
+        buttonPanel.add(Box.createVerticalGlue());
+
+        infoPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listScrollPane, infoPanel);
+        splitPane.setDividerLocation(600);
+        splitPane.setResizeWeight(0.3);
 
         add(splitPane, BorderLayout.CENTER);
 
@@ -66,6 +92,7 @@ public class CarListView extends JPanel {
             if (!e.getValueIsAdjusting()) {
                 CarModel selectedCar = itemList.getSelectedValue();
                 updateInfoPanel(selectedCar);
+
             }
         });
 
@@ -75,34 +102,33 @@ public class CarListView extends JPanel {
         }
     }
 
+
     private void updateInfoPanel(CarModel car) {
         if (car == null) {
             System.out.println("No car selected or car data is null");
+            detailsArea.setText("Select a car to view details.");
             return;
+        }else{
+            detailsArea.setText(
+                    "Brand: " + car.getBrand() +
+                            "\nModel: " + car.getModel() +
+                            "\nYear: " + car.getYear() +
+                            "\nPrice per day:"+ (String.valueOf(car.getPricePerDay()))+
+                    "\nLicense Plate: " + car.getLicensePlate() +
+                    "\nCondition: " + car.getCarCondition() +
+                    "\nLocation: " + car.getLocation() +
+                    "\nOwner: " + (car.getUser() != null ? car.getUser().getName() : "N/A")
+            );
         }
-        infoPanel.removeAll();
 
-        addLabelAndValue("Brand:", car.getBrand());
-        addLabelAndValue("Model:", car.getModel());
-        addLabelAndValue("Price per day:", String.valueOf(car.getPricePerDay()));
-        addLabelAndValue("Year:", car.getYear());
-        addLabelAndValue("Condition:", car.getCarCondition().toString());
-        addLabelAndValue("Location:", car.getLocation());
-        if (car.getUser() != null) {
-            addLabelAndValue("Owner:", car.getUser().getName());
-        }
+        //infoPanel.removeAll();
 
-        JTextArea descriptionArea = new JTextArea(car.getDescription());
-        descriptionArea.setWrapStyleWord(true);
-        descriptionArea.setLineWrap(true);
-        descriptionArea.setEditable(false);
-        infoPanel.add(new JScrollPane(descriptionArea));
 
-        JButton rentButton = new JButton("Rent Now!");
-        rentButton.setBackground(Color.GREEN);
-        rentButton.addActionListener(this::launchRentingView);
-        infoPanel.add(rentButton);
-
+//        JTextArea descriptionArea = new JTextArea(car.getDescription());
+//        descriptionArea.setWrapStyleWord(true);
+//        descriptionArea.setLineWrap(true);
+//        descriptionArea.setEditable(false);
+//        detailsArea.add(new JScrollPane(descriptionArea));
         infoPanel.revalidate();
         infoPanel.repaint();
     }

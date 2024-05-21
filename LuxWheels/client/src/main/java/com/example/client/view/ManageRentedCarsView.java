@@ -89,7 +89,7 @@ public class ManageRentedCarsView extends JPanel {
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listScrollPane, detailsPanel);
         splitPane.setResizeWeight(0.3);
-        splitPane.setDividerLocation(200);
+        splitPane.setDividerLocation(600);
 
         add(splitPane, BorderLayout.CENTER);
 
