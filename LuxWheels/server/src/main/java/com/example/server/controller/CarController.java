@@ -24,45 +24,78 @@ import com.example.server.service.CarService;
 
 import jakarta.transaction.Transactional;
 
+/**
+ * REST controller for managing cars.
+ */
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
-	
+
     private static final Logger logger = LogManager.getLogger(CarController.class);
 
     @Autowired
     private CarService carService;
 
+    /**
+     * Creates a new car.
+     *
+     * @param car the car to create
+     * @return the created car
+     */
     @PostMapping("/create")
     public Car create(@RequestBody Car car) {
-    	logger.info("Create a car controller");
+        logger.info("Create a car controller");
         return carService.createCar(car);
     }
 
+    /**
+     * Retrieves all cars.
+     *
+     * @return a list of all cars
+     */
     @GetMapping
     public ResponseEntity<List<Car>> getAllCars() {
-    	logger.info("Get all cars controller");
+        logger.info("Get all cars controller");
         return ResponseEntity.ok(carService.getAllCars());
     }
 
+    /**
+     * Retrieves a car by its license plate.
+     *
+     * @param licensePlate the license plate of the car
+     * @return the car with the given license plate
+     */
     @GetMapping("/{licensePlate}")
     public ResponseEntity<Car> getCarByLicensePlate(@PathVariable Integer licensePlate) {
-    	logger.info("Get car by licensePlate controller");
+        logger.info("Get car by licensePlate controller");
         return ResponseEntity.ok(carService.getCarByLicensePlate(licensePlate));
     }
 
+    /**
+     * Updates an existing car.
+     *
+     * @param licensePlate the license plate of the car to update
+     * @param car the updated car details
+     * @return the updated car
+     */
     @PutMapping("/{licensePlate}")
     public ResponseEntity<Car> updateCar(@PathVariable Integer licensePlate, @RequestBody Car car) {
-    	logger.info("UpdateCar controller");
-    	car.setLicensePlate(licensePlate);
+        logger.info("UpdateCar controller");
+        car.setLicensePlate(licensePlate);
         Car updatedCar = carService.updateCar(licensePlate, car);
         return ResponseEntity.ok(updatedCar);
     }
 
+    /**
+     * Deletes a car by its license plate.
+     *
+     * @param licensePlate the license plate of the car to delete
+     * @return a response entity indicating the result of the operation
+     */
     @DeleteMapping("/{licensePlate}")
     @Transactional
     public ResponseEntity<Void> deleteCar(@PathVariable Integer licensePlate) {
-    	logger.info("Delete a car controller");
+        logger.info("Delete a car controller");
         carService.deleteCar(licensePlate);
         return ResponseEntity.noContent().build();
     }

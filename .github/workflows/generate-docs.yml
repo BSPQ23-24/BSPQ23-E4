@@ -1,0 +1,58 @@
+name: Generate Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - doxygen
+  pull_request:
+    branches:
+      - doxygen
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Doxygen and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz texlive-full
+
+      - name: Generate Doxygen config file
+        run: doxygen -g
+
+      - name: Update Doxyfile
+        run: |
+          sed -i 's/PROJECT_NAME           = "My Project"/PROJECT_NAME           = "LuxWheels"/' Doxyfile
+          sed -i 's/PROJECT_BRIEF          =/PROJECT_NAME           = "LuxWheels is a platform for renting luxury cars"/' Doxyfile
+          sed -i 's/OUTPUT_DIRECTORY       =/OUTPUT_DIRECTORY       = docs/' Doxyfile
+          sed -i 's/INPUT                  =/INPUT                  = LuxWheels/' Doxyfile
+          sed -i 's/RECURSIVE              = NO/RECURSIVE              = YES/' Doxyfile
+          sed -i 's/FILE_PATTERNS          =/FILE_PATTERNS          = *.java/' Doxyfile
+          sed -i 's/JAVADOC_AUTOBRIEF      = NO/JAVADOC_AUTOBRIEF      = YES/' Doxyfile
+          sed -i 's/OPTIMIZE_OUTPUT_JAVA      = NO/OPTIMIZE_OUTPUT_JAVA      = YES/' Doxyfile
+
+      - name: Run Doxygen
+        run: doxygen Doxyfile
+
+      - name: Compile LaTeX to PDF
+        working-directory: docs/latex
+        run: |
+          pdflatex refman.tex
+          pdflatex refman.tex  # Run twice for proper cross-referencing
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: doxygen-pdf
+          path: docs/latex/refman.pdf
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html
