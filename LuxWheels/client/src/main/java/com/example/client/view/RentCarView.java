@@ -16,7 +16,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Stream;
-
+/**
+ * The rentCarView is a UI that shows the dates abaileable of the car selected.
+ * And allows the user logged to rent a car
+ */
 public class RentCarView extends JFrame {
     public static RentCarView instance;
     private MainFrame mainFrame;

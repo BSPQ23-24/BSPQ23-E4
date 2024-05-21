@@ -15,7 +15,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The ManageRentedCarsView is a UI that shows all the cars that the user logged has in rent at the moment.
+ */
 public class ManageRentedCarsView extends JPanel {
     private JList<RentalModel> rentalList;
     private DefaultListModel<RentalModel> rentalListModel;

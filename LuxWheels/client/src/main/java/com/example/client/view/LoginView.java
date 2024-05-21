@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 @Getter
 @Setter
+
 public class LoginView extends JPanel {
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
 

@@ -1,0 +1,104 @@
+\doxysection{Car\+Service\+Tests.\+java}
+\hypertarget{_car_service_tests_8java_source}{}\label{_car_service_tests_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/test/java/com/example/server/service/CarServiceTests.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/test/java/com/example/server/service/CarServiceTests.java}}
+\mbox{\hyperlink{_car_service_tests_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.server.service;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00003}00003\ \textcolor{keyword}{import}\ com.example.server.entity.Car;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00004}00004\ \textcolor{keyword}{import}\ com.example.server.entity.User;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.example.server.repository.CarRepository;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00006}00006\ \textcolor{keyword}{import}\ org.junit.jupiter.api.BeforeEach;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00007}00007\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00008}00008\ \textcolor{keyword}{import}\ org.junit.jupiter.api.extension.ExtendWith;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.mockito.InjectMocks;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00010}00010\ \textcolor{keyword}{import}\ org.mockito.Mock;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00011}00011\ \textcolor{keyword}{import}\ org.mockito.junit.jupiter.MockitoExtension;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00013}00013\ \textcolor{keyword}{import}\ java.util.Arrays;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00014}00014\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00015}00015\ \textcolor{keyword}{import}\ java.util.Optional;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00017}00017\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.*;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00018}00018\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.mockito.Mockito.*;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00020}00020\ @ExtendWith(MockitoExtension.class)}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00021}00021\ class\ CarServiceTests\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00023}00023\ \ \ \ \ @Mock}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{private}\ CarRepository\ carRepository;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00026}00026\ \ \ \ \ @InjectMocks}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{private}\ CarService\ carService;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{private}\ Car\ car;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{private}\ User\ user;}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00032}00032\ \ \ \ \ @BeforeEach}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setUp()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ user\ =\ \textcolor{keyword}{new}\ User();}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ car\ =\ \textcolor{keyword}{new}\ Car();}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ car.setUser(user);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00039}00039\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{void}\ testCreateCar()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ when(carRepository.save(car)).thenReturn(car);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ Car\ createdCar\ =\ carService.createCar(car);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ assertEquals(car,\ createdCar);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ verify(carRepository,\ times(1)).save(car);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00049}00049\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetAllCars()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ List<Car>\ cars\ =\ Arrays.asList(car);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ when(carRepository.findAll()).thenReturn(cars);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ List<Car>\ allCars\ =\ carService.getAllCars();}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ assertEquals(cars,\ allCars);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ verify(carRepository,\ times(1)).findAll();}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00060}00060\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetCarByLicensePlate()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ when(carRepository.findByLicensePlate(12345)).thenReturn(Optional.of(car));}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ Car\ foundCar\ =\ carService.getCarByLicensePlate(12345);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ assertEquals(car,\ foundCar);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ verify(carRepository,\ times(1)).findByLicensePlate(12345);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00070}00070\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{void}\ testUpdateCar()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ when(carRepository.save(car)).thenReturn(car);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ Car\ updatedCar\ =\ carService.updateCar(12345,\ car);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ assertEquals(car,\ updatedCar);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ verify(carRepository,\ times(1)).save(car);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00080}00080\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{void}\ testDeleteAll()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00082}00082\ \ \ \ \ \ \ \ \ doNothing().when(carRepository).deleteAll();}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ carService.deleteAll();}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ verify(carRepository,\ times(1)).deleteAll();}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00089}00089\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{void}\ testDeleteCar()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ doNothing().when(carRepository).deleteByLicensePlate(12345);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ carService.deleteCar(12345);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ verify(carRepository,\ times(1)).deleteByLicensePlate(12345);}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_car_service_tests_8java_source_l00098}00098\ }
+
+\end{DoxyCode}

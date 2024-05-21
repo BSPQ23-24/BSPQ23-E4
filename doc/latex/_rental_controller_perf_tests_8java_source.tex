@@ -1,0 +1,55 @@
+\doxysection{Rental\+Controller\+Perf\+Tests.\+java}
+\hypertarget{_rental_controller_perf_tests_8java_source}{}\label{_rental_controller_perf_tests_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/test/java/com/example/server/controller/RentalControllerPerfTests.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/test/java/com/example/server/controller/RentalControllerPerfTests.java}}
+\mbox{\hyperlink{_rental_controller_perf_tests_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.server.controller;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.*;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.mockito.Mockito.*;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00006}00006\ \textcolor{keyword}{import}\ com.example.server.entity.Rental;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00007}00007\ \textcolor{keyword}{import}\ com.example.server.service.RentalService;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00008}00008\ \textcolor{keyword}{import}\ com.github.noconnor.junitperf.JUnitPerfRule;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00009}00009\ \textcolor{keyword}{import}\ com.github.noconnor.junitperf.JUnitPerfTest;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00010}00010\ \textcolor{keyword}{import}\ com.github.noconnor.junitperf.data.EvaluationContext;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00011}00011\ \textcolor{keyword}{import}\ com.github.noconnor.junitperf.reporting.providers.HtmlReportGenerator;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00012}00012\ \textcolor{keyword}{import}\ org.junit.jupiter.api.BeforeEach;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00013}00013\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00014}00014\ \textcolor{keyword}{import}\ org.junit.jupiter.api.extension.ExtendWith;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00015}00015\ \textcolor{keyword}{import}\ org.junit.Rule;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00016}00016\ \textcolor{keyword}{import}\ org.mockito.InjectMocks;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00017}00017\ \textcolor{keyword}{import}\ org.mockito.Mock;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00018}00018\ \textcolor{keyword}{import}\ org.mockito.junit.jupiter.MockitoExtension;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00020}00020\ \textcolor{keyword}{import}\ java.util.Arrays;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00021}00021\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00023}00023\ @ExtendWith(MockitoExtension.class)}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00024}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_perf_tests}{00024}}\ public\ class\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_perf_tests}{RentalControllerPerfTests}}\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00026}00026\ \ \ \ \ @Rule}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00027}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_perf_tests_acb1843b2d62e56dcecfb8342e2f40d36}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ JUnitPerfRule\ perfTestRule\ =\ \textcolor{keyword}{new}\ JUnitPerfRule(\textcolor{keyword}{new}\ HtmlReportGenerator(\textcolor{stringliteral}{"{}performance\_reports"{}}));}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00029}00029\ \ \ \ \ @Mock}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service}{RentalService}}\ rentalService;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00032}00032\ \ \ \ \ @InjectMocks}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller}{RentalController}}\ controller;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00035}00035\ \ \ \ \ @BeforeEach}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00036}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_perf_tests_a7d83c2616ca30bf94bbf1e58d4f6f6f8}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_perf_tests_a7d83c2616ca30bf94bbf1e58d4f6f6f8}{setUp}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}\ rental1\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}();}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}\ rental2\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}();}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ when(rentalService.getAllRental()).thenReturn(Arrays.asList(rental1,\ rental2));}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00042}00042\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00043}00043\ \ \ \ \ @JUnitPerfTest(threads\ =\ 10,\ durationMs\ =\ 5\_000,\ warmUpMs\ =\ 2\_000,\ maxExecutionsPerSecond\ =\ 50)}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00044}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_perf_tests_aeaa46aea610766a5e260a170dcb4974b}{00044}}\ \ \ \ \ public\ \textcolor{keywordtype}{void}\ testGetAllRentalsPerformance()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ List<Rental>\ rentals\ =\ controller.getAllRentals();}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ assertNotNull(rentals);}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ assertEquals(2,\ rentals.size());}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_perf_tests_8java_source_l00049}00049\ \}}
+
+\end{DoxyCode}

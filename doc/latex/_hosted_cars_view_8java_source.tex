@@ -1,0 +1,205 @@
+\doxysection{Hosted\+Cars\+View.\+java}
+\hypertarget{_hosted_cars_view_8java_source}{}\label{_hosted_cars_view_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/view/HostedCarsView.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/view/HostedCarsView.java}}
+\mbox{\hyperlink{_hosted_cars_view_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.client.view;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00003}00003\ \textcolor{keyword}{import}\ com.example.client.controller.ClientCarController;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00004}00004\ \textcolor{keyword}{import}\ com.example.client.model.CarModel;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.example.client.model.CarModel.CarCondition;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00006}00006\ \textcolor{keyword}{import}\ com.example.client.model.UserModel;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00007}00007\ \textcolor{keyword}{import}\ org.apache.logging.log4j.LogManager;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00008}00008\ \textcolor{keyword}{import}\ org.apache.logging.log4j.Logger;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00011}00011\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00012}00012\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00013}00013\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00017}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view}{00017}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view}{HostedCarsView}}\ \textcolor{keyword}{extends}\ JPanel\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ Logger\ logger\ =\ LogManager.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_login_view}{LoginView}}.class);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{private}\ DefaultListModel<CarModel>\ carListModel;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ JList<CarModel>\ carList;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ JPanel\ infoPanel;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ currentUser;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00024}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view_af98e939c29bbe15c18864e780220e2c1}{00024}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view_af98e939c29bbe15c18864e780220e2c1}{HostedCarsView}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}CarListView\ generated"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ setLayout(\textcolor{keyword}{new}\ BorderLayout());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ JLabel\ headingLabel\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}Available\ Cars\ for\ Rent"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ headingLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Arial"{}},\ Font.BOLD,\ 16));}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ headingLabel.setHorizontalAlignment(JLabel.CENTER);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ add(headingLabel,\ BorderLayout.NORTH);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}HostedCarsView\ generated"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ this.currentUser\ =\ user;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ this.setLayout(\textcolor{keyword}{new}\ BorderLayout());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ carListModel\ =\ \textcolor{keyword}{new}\ DefaultListModel<>();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view_ab91e0bc8be3d2bee5136385fd179843f}{loadUserCars}}();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ carList\ =\ \textcolor{keyword}{new}\ JList<>(carListModel);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ carList.setSelectionMode(ListSelectionModel.SINGLE\_SELECTION);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ carList.setCellRenderer(\textcolor{keyword}{new}\ DefaultListCellRenderer()\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Component\ getListCellRendererComponent(JList<?>\ list,\ Object\ value,\ \textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{boolean}\ isSelected,\ \textcolor{keywordtype}{boolean}\ cellHasFocus)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Component\ renderer\ =\ super.getListCellRendererComponent(list,\ value,\ index,\ isSelected,\ cellHasFocus);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ instanceof\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}})\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setText(((\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}})\ value).getSummary());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ renderer;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ JScrollPane\ listScrollPane\ =\ \textcolor{keyword}{new}\ JScrollPane(carList);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ infoPanel\ =\ \textcolor{keyword}{new}\ JPanel();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ infoPanel.setLayout(\textcolor{keyword}{new}\ BoxLayout(infoPanel,\ BoxLayout.PAGE\_AXIS));}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ JScrollPane\ infoScrollPane\ =\ \textcolor{keyword}{new}\ JScrollPane(infoPanel);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ JSplitPane\ splitPane\ =\ \textcolor{keyword}{new}\ JSplitPane(JSplitPane.HORIZONTAL\_SPLIT,\ listScrollPane,\ infoScrollPane);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ splitPane.setDividerLocation(250);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ splitPane.setResizeWeight(0.5);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ add(splitPane,\ BorderLayout.CENTER);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ carList.addListSelectionListener(e\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!e.getValueIsAdjusting())\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CarModel\ selectedCar\ =\ carList.getSelectedValue();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ updateInfoPanel(selectedCar);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!carListModel.isEmpty())\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ carList.setSelectedIndex(0);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ updateInfoPanel(carList.getSelectedValue());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Loads\ the\ list\ of\ cars\ hosted\ by\ the\ current\ user}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00079}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view_ab91e0bc8be3d2bee5136385fd179843f}{00079}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view_ab91e0bc8be3d2bee5136385fd179843f}{loadUserCars}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ List<CarModel>\ allCars\ =\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller}{ClientCarController}}.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a0e16abb5148fa0163f6b25149aafe73e}{getAllCars}}();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ carListModel.clear();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ car\ :\ allCars)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (car.getUser().getId()\ !=\ \textcolor{keyword}{null}\ \&\&\ car.getUser().getId().equals(currentUser.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_ab50d3d221a27f8b6e57ae9c2041c0388}{getId}}()))\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ carListModel.addElement(car);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00089}00089\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ updateInfoPanel(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ car)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (car\ ==\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}No\ car\ selected\ or\ car\ data\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ infoPanel.removeAll();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ addLabelAndTextField(\textcolor{stringliteral}{"{}Brand:"{}},\ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_a403744cf9b5a4bd3d9e9e5fe1a60fc68}{getBrand}}());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ addLabelAndTextField(\textcolor{stringliteral}{"{}Model:"{}},\ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ab56f739697794eb0abd318a864a1a0e3}{getModel}}());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00100}00100\ \ \ \ \ \ \ \ \ addLabelAndTextField(\textcolor{stringliteral}{"{}Year:"{}},\ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_aee17b801bb494f71dc810205ba17bfda}{getYear}}());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ addLabelAndTextField(\textcolor{stringliteral}{"{}Condition:"{}},\ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_a724f74808acbb7f1061a5e271c0ad09c}{getCarCondition}}().toString());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ addLabelAndTextField(\textcolor{stringliteral}{"{}Location:"{}},\ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ad2dedf0024f61d2b2a564794d69eb330}{getLocation}}());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ad78ed155fa785884143e8ad3f63ea08e}{getUser}}()\ !=\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ addLabelAndTextField(\textcolor{stringliteral}{"{}Owner:"{}},\ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ad78ed155fa785884143e8ad3f63ea08e}{getUser}}().\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_af76f2865531e56db50e168cd858c67f7}{getName}}());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ JPanel\ buttonPanel\ =\ \textcolor{keyword}{new}\ JPanel();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ buttonPanel.setLayout(\textcolor{keyword}{new}\ FlowLayout(FlowLayout.LEADING));\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00109}00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00110}00110\ \ \ \ \ \ \ \ \ JButton\ modifyButton\ =\ \textcolor{keyword}{new}\ JButton(\textcolor{stringliteral}{"{}Modify\ car"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00111}00111\ \ \ \ \ \ \ \ \ modifyButton.setBackground(Color.GREEN);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ JButton\ deleteButton\ =\ \textcolor{keyword}{new}\ JButton(\textcolor{stringliteral}{"{}Delete\ car"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ deleteButton.setBackground(Color.RED);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ deleteButton.addActionListener(e\ -\/>\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ ClientCarController.deleteCar(car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_aaae86c29afe2398f38abd62f91e3aee6}{getLicensePlate}}());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Delete\ Car"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ logger.info(car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_aaae86c29afe2398f38abd62f91e3aee6}{getLicensePlate}}());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view_ab91e0bc8be3d2bee5136385fd179843f}{loadUserCars}}();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ modifyButton.addActionListener(e\ -\/>\ this.modifyCar());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00124}00124\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00125}00125\ \ \ \ \ \ \ \ \ buttonPanel.add(modifyButton);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ buttonPanel.add(Box.createHorizontalStrut(10));\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00127}00127\ \ \ \ \ \ \ \ \ buttonPanel.add(deleteButton);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00128}00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00129}00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00130}00130\ \ \ \ \ \ \ \ \ infoPanel.add(buttonPanel);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00131}00131\ \ \ \ \ \ \ \ \ infoPanel.revalidate();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00132}00132\ \ \ \ \ \ \ \ \ infoPanel.repaint();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00135}00135\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ addLabelAndTextField(String\ label,\ String\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00136}00136\ \ \ \ \ \ \ \ \ JPanel\ panel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ FlowLayout(FlowLayout.LEFT));}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00137}00137\ \ \ \ \ \ \ \ \ JLabel\ labelComponent\ =\ \textcolor{keyword}{new}\ JLabel(label);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00138}00138\ \ \ \ \ \ \ \ \ JTextField\ textField\ =\ \textcolor{keyword}{new}\ JTextField(value,\ 20);\ \textcolor{comment}{//\ Establece\ el\ ancho\ preferido\ a\ 20\ caracteres}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00139}00139\ \ \ \ \ \ \ \ \ panel.add(labelComponent);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00140}00140\ \ \ \ \ \ \ \ \ panel.add(textField);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00141}00141\ \ \ \ \ \ \ \ \ infoPanel.add(panel);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00142}00142\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00143}00143\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ modifyCar()\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00145}00145\ \ \ \ \ \ \ \ \ CarModel\ car\ =\ carList.getSelectedValue();\ \textcolor{comment}{//\ Obtén\ el\ coche\ seleccionado\ en\ la\ lista}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (car\ !=\ \textcolor{keyword}{null})\ \{\ \textcolor{comment}{//\ Asegúrate\ de\ que\ se\ haya\ seleccionado\ un\ coche}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Component\ component\ :\ infoPanel.getComponents())\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (component\ instanceof\ JPanel)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JPanel\ panel\ =\ (JPanel)\ component;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Component\ innerComponent\ :\ panel.getComponents())\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (innerComponent\ instanceof\ JTextField)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JTextField\ textField\ =\ (JTextField)\ innerComponent;}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ label\ =\ ((JLabel)\ panel.getComponent(0)).getText();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ valor\ =\ textField.getText();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(label);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(label.equals(\textcolor{stringliteral}{"{}Owner:"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textField.setEditable(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Actualiza\ los\ atributos\ correspondientes\ del\ objeto\ CarModel}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(label)\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}Brand:"{}}:}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ car.setBrand(valor);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}Model:"{}}:}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ car.setModel(valor);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}Year:"{}}:}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ car.setYear(valor);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}Condition:"{}}:}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CarCondition\ condition\ =\ CarCondition.valueOf(valor);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ car.setCarCondition(condition);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}Location:"{}}:}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ car.setLocation(valor);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(car.getBrand());}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ ClientCarController.updateCar(car);}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ this.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_hosted_cars_view_ab91e0bc8be3d2bee5136385fd179843f}{loadUserCars}}();}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}No\ car\ selected"{}});}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00194}00194\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00197}00197\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00200}00200\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00201}00201\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_hosted_cars_view_8java_source_l00202}00202\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,38 @@
+\doxysection{User\+Session.\+java}
+\hypertarget{_user_session_8java_source}{}\label{_user_session_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/model/UserSession.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/model/UserSession.java}}
+\mbox{\hyperlink{_user_session_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.client.model;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00005}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session}{UserSession}}\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00006}00006\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session}{UserSession}}\ instance;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{private}\ String\ email;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{private}\ String\ password;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session}{UserSession}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00013}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a15991069e740647e4a92af9a28b060f0}{00013}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session}{UserSession}}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a15991069e740647e4a92af9a28b060f0}{getInstance}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance\ ==\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ instance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session}{UserSession}}();}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00016}00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00020}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a622cb6edea996d9c36633b2322c0e98b}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a622cb6edea996d9c36633b2322c0e98b}{getEmail}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ email;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00024}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a0f6d79c85a5f9137e4db44391aa76dfc}{00024}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a0f6d79c85a5f9137e4db44391aa76dfc}{setEmail}}(String\ email)\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ this.email\ =\ email;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00028}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a19af6983505e35727bccde07d86690fd}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_a19af6983505e35727bccde07d86690fd}{getPassword}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ password;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00032}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_ab4e2e2a43461d03012adff3929d48125}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_session_ab4e2e2a43461d03012adff3929d48125}{setPassword}}(String\ password)\ \{}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ this.password\ =\ password;}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_session_8java_source_l00035}00035\ \}}
+
+\end{DoxyCode}

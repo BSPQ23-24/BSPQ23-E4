@@ -1,0 +1,58 @@
+\doxysection{Client\+Car\+Controller.\+java}
+\hypertarget{_client_car_controller_8java_source}{}\label{_client_car_controller_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/controller/ClientCarController.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/controller/ClientCarController.java}}
+\mbox{\hyperlink{_client_car_controller_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00001}\mbox{\hyperlink{namespacecom_1_1example_1_1client_1_1controller}{00001}}\ \textcolor{keyword}{package\ }com.example.client.controller;}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00003}00003\ \textcolor{keyword}{import}\ com.example.client.model.CarModel;}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00004}00004\ \textcolor{keyword}{import}\ com.example.client.service.CarService;}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.example.client.view.LoginView;}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.apache.logging.log4j.LogManager;}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00010}00010\ \textcolor{keyword}{import}\ org.apache.logging.log4j.Logger;}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00016}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller}{00016}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller}{ClientCarController}}\ \{}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service}{CarService}}\ carService\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service}{CarService}}();}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00025}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a0e16abb5148fa0163f6b25149aafe73e}{00025}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ List<CarModel>\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a0e16abb5148fa0163f6b25149aafe73e}{getAllCars}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ carService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_ae69eb280d96ac79ab7e805ba80cd3655}{getAllCars}}();}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ Logger\ logger\ =\ LogManager.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_login_view}{LoginView}}.class);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00036}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_aec4cf9a83d889d16bb24f1da18be2b42}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_aec4cf9a83d889d16bb24f1da18be2b42}{getCarByLicensePlate}}(Integer\ licensePlate)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ carService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_a717cf7645b593ccf5682e2ec37b90412}{getCarByLicensePlate}}(licensePlate);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00050}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a4d0f642016af74c615f2f57306cf44de}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a4d0f642016af74c615f2f57306cf44de}{createCar}}(String\ brand,\ String\ location,\ String\ model,\ String\ year,\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}.\mbox{\hyperlink{enumcom_1_1example_1_1client_1_1model_1_1_car_model_1_1_car_condition}{CarCondition}}\ condition,\ String\ description,\ Double\ pricePerDay)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}Creating\ car!\ -\/\ Owner:\ "{}}\ +\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller}{ClientUserController}}.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a42d0eed86eb0cc72499cc1aa75191b69}{loggedUser}}.toString());}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ car\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}();}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//car.setLicensePlate(licensePlate);}}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_a386e6d16b1d85833988eff840e4931ec}{setBrand}}(brand);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ae551d11f2953237fed227ec4b71e6018}{setLocation}}(location);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ab311be33b3bdbc8e2751f15b9948df38}{setModel}}(model);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ae67bdfa7023dbde9aa4de46dc77161d4}{setYear}}(year);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_a6c903ae5af2979da5494725862daa2df}{setCarCondition}}(condition);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_adc1bfcff6f0a992078320ea4ce2a0eb7}{setUser}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller}{ClientUserController}}.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a42d0eed86eb0cc72499cc1aa75191b69}{loggedUser}});}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ab31cb7407a9e28ed70794e4209c64b80}{setDescription}}(description);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_ac2c601aaa351448f161eb7b482d29e8f}{setPricePerDay}}(pricePerDay);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ carService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_ab2ae666a6ca66d1e8aaa71d70954315b}{createCar}}(car);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00072}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a368de5fb774bb4eae7c9cdcfadaf5165}{00072}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a368de5fb774bb4eae7c9cdcfadaf5165}{deleteCar}}(\textcolor{keywordtype}{int}\ licensePlate)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Delete\ Car"{}});}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ logger.info(licensePlate);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ carService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_a52069b4b3723f8e51a87e8811d6aa13e}{deleteCar}}(licensePlate);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00082}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a56f25d8c6088cf9c22d26b8ad2b73b33}{00082}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a56f25d8c6088cf9c22d26b8ad2b73b33}{updateCar}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ car)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Modify\ Car"{}});}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ logger.info(car.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model_aaae86c29afe2398f38abd62f91e3aee6}{getLicensePlate}}());}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ carService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_a6bdc3937604e38ce3468c17258db5db9}{updateCar}}(car);}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00088}00088\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_client_car_controller_8java_source_l00090}00090\ \}}
+
+\end{DoxyCode}

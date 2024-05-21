@@ -52,7 +52,9 @@ import com.example.client.model.CarModel;
 import com.example.client.model.RentalModel;
 import com.example.client.model.UserModel;
 import com.example.client.model.UserSession;
-
+/**
+ * The UserDataModificationView is a UI that allows the user logged to modify its profile
+ */
 public class UserDataModificationView extends JPanel{
 	 protected JPanel pPrincipal = new JPanel(new BorderLayout());
 	 protected JPanel pSignup = new JPanel(new GridLayout(7, 1));

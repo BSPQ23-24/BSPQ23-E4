@@ -1,0 +1,58 @@
+\doxysection{com.\+example.\+server.\+repository.\+Rental\+Repository Interface Reference}
+\hypertarget{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository}{}\label{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository}\index{com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}}
+Inheritance diagram for com.\+example.\+server.\+repository.\+Rental\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Optional$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a937d23e9b6ddac296451e05b88d1e540}{find\+By\+Id}} (Integer rental\+ID)
+\item 
+void \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a96ed8cdb861a904562fd8beb355630be}{delete\+By\+Id}} (Integer rental\+ID)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a5d91eedeeba1e07b7d1c54a6ddffabee}{find\+All\+Cars\+By\+User\+Email}} (String email)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_ad26275018bf65ad451c027309c7d7fc5}{find\+Rentals\+By\+Car}} (\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} car)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_rental_repository_8java_source_l00011}{11}} of file \mbox{\hyperlink{_rental_repository_8java_source}{Rental\+Repository.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a96ed8cdb861a904562fd8beb355630be}\label{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a96ed8cdb861a904562fd8beb355630be} 
+\index{com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}!deleteById@{deleteById}}
+\index{deleteById@{deleteById}!com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}}
+\doxysubsubsection{\texorpdfstring{deleteById()}{deleteById()}}
+{\footnotesize\ttfamily void com.\+example.\+server.\+repository.\+Rental\+Repository.\+delete\+By\+Id (\begin{DoxyParamCaption}\item[{Integer}]{rental\+ID }\end{DoxyParamCaption})}
+
+\Hypertarget{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a5d91eedeeba1e07b7d1c54a6ddffabee}\label{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a5d91eedeeba1e07b7d1c54a6ddffabee} 
+\index{com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}!findAllCarsByUserEmail@{findAllCarsByUserEmail}}
+\index{findAllCarsByUserEmail@{findAllCarsByUserEmail}!com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}}
+\doxysubsubsection{\texorpdfstring{findAllCarsByUserEmail()}{findAllCarsByUserEmail()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ com.\+example.\+server.\+repository.\+Rental\+Repository.\+find\+All\+Cars\+By\+User\+Email (\begin{DoxyParamCaption}\item[{String}]{email }\end{DoxyParamCaption})}
+
+\Hypertarget{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a937d23e9b6ddac296451e05b88d1e540}\label{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a937d23e9b6ddac296451e05b88d1e540} 
+\index{com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}!findById@{findById}}
+\index{findById@{findById}!com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}}
+\doxysubsubsection{\texorpdfstring{findById()}{findById()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ com.\+example.\+server.\+repository.\+Rental\+Repository.\+find\+By\+Id (\begin{DoxyParamCaption}\item[{Integer}]{rental\+ID }\end{DoxyParamCaption})}
+
+\Hypertarget{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_ad26275018bf65ad451c027309c7d7fc5}\label{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_ad26275018bf65ad451c027309c7d7fc5} 
+\index{com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}!findRentalsByCar@{findRentalsByCar}}
+\index{findRentalsByCar@{findRentalsByCar}!com.example.server.repository.RentalRepository@{com.example.server.repository.RentalRepository}}
+\doxysubsubsection{\texorpdfstring{findRentalsByCar()}{findRentalsByCar()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ com.\+example.\+server.\+repository.\+Rental\+Repository.\+find\+Rentals\+By\+Car (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}}]{car }\end{DoxyParamCaption})}
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/leire/\+Idea\+Projects/\+SPQlux\+Wheels/\+Lux\+Wheels/server/src/main/java/com/example/server/repository/\mbox{\hyperlink{_rental_repository_8java}{Rental\+Repository.\+java}}\end{DoxyCompactItemize}

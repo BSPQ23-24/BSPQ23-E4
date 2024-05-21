@@ -14,7 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.stream.Stream;
-
+/**
+ * The registerCarView is a UI that creates a car linked to the user logged
+ */
 public class RegisterCarView extends JFrame {
 
     public static RegisterCarView instance;

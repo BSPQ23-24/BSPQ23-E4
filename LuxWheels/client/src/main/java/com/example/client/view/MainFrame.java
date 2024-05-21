@@ -11,7 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 import com.example.client.controller.ClientUserController;
 import com.example.client.model.UserSession;
-
+/**
+ * MainFrame is the basic structure off the whole application
+ */
 public class MainFrame extends JFrame {
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private CardLayout cardLayout;

@@ -1,0 +1,200 @@
+\doxysection{Login\+View.\+java}
+\hypertarget{_login_view_8java_source}{}\label{_login_view_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/view/LoginView.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/view/LoginView.java}}
+\mbox{\hyperlink{_login_view_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.client.view;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00003}00003\ \textcolor{keyword}{import}\ com.example.client.controller.ClientUserController;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00004}00004\ \textcolor{keyword}{import}\ com.example.client.model.UserSession;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00006}00006\ \textcolor{keyword}{import}\ lombok.Getter;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00007}00007\ \textcolor{keyword}{import}\ lombok.Setter;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00008}00008\ \textcolor{keyword}{import}\ org.apache.logging.log4j.LogManager;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.apache.logging.log4j.Logger;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00012}00012\ \textcolor{keyword}{import}\ javax.swing.*;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00013}00013\ \textcolor{keyword}{import}\ java.awt.*;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00014}00014\ \textcolor{keyword}{import}\ java.awt.event.ActionEvent;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00015}00015\ \textcolor{keyword}{import}\ java.awt.event.ActionListener;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00016}00016\ \textcolor{keyword}{import}\ java.util.Locale;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00017}00017\ \textcolor{keyword}{import}\ java.util.ResourceBundle;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00019}00019\ @Getter}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00020}00020\ @Setter}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00022}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_login_view}{00022}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_login_view}{LoginView}}\ \textcolor{keyword}{extends}\ JPanel\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ Logger\ logger\ =\ LogManager.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_login_view}{LoginView}}.class);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ nameField;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ emailField;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{private}\ JPasswordField\ passwordField;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{private}\ JLabel\ titleLabel;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{private}\ JLabel\ nameLabel;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{private}\ JLabel\ emailLabel;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{private}\ JLabel\ passwordLabel;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{private}\ JButton\ loginButton;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{private}\ JLabel\ signupLabel;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{private}\ JButton\ signupButton;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{private}\ JComboBox<String>\ languageComboBox;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{private}\ ResourceBundle\ messages;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_main_frame}{MainFrame}}\ mainFrame;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00039}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_login_view_a81077530db7850a184900c912fb6267a}{00039}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_login_view_a81077530db7850a184900c912fb6267a}{LoginView}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_main_frame}{MainFrame}}\ mainFrame,\ ResourceBundle\ messages)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ this.messages\ =\ messages;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ this.initUI();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ this.mainFrame\ =\ mainFrame;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ initUI()\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ setLayout(\textcolor{keyword}{new}\ BorderLayout());}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ setBackground(\textcolor{keyword}{new}\ Color(240,\ 240,\ 240));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Language\ selection}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ JPanel\ languagePanel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ FlowLayout(FlowLayout.RIGHT));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ String[]\ languages\ =\ \{\textcolor{stringliteral}{"{}en"{}},\textcolor{stringliteral}{"{}es"{}},\ \textcolor{stringliteral}{"{}de"{}},\ \textcolor{stringliteral}{"{}eu"{}}\};}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ languageComboBox\ =\ \textcolor{keyword}{new}\ JComboBox<>(languages);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ languageComboBox.setSelectedItem(\textcolor{stringliteral}{"{}en"{}});}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ languageComboBox.addActionListener(\textcolor{keyword}{new}\ LanguageChangeListener());}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ languagePanel.add(\textcolor{keyword}{new}\ JLabel(messages.getString(\textcolor{stringliteral}{"{}select.language"{}})));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ languagePanel.add(languageComboBox);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ add(languagePanel,\ BorderLayout.NORTH);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ JPanel\ formPanel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ GridLayout(4,\ 1,\ 10,\ 10));\ \textcolor{comment}{//\ Increased\ rows\ to\ accommodate\ the\ image}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ formPanel.setBorder(BorderFactory.createEmptyBorder(10,\ 20,\ 10,\ 20));\ \textcolor{comment}{//\ Reduce\ space\ around\ the\ formPanel}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ formPanel.setBackground(Color.WHITE);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ titleLabel\ =\ \textcolor{keyword}{new}\ JLabel(messages.getString(\textcolor{stringliteral}{"{}title.welcome"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ titleLabel.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Arial"{}},\ Font.BOLD,\ 24));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ titleLabel.setHorizontalAlignment(SwingConstants.CENTER);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ formPanel.add(titleLabel);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ nameField\ =\ \textcolor{keyword}{new}\ JTextField(15);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ emailField\ =\ \textcolor{keyword}{new}\ JTextField(15);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ passwordField\ =\ \textcolor{keyword}{new}\ JPasswordField(15);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ nameLabel\ =\ \textcolor{keyword}{new}\ JLabel(messages.getString(\textcolor{stringliteral}{"{}label.name"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ emailLabel\ =\ \textcolor{keyword}{new}\ JLabel(messages.getString(\textcolor{stringliteral}{"{}label.email"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ passwordLabel\ =\ \textcolor{keyword}{new}\ JLabel(messages.getString(\textcolor{stringliteral}{"{}label.password"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ JPanel\ inputPanel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ GridLayout(3,\ 1,\ 10,\ 10));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ inputPanel.setBackground(Color.WHITE);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ inputPanel.setBorder(BorderFactory.createEmptyBorder(1,\ 0,\ 1,\ 0));\ \textcolor{comment}{//\ Reduce\ space\ between\ input\ fields}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ inputPanel.add(createInputPanel(nameLabel,\ nameField));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ inputPanel.add(createInputPanel(emailLabel,\ emailField));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ inputPanel.add(createInputPanel(passwordLabel,\ passwordField));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ formPanel.add(inputPanel);\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ ImageIcon\ icon\ =\ \textcolor{keyword}{new}\ ImageIcon(getClass().getResource(\textcolor{stringliteral}{"{}/pics/audi.jpg"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ Image\ image\ =\ icon.getImage();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ Image\ newImage\ =\ image.getScaledInstance(400,\ 125,\ Image.SCALE\_SMOOTH);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ ImageIcon\ scaledIcon\ =\ \textcolor{keyword}{new}\ ImageIcon(newImage);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ JLabel\ photoLabel\ =\ \textcolor{keyword}{new}\ JLabel(scaledIcon);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ JPanel\ photoPanel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ FlowLayout(FlowLayout.CENTER));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ photoPanel.setBackground(Color.WHITE);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ photoPanel.add(photoLabel);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ formPanel.add(photoPanel);\ \textcolor{comment}{//\ Add\ image\ after\ the\ input\ fields}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ JPanel\ buttonPanel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ BorderLayout());}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ buttonPanel.setBackground(Color.WHITE);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ loginButton\ =\ \textcolor{keyword}{new}\ JButton(messages.getString(\textcolor{stringliteral}{"{}button.login"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ loginButton.addActionListener(this::submitAction);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ signupLabel\ =\ \textcolor{keyword}{new}\ JLabel(messages.getString(\textcolor{stringliteral}{"{}label.signup"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ signupButton\ =\ \textcolor{keyword}{new}\ JButton(messages.getString(\textcolor{stringliteral}{"{}button.signup"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ signupButton.addActionListener(this::registerAction);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00105}00105\ \ \ \ \ \ \ \ \ JPanel\ buttonContainerPanel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ FlowLayout(FlowLayout.CENTER));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00106}00106\ \ \ \ \ \ \ \ \ buttonContainerPanel.setBackground(Color.WHITE);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ buttonContainerPanel.setBorder(BorderFactory.createEmptyBorder(10,\ 0,\ 10,\ 0));\ \textcolor{comment}{//\ Reduce\ space\ between\ buttons\ and\ bottom}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ buttonContainerPanel.add(loginButton);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00109}00109\ \ \ \ \ \ \ \ \ buttonContainerPanel.add(signupLabel);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00110}00110\ \ \ \ \ \ \ \ \ buttonContainerPanel.add(signupButton);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ buttonPanel.add(buttonContainerPanel,\ BorderLayout.SOUTH);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ add(formPanel,\ BorderLayout.CENTER);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ add(buttonPanel,\ BorderLayout.SOUTH);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ signupButton.addActionListener(\textcolor{keyword}{new}\ ActionListener()\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ actionPerformed(ActionEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ selectedLanguage\ =\ (String)\ languageComboBox.getSelectedItem();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Locale\ locale\ =\ \textcolor{keyword}{new}\ Locale(selectedLanguage);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RegisterView\ registerView\ =\ \textcolor{keyword}{new}\ RegisterView(locale,messages);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ registerView.setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//closeWindow(signupButton);}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00130}00130\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00132}00132\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00133}00133\ \ \ \ \ \textcolor{keyword}{private}\ JPanel\ createInputPanel(JLabel\ label,\ JTextField\ field)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00134}00134\ \ \ \ \ \ \ \ \ JPanel\ panel\ =\ \textcolor{keyword}{new}\ JPanel(\textcolor{keyword}{new}\ FlowLayout(FlowLayout.CENTER));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00135}00135\ \ \ \ \ \ \ \ \ panel.setBackground(Color.WHITE);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00136}00136\ \ \ \ \ \ \ \ \ panel.add(label);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00137}00137\ \ \ \ \ \ \ \ \ panel.add(field);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ panel;}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00140}00140\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00141}00141\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ closeWindow(Component\ component)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00143}00143\ \ \ \ \ \ \ \ \ Window\ window\ =\ SwingUtilities.getWindowAncestor(component);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (window\ !=\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ window.dispose();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00146}00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00147}00147\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00149}00149\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ submitAction(ActionEvent\ actionEvent)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00150}00150\ \ \ \ \ \ \ \ \ String\ name\ =\ nameField.getText();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00151}00151\ \ \ \ \ \ \ \ \ String\ email\ =\ emailField.getText();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00152}00152\ \ \ \ \ \ \ \ \ String\ password\ =\ \textcolor{keyword}{new}\ String(passwordField.getPassword());}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ success\ =\ ClientUserController.loginUser(name,\ email,\ password);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (success)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ UserSession\ userSession\ =\ UserSession.getInstance();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ userSession.setEmail(email);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ userSession.setPassword(password);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ this.mainFrame.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1view_1_1_main_frame_a5b501ddfb9fba57469e30e8eaee286c5}{onLoginSuccess}}();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00160}00160\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{this},\ \textcolor{stringliteral}{"{}Incorrect\ mail\ or\ password,\ try\ again"{}},\ \textcolor{stringliteral}{"{}Error"{}},\ JOptionPane.ERROR\_MESSAGE);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00164}00164\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00165}00165\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00167}00167\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ registerAction(ActionEvent\ actionEvent)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00168}00168\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Register\ button\ clicked"{}});}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00169}00169\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00170}00170\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00172}00172\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{class\ }LanguageChangeListener\ \textcolor{keyword}{implements}\ ActionListener\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ actionPerformed(ActionEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ String\ selectedLanguage\ =\ (String)\ languageComboBox.getSelectedItem();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ Locale\ newLocale\ =\ \textcolor{keyword}{new}\ Locale(selectedLanguage);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ messages\ =\ ResourceBundle.getBundle(\textcolor{stringliteral}{"{}messages/messages"{}},\ newLocale);}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ updateTexts();}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00183}00183\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ updateTexts()\ \{}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ titleLabel.setText(messages.getString(\textcolor{stringliteral}{"{}title.welcome"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ nameLabel.setText(messages.getString(\textcolor{stringliteral}{"{}label.name"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ emailLabel.setText(messages.getString(\textcolor{stringliteral}{"{}label.email"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ passwordLabel.setText(messages.getString(\textcolor{stringliteral}{"{}label.password"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ loginButton.setText(messages.getString(\textcolor{stringliteral}{"{}button.login"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00190}00190\ \ \ \ \ \ \ \ \ signupLabel.setText(messages.getString(\textcolor{stringliteral}{"{}label.signup"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ signupButton.setText(messages.getString(\textcolor{stringliteral}{"{}button.signup"{}}));}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_login_view_8java_source_l00194}00194\ \}}
+
+\end{DoxyCode}
