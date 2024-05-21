@@ -150,12 +150,14 @@ public class LoginView extends JPanel {
         String email = emailField.getText();
         String password = new String(passwordField.getPassword());
         boolean success = ClientUserController.loginUser(name, email, password);
+        String selectedLanguage = (String) languageComboBox.getSelectedItem();
+        Locale locale = new Locale(selectedLanguage);
 
         if (success) {
             UserSession userSession = UserSession.getInstance();
             userSession.setEmail(email);
             userSession.setPassword(password);
-            this.mainFrame.onLoginSuccess();      
+            this.mainFrame.onLoginSuccess(locale, messages);
         } else {
             JOptionPane.showMessageDialog(this, messages.getString("error.login"), "Error", JOptionPane.ERROR_MESSAGE);
         }

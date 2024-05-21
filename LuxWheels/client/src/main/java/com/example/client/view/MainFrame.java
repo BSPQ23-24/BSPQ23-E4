@@ -89,7 +89,7 @@ public class MainFrame extends JFrame {
         menuBar.add(logoutPanel, BorderLayout.EAST);
     }
 
-    public void onLoginSuccess() {
+    public void onLoginSuccess(Locale locale, ResourceBundle messages) {
         cardLayout.show(cardPanel, "CarListView");
         menuBar.setVisible(true);
         setJMenuBar(menuBar);
