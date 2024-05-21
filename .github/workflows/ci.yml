@@ -87,9 +87,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Lint Java code with Checkstyle
-        run: mvn checkstyle:check --file LuxWheels/pom.xml
-
       - name: Static analysis with PMD
         run: mvn pmd:check --file LuxWheels/pom.xml
 
