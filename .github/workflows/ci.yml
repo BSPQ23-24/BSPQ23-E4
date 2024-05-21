@@ -55,11 +55,8 @@ jobs:
       - name: Build server JAR
         run: mvn clean package --file LuxWheels/server/pom.xml
 
-      - name: list target directory
-        run: ls -la LuxWheels/server/target
-
       - name: Build Docker image for server
-        run: docker build -t lux-wheels-server -f LuxWheels/server/Dockerfile .
+        run: docker build -t lux-wheels-server -f LuxWheels/server/Dockerfile LuxWheels/server
 
       - name: Run server container
         run: docker run -d --name spring-boot-container --network host lux-wheels-server
