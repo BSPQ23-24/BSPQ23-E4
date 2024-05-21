@@ -1,0 +1,71 @@
+\doxysection{Rental\+Model.\+java}
+\hypertarget{_rental_model_8java_source}{}\label{_rental_model_8java_source}\index{LuxWheels/client/src/main/java/com/example/client/model/RentalModel.java@{LuxWheels/client/src/main/java/com/example/client/model/RentalModel.java}}
+\mbox{\hyperlink{_rental_model_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.client.model;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.time.LocalDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00004}00004\ \textcolor{keyword}{import}\ lombok.AllArgsConstructor;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00005}00005\ \textcolor{keyword}{import}\ lombok.Getter;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00006}00006\ \textcolor{keyword}{import}\ lombok.NoArgsConstructor;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00007}00007\ \textcolor{keyword}{import}\ lombok.Setter;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00009}00009\ @Getter}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00010}00010\ @Setter}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00011}00011\ @AllArgsConstructor}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00012}00012\ @NoArgsConstructor}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00013}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model}{00013}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model}{RentalModel}}\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ Integer\ rentalID;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ car;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{private}\ String\ startDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ String\ endDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00021}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_adbe78fa9c45e72a152d90001bc6b4ee3}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ Integer\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_adbe78fa9c45e72a152d90001bc6b4ee3}{getRentalID}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rentalID;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00024}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ae01ad3e0cbb429ae99e0310ceb260d24}{00024}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ae01ad3e0cbb429ae99e0310ceb260d24}{setRentalID}}(Integer\ rentalID)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ this.rentalID\ =\ rentalID;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00027}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a6d948d539fa6cfaca6ba0747fffa89e7}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a6d948d539fa6cfaca6ba0747fffa89e7}{getUser}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ user;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00030}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ab230f568b428edfab1c39b35d5e241d5}{00030}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ab230f568b428edfab1c39b35d5e241d5}{setUser}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ this.user\ =\ user;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00033}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_acfd844302e3f5099e99a09e2dbb63ccc}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_acfd844302e3f5099e99a09e2dbb63ccc}{getCar}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ car;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00036}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ad5f758ab45e89944a4ed55aff3b2698e}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ad5f758ab45e89944a4ed55aff3b2698e}{setCar}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{CarModel}}\ car)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ this.car\ =\ car;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00039}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a125a201949f5d7c03ed4eadf2b67b3b5}{00039}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a125a201949f5d7c03ed4eadf2b67b3b5}{getStartDate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ startDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00042}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a332524e9ac07d4c012193b8ced884819}{00042}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a332524e9ac07d4c012193b8ced884819}{setStartDate}}(String\ startDate)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ this.startDate\ =\ startDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00045}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ace9fa33485105e7220324f6d07c7e474}{00045}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_ace9fa33485105e7220324f6d07c7e474}{getEndDate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ endDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00048}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a1c79ac865b270de007870e4413b901f2}{00048}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a1c79ac865b270de007870e4413b901f2}{setEndDate}}(String\ endDate)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ this.endDate\ =\ endDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00051}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a0434d61b9f4441fede11a49120577311}{00051}}\ \ \ \ \ \textcolor{keyword}{public}\ Double\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a0434d61b9f4441fede11a49120577311}{getPrice}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ price;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00054}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_aaad4c92f2013602ee4289c7b474f221c}{00054}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_aaad4c92f2013602ee4289c7b474f221c}{setPrice}}(Double\ price)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ this.price\ =\ price;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00057}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a950f6304d91f3d050f437b7b4185a8a4}{00057}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_a950f6304d91f3d050f437b7b4185a8a4}{getCreationDate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ creationDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00060}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_aa31c11c7464316e306837a914709ce6a}{00060}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model_aa31c11c7464316e306837a914709ce6a}{setCreationDate}}(String\ creationDate)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ this.creationDate\ =\ creationDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{private}\ Double\ price;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{private}\ String\ creationDate;}
+\DoxyCodeLine{\Hypertarget{_rental_model_8java_source_l00065}00065\ \}}
+
+\end{DoxyCode}

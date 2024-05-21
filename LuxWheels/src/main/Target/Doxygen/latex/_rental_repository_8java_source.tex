@@ -1,0 +1,26 @@
+\doxysection{Rental\+Repository.\+java}
+\hypertarget{_rental_repository_8java_source}{}\label{_rental_repository_8java_source}\index{LuxWheels/server/src/main/java/com/example/server/repository/RentalRepository.java@{LuxWheels/server/src/main/java/com/example/server/repository/RentalRepository.java}}
+\mbox{\hyperlink{_rental_repository_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.server.repository;}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00004}00004\ \textcolor{keyword}{import}\ java.util.Optional;}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00006}00006\ \textcolor{keyword}{import}\ com.example.server.entity.Car;}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00007}00007\ \textcolor{keyword}{import}\ org.springframework.data.jpa.repository.JpaRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00008}00008\ \textcolor{keyword}{import}\ com.example.server.entity.Rental;}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.springframework.data.jpa.repository.Query;}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00011}\mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository}{00011}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{interface\ }\mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository}{RentalRepository}}\ \textcolor{keyword}{extends}\ JpaRepository<Rental,\ Integer>\{}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00013}\mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a937d23e9b6ddac296451e05b88d1e540}{00013}}\ \ \ \ \ Optional<Rental>\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a937d23e9b6ddac296451e05b88d1e540}{findById}}(Integer\ rentalID);}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00015}\mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a96ed8cdb861a904562fd8beb355630be}{00015}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a96ed8cdb861a904562fd8beb355630be}{deleteById}}(Integer\ rentalID);}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00017}00017\ \ \ \ \ @Query(\textcolor{stringliteral}{"{}SELECT\ r.car\ FROM\ Rental\ r\ WHERE\ r.user.email\ =\ :email"{}})}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00018}\mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a5d91eedeeba1e07b7d1c54a6ddffabee}{00018}}\ \ \ \ \ List<\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}>\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_a5d91eedeeba1e07b7d1c54a6ddffabee}{findAllCarsByUserEmail}}(String\ email);}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00019}\mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_ad26275018bf65ad451c027309c7d7fc5}{00019}}\ \ \ \ \ List<\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}>\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository_ad26275018bf65ad451c027309c7d7fc5}{findRentalsByCar}}(\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ car);}
+\DoxyCodeLine{\Hypertarget{_rental_repository_8java_source_l00020}00020\ \}}
+
+\end{DoxyCode}

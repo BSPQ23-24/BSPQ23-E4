@@ -1,0 +1,161 @@
+\doxysection{com.\+example.\+client.\+service.\+Car\+Service Class Reference}
+\hypertarget{classcom_1_1example_1_1client_1_1service_1_1_car_service}{}\label{classcom_1_1example_1_1client_1_1service_1_1_car_service}\index{com.example.client.service.CarService@{com.example.client.service.CarService}}
+
+
+The Car\+Service class provides methods to interact with the car-\/related backend services.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_a769dd94dff9d4ec56087ae9fbd8a02ce}{Car\+Service}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new Car\+Service instance. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_ae69eb280d96ac79ab7e805ba80cd3655}{get\+All\+Cars}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a list of all cars. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_a717cf7645b593ccf5682e2ec37b90412}{get\+Car\+By\+License\+Plate}} (Integer license\+Plate)
+\begin{DoxyCompactList}\small\item\em Retrieves a car by its license plate number. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_a52069b4b3723f8e51a87e8811d6aa13e}{delete\+Car}} (int license\+Plate)
+\begin{DoxyCompactList}\small\item\em Deletes a car by its license plate number. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_a6bdc3937604e38ce3468c17258db5db9}{update\+Car}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} car)
+\begin{DoxyCompactList}\small\item\em Updates the details of an existing car. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_car_service_ab2ae666a6ca66d1e8aaa71d70954315b}{create\+Car}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} car)
+\begin{DoxyCompactList}\small\item\em Creates a new car with the provided details. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Car\+Service class provides methods to interact with the car-\/related backend services. 
+
+It includes methods to perform CRUD operations on Car\+Model objects. 
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source_l00024}{24}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source}{Car\+Service.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_car_service_a769dd94dff9d4ec56087ae9fbd8a02ce}\label{classcom_1_1example_1_1client_1_1service_1_1_car_service_a769dd94dff9d4ec56087ae9fbd8a02ce} 
+\index{com.example.client.service.CarService@{com.example.client.service.CarService}!CarService@{CarService}}
+\index{CarService@{CarService}!com.example.client.service.CarService@{com.example.client.service.CarService}}
+\doxysubsubsection{\texorpdfstring{CarService()}{CarService()}}
+{\footnotesize\ttfamily com.\+example.\+client.\+service.\+Car\+Service.\+Car\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new Car\+Service instance. 
+
+Initializes the HTTP client and the Object\+Mapper. 
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source_l00039}{39}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source}{Car\+Service.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_car_service_ab2ae666a6ca66d1e8aaa71d70954315b}\label{classcom_1_1example_1_1client_1_1service_1_1_car_service_ab2ae666a6ca66d1e8aaa71d70954315b} 
+\index{com.example.client.service.CarService@{com.example.client.service.CarService}!createCar@{createCar}}
+\index{createCar@{createCar}!com.example.client.service.CarService@{com.example.client.service.CarService}}
+\doxysubsubsection{\texorpdfstring{createCar()}{createCar()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+Car\+Service.\+create\+Car (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}}}]{car }\end{DoxyParamCaption})}
+
+
+
+Creates a new car with the provided details. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em car} & the Car\+Model object containing details of the new car. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string response from the server, or null if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source_l00149}{149}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source}{Car\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_car_service_a52069b4b3723f8e51a87e8811d6aa13e}\label{classcom_1_1example_1_1client_1_1service_1_1_car_service_a52069b4b3723f8e51a87e8811d6aa13e} 
+\index{com.example.client.service.CarService@{com.example.client.service.CarService}!deleteCar@{deleteCar}}
+\index{deleteCar@{deleteCar}!com.example.client.service.CarService@{com.example.client.service.CarService}}
+\doxysubsubsection{\texorpdfstring{deleteCar()}{deleteCar()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+Car\+Service.\+delete\+Car (\begin{DoxyParamCaption}\item[{int}]{license\+Plate }\end{DoxyParamCaption})}
+
+
+
+Deletes a car by its license plate number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em license\+Plate} & the license plate number of the car to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string response from the server, or null if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source_l00103}{103}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source}{Car\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_car_service_ae69eb280d96ac79ab7e805ba80cd3655}\label{classcom_1_1example_1_1client_1_1service_1_1_car_service_ae69eb280d96ac79ab7e805ba80cd3655} 
+\index{com.example.client.service.CarService@{com.example.client.service.CarService}!getAllCars@{getAllCars}}
+\index{getAllCars@{getAllCars}!com.example.client.service.CarService@{com.example.client.service.CarService}}
+\doxysubsubsection{\texorpdfstring{getAllCars()}{getAllCars()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ com.\+example.\+client.\+service.\+Car\+Service.\+get\+All\+Cars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of all cars. 
+
+\begin{DoxyReturn}{Returns}
+a list of Car\+Model objects representing all cars, or an empty list if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source_l00049}{49}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source}{Car\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_car_service_a717cf7645b593ccf5682e2ec37b90412}\label{classcom_1_1example_1_1client_1_1service_1_1_car_service_a717cf7645b593ccf5682e2ec37b90412} 
+\index{com.example.client.service.CarService@{com.example.client.service.CarService}!getCarByLicensePlate@{getCarByLicensePlate}}
+\index{getCarByLicensePlate@{getCarByLicensePlate}!com.example.client.service.CarService@{com.example.client.service.CarService}}
+\doxysubsubsection{\texorpdfstring{getCarByLicensePlate()}{getCarByLicensePlate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} com.\+example.\+client.\+service.\+Car\+Service.\+get\+Car\+By\+License\+Plate (\begin{DoxyParamCaption}\item[{Integer}]{license\+Plate }\end{DoxyParamCaption})}
+
+
+
+Retrieves a car by its license plate number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em license\+Plate} & the license plate number of the car to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the Car\+Model object corresponding to the provided license plate number, or a new Car\+Model if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source_l00076}{76}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source}{Car\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_car_service_a6bdc3937604e38ce3468c17258db5db9}\label{classcom_1_1example_1_1client_1_1service_1_1_car_service_a6bdc3937604e38ce3468c17258db5db9} 
+\index{com.example.client.service.CarService@{com.example.client.service.CarService}!updateCar@{updateCar}}
+\index{updateCar@{updateCar}!com.example.client.service.CarService@{com.example.client.service.CarService}}
+\doxysubsubsection{\texorpdfstring{updateCar()}{updateCar()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+Car\+Service.\+update\+Car (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}}}]{car }\end{DoxyParamCaption})}
+
+
+
+Updates the details of an existing car. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em car} & the Car\+Model object containing updated details of the car. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string response from the server, or null if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source_l00125}{125}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java_source}{Car\+Service.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Lux\+Wheels/client/src/main/java/com/example/client/service/\mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_car_service_8java}{Car\+Service.\+java}}\end{DoxyCompactItemize}

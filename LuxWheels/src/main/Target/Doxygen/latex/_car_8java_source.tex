@@ -1,0 +1,130 @@
+\doxysection{Car.\+java}
+\hypertarget{_car_8java_source}{}\label{_car_8java_source}\index{LuxWheels/server/src/main/java/com/example/server/entity/Car.java@{LuxWheels/server/src/main/java/com/example/server/entity/Car.java}}
+\mbox{\hyperlink{_car_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00001}\mbox{\hyperlink{namespacecom_1_1example_1_1server_1_1entity}{00001}}\ \textcolor{keyword}{package\ }com.example.server.entity;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00003}00003\ \textcolor{keyword}{import}\ jakarta.persistence.*;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00004}00004\ \textcolor{keyword}{import}\ lombok.AllArgsConstructor;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00005}00005\ \textcolor{keyword}{import}\ lombok.Getter;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00006}00006\ \textcolor{keyword}{import}\ lombok.NoArgsConstructor;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00007}00007\ \textcolor{keyword}{import}\ lombok.Setter;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00009}00009\ @Entity}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00010}00010\ @Table(name\ =\ \textcolor{stringliteral}{"{}Car"{}})}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00011}00011\ @Getter}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00012}00012\ @Setter}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00013}00013\ @NoArgsConstructor}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00014}00014\ @AllArgsConstructor}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00015}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{00015}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00016}00016\ \ \ \ \ @Id}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00017}00017\ \ \ \ \ @GeneratedValue(strategy\ =\ GenerationType.IDENTITY)}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{private}\ Integer\ licensePlate;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00020}00020\ \ \ \ \ @Enumerated(EnumType.STRING)\ \textcolor{comment}{//\ Maps\ the\ ENUM\ type\ in\ SQL\ to\ a\ Java\ Enum}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition}{CarCondition}}\ carCondition;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{private}\ String\ brand;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{private}\ String\ model;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{private}\ String\ year;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{private}\ String\ description;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_status}{Status}}\ status;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{private}\ Double\ pricePerDay;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00032}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af759a4ab2c89de07e167127da63fd9a2}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ Integer\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af759a4ab2c89de07e167127da63fd9a2}{getLicensePlate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ licensePlate;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00036}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a1d8a6348810ad0bb2bc80a9e5e28f7eb}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a1d8a6348810ad0bb2bc80a9e5e28f7eb}{setLicensePlate}}(Integer\ licensePlate)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ this.licensePlate\ =\ licensePlate;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00040}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_ad62576fef6983ec0167dd0677176f6e7}{00040}}\ \ \ \ \ \textcolor{keyword}{public}\ Double\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_ad62576fef6983ec0167dd0677176f6e7}{getPricePerDay}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pricePerDay;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00044}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af715573974fa38aa67c6490978865cce}{00044}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af715573974fa38aa67c6490978865cce}{setPricePerDay}}(Double\ pricePerDay)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ this.pricePerDay\ =\ pricePerDay;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00048}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a0b391ac16a6f8e7526cf149e83479261}{00048}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition}{CarCondition}}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a0b391ac16a6f8e7526cf149e83479261}{getCarCondition}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ carCondition;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00052}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a3a71e08b520f572f8cf305db55d150ea}{00052}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a3a71e08b520f572f8cf305db55d150ea}{setCarCondition}}(\mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition}{CarCondition}}\ carCondition)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ this.carCondition\ =\ carCondition;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00056}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_aa7a711a4905088f103db32c921d76b42}{00056}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_aa7a711a4905088f103db32c921d76b42}{getBrand}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ brand;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00060}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_affcf1e02d27cc368c44a739c636dd143}{00060}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_affcf1e02d27cc368c44a739c636dd143}{setBrand}}(String\ brand)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ this.brand\ =\ brand;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00064}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a94a71f5664136c253f38577c0651d943}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a94a71f5664136c253f38577c0651d943}{getModel}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ model;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00068}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_aed52b598e556ac6b0e03afe6c5caab87}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_aed52b598e556ac6b0e03afe6c5caab87}{setModel}}(String\ model)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ this.model\ =\ model;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00072}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af2d997bd261945aafec514e7539015e3}{00072}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af2d997bd261945aafec514e7539015e3}{getYear}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ year;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00076}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a23b7054d650fbfa1359e99f81cd472d6}{00076}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a23b7054d650fbfa1359e99f81cd472d6}{setYear}}(String\ year)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ this.year\ =\ year;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00080}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a861f4a96df1239998f07ac2bd5de2952}{00080}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a861f4a96df1239998f07ac2bd5de2952}{getLocation}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ location;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00084}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_ad8ea6cdc11fc51ea653ea90c3d4411de}{00084}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_ad8ea6cdc11fc51ea653ea90c3d4411de}{setLocation}}(String\ location)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ this.location\ =\ location;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00088}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a293e2bb0d4eff8cbf44352f957ffef05}{00088}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user}{User}}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a293e2bb0d4eff8cbf44352f957ffef05}{getUser}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ user;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00092}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a9a147c9bafda83c0c2ae1c81795820b2}{00092}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a9a147c9bafda83c0c2ae1c81795820b2}{setUser}}(\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user}{User}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ this.user\ =\ user;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{private}\ String\ location;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00098}00098\ \ \ \ \ @ManyToOne\ \textcolor{comment}{//\ Assuming\ many\ cars\ can\ be\ owned\ by\ one\ user}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00099}00099\ \ \ \ \ @JoinColumn(name\ =\ \textcolor{stringliteral}{"{}UserID"{}},\ referencedColumnName\ =\ \textcolor{stringliteral}{"{}id"{}})}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00100}00100\ \ \ \ \ private\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user}{User}}\ user;}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00102}00102\ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00103}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_ae2a88fcf3ce3bd3ee2b791fc0c3a6859}{00103}}\ \ \ \ \ public\ String\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_ae2a88fcf3ce3bd3ee2b791fc0c3a6859}{toString}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Car\{"{}}\ +}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}licensePlate="{}}\ +\ licensePlate\ +}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ carCondition="{}}\ +\ carCondition\ +}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ brand='"{}}\ +\ brand\ +\ \textcolor{charliteral}{'\(\backslash\)''}\ +}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ model='"{}}\ +\ model\ +\ \textcolor{charliteral}{'\(\backslash\)''}\ +}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ year='"{}}\ +\ year\ +\ \textcolor{charliteral}{'\(\backslash\)''}\ +}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ location='"{}}\ +\ location\ +\ \textcolor{charliteral}{'\(\backslash\)''}\ +}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ user="{}}\ +\ (user\ !=\ \textcolor{keyword}{null}\ ?\ user.getId()\ :\ \textcolor{stringliteral}{"{}null"{}})\ +\ \textcolor{comment}{//\ Safely\ accessing\ user\ ID}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{charliteral}{'\}'};}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Enum\ to\ represent\ the\ CarCondition\ SQL\ ENUM}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00116}\mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition}{00116}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition}{CarCondition}}\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00117}\mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition_af66ce6ebb08186d4247a530e5ec2826c}{00117}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition_af66ce6ebb08186d4247a530e5ec2826c}{bad}},\ standard,\ good}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00118}\mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_car_condition_ac7c66167a5ecb1d71c61c811261e80ca}{00118}}\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00120}\mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_status}{00120}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_status}{Status}}\ \{}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00121}\mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_status_afba0cd20885ac769576352e9111f9b0e}{00121}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_status_afba0cd20885ac769576352e9111f9b0e}{OPEN}},\ BOOKED}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00122}\mbox{\hyperlink{enumcom_1_1example_1_1server_1_1entity_1_1_car_1_1_status_a3753e710b99bbc2bb7d8d5e6762f44f0}{00122}}\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_car_8java_source_l00124}00124\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,92 @@
+\doxysection{com.\+example.\+server.\+controller.\+Rental\+Controller Class Reference}
+\hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller}{}\label{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller}\index{com.example.server.controller.RentalController@{com.example.server.controller.RentalController}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_aba93e80cc776406ee6cd11732ff68f83}{create}} (@Request\+Body \mbox{\hyperlink{classcom_1_1example_1_1server_1_1helper_1_1_rental_request}{Rental\+Request}} rental\+Request)
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_ae886d6486beff972dbba54da28bb8797}{get\+Rental\+By\+Id}} (@Path\+Variable Integer rental\+Id)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af4098c627be2b970919752dc97e6deae}{get\+All\+Rentals}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_acde967a69d66a58847b096076ee99808}{delete\+Rental}} (@Path\+Variable Integer rental\+Id)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ $>$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af2b9026874737ee731308d508ccadf34}{get\+All\+Rented\+Cars\+By\+User\+Email}} (@Path\+Variable String email)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_a645b19292c490075e900c7e3ba1cf133}{get\+Rentals\+By\+License\+Plate}} (@Path\+Variable Integer license\+Plate)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_rental_controller_8java_source_l00018}{18}} of file \mbox{\hyperlink{_rental_controller_8java_source}{Rental\+Controller.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_aba93e80cc776406ee6cd11732ff68f83}\label{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_aba93e80cc776406ee6cd11732ff68f83} 
+\index{com.example.server.controller.RentalController@{com.example.server.controller.RentalController}!create@{create}}
+\index{create@{create}!com.example.server.controller.RentalController@{com.example.server.controller.RentalController}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} com.\+example.\+server.\+controller.\+Rental\+Controller.\+create (\begin{DoxyParamCaption}\item[{@Request\+Body \mbox{\hyperlink{classcom_1_1example_1_1server_1_1helper_1_1_rental_request}{Rental\+Request}}}]{rental\+Request }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_rental_controller_8java_source_l00029}{29}} of file \mbox{\hyperlink{_rental_controller_8java_source}{Rental\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_acde967a69d66a58847b096076ee99808}\label{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_acde967a69d66a58847b096076ee99808} 
+\index{com.example.server.controller.RentalController@{com.example.server.controller.RentalController}!deleteRental@{deleteRental}}
+\index{deleteRental@{deleteRental}!com.example.server.controller.RentalController@{com.example.server.controller.RentalController}}
+\doxysubsubsection{\texorpdfstring{deleteRental()}{deleteRental()}}
+{\footnotesize\ttfamily void com.\+example.\+server.\+controller.\+Rental\+Controller.\+delete\+Rental (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{rental\+Id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_rental_controller_8java_source_l00048}{48}} of file \mbox{\hyperlink{_rental_controller_8java_source}{Rental\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af4098c627be2b970919752dc97e6deae}\label{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af4098c627be2b970919752dc97e6deae} 
+\index{com.example.server.controller.RentalController@{com.example.server.controller.RentalController}!getAllRentals@{getAllRentals}}
+\index{getAllRentals@{getAllRentals}!com.example.server.controller.RentalController@{com.example.server.controller.RentalController}}
+\doxysubsubsection{\texorpdfstring{getAllRentals()}{getAllRentals()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ com.\+example.\+server.\+controller.\+Rental\+Controller.\+get\+All\+Rentals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_rental_controller_8java_source_l00041}{41}} of file \mbox{\hyperlink{_rental_controller_8java_source}{Rental\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af2b9026874737ee731308d508ccadf34}\label{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af2b9026874737ee731308d508ccadf34} 
+\index{com.example.server.controller.RentalController@{com.example.server.controller.RentalController}!getAllRentedCarsByUserEmail@{getAllRentedCarsByUserEmail}}
+\index{getAllRentedCarsByUserEmail@{getAllRentedCarsByUserEmail}!com.example.server.controller.RentalController@{com.example.server.controller.RentalController}}
+\doxysubsubsection{\texorpdfstring{getAllRentedCarsByUserEmail()}{getAllRentedCarsByUserEmail()}}
+{\footnotesize\ttfamily Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ $>$ com.\+example.\+server.\+controller.\+Rental\+Controller.\+get\+All\+Rented\+Cars\+By\+User\+Email (\begin{DoxyParamCaption}\item[{@Path\+Variable String}]{email }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_rental_controller_8java_source_l00054}{54}} of file \mbox{\hyperlink{_rental_controller_8java_source}{Rental\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_ae886d6486beff972dbba54da28bb8797}\label{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_ae886d6486beff972dbba54da28bb8797} 
+\index{com.example.server.controller.RentalController@{com.example.server.controller.RentalController}!getRentalById@{getRentalById}}
+\index{getRentalById@{getRentalById}!com.example.server.controller.RentalController@{com.example.server.controller.RentalController}}
+\doxysubsubsection{\texorpdfstring{getRentalById()}{getRentalById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} com.\+example.\+server.\+controller.\+Rental\+Controller.\+get\+Rental\+By\+Id (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{rental\+Id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_rental_controller_8java_source_l00035}{35}} of file \mbox{\hyperlink{_rental_controller_8java_source}{Rental\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_a645b19292c490075e900c7e3ba1cf133}\label{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_a645b19292c490075e900c7e3ba1cf133} 
+\index{com.example.server.controller.RentalController@{com.example.server.controller.RentalController}!getRentalsByLicensePlate@{getRentalsByLicensePlate}}
+\index{getRentalsByLicensePlate@{getRentalsByLicensePlate}!com.example.server.controller.RentalController@{com.example.server.controller.RentalController}}
+\doxysubsubsection{\texorpdfstring{getRentalsByLicensePlate()}{getRentalsByLicensePlate()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}} $>$ com.\+example.\+server.\+controller.\+Rental\+Controller.\+get\+Rentals\+By\+License\+Plate (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{license\+Plate }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_rental_controller_8java_source_l00060}{60}} of file \mbox{\hyperlink{_rental_controller_8java_source}{Rental\+Controller.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Lux\+Wheels/server/src/main/java/com/example/server/controller/\mbox{\hyperlink{_rental_controller_8java}{Rental\+Controller.\+java}}\end{DoxyCompactItemize}

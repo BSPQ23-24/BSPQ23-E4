@@ -1,0 +1,133 @@
+\doxysection{User\+Controller\+Tests.\+java}
+\hypertarget{_user_controller_tests_8java_source}{}\label{_user_controller_tests_8java_source}\index{LuxWheels/server/src/test/java/com/example/server/controller/UserControllerTests.java@{LuxWheels/server/src/test/java/com/example/server/controller/UserControllerTests.java}}
+\mbox{\hyperlink{_user_controller_tests_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.server.controller;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00004}00004\ \textcolor{keyword}{import}\ com.example.server.entity.User;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.example.server.service.UserService;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00006}00006\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00007}00007\ \textcolor{keyword}{import}\ org.junit.jupiter.api.extension.ExtendWith;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00008}00008\ \textcolor{keyword}{import}\ org.mockito.InjectMocks;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.mockito.Mock;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00010}00010\ \textcolor{keyword}{import}\ org.mockito.junit.jupiter.MockitoExtension;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00011}00011\ \textcolor{keyword}{import}\ org.springframework.http.HttpStatus;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00012}00012\ \textcolor{keyword}{import}\ org.springframework.http.ResponseEntity;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00014}00014\ \textcolor{keyword}{import}\ java.util.Arrays;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00015}00015\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00017}00017\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.assertEquals;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00018}00018\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.mockito.Mockito.*;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00020}00020\ @ExtendWith(MockitoExtension.class)}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00021}00021\ class\ UserControllerTests\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00023}00023\ \ \ \ \ @Mock}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{private}\ UserService\ userService;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00026}00026\ \ \ \ \ @InjectMocks}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{private}\ UserController\ userController;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00029}00029\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{void}\ testRegister()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ User\ user\ =\ \textcolor{keyword}{new}\ User();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ when(userService.createUser(user)).thenReturn(user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ ResponseEntity<User>\ response\ =\ userController.register(user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ assertEquals(HttpStatus.OK,\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ assertEquals(user,\ response.getBody());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).createUser(user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00042}00042\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{void}\ testLoginInvalidCredentials()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ User\ user\ =\ \textcolor{keyword}{new}\ User();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ String\ responseBody\ =\ \textcolor{stringliteral}{"{}\{\}"{}};}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ when(userService.loginUser(user)).thenReturn(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ ResponseEntity<String>\ response\ =\ userController.login(user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ assertEquals(HttpStatus.UNAUTHORIZED,\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Invalid\ email\ or\ password"{}},\ response.getBody());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).loginUser(user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00055}00055\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetAllUsers()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ List<User>\ users\ =\ Arrays.asList(\textcolor{keyword}{new}\ User(),\ \textcolor{keyword}{new}\ User());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ when(userService.getAllUsers()).thenReturn(users);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ ResponseEntity<List<User>>\ response\ =\ userController.getAllUsers();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ assertEquals(HttpStatus.OK,\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ assertEquals(users,\ response.getBody());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).getAllUsers();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00067}00067\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00068}00068\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetUserByIdFound()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ Integer\ \textcolor{keywordtype}{id}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ User\ user\ =\ \textcolor{keyword}{new}\ User();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ when(userService.getUserById(\textcolor{keywordtype}{id})).thenReturn(user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ ResponseEntity<User>\ response\ =\ userController.getUserById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ assertEquals(HttpStatus.OK,\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ assertEquals(user,\ response.getBody());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).getUserById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00080}00080\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetUserByIdNotFound()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00082}00082\ \ \ \ \ \ \ \ \ Integer\ \textcolor{keywordtype}{id}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ when(userService.getUserById(\textcolor{keywordtype}{id})).thenReturn(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ ResponseEntity<User>\ response\ =\ userController.getUserById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ assertEquals(HttpStatus.NOT\_FOUND,\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).getUserById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00091}00091\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{void}\ testUpdateUserFound()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ Integer\ \textcolor{keywordtype}{id}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ User\ user\ =\ \textcolor{keyword}{new}\ User();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ when(userService.updateUser(\textcolor{keywordtype}{id},\ user)).thenReturn(user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ ResponseEntity<User>\ response\ =\ userController.updateUser(\textcolor{keywordtype}{id},\ user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ assertEquals(HttpStatus.OK,\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00100}00100\ \ \ \ \ \ \ \ \ assertEquals(user,\ response.getBody());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).updateUser(\textcolor{keywordtype}{id},\ user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00104}00104\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{void}\ testUpdateUserNotFound()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00106}00106\ \ \ \ \ \ \ \ \ Integer\ \textcolor{keywordtype}{id}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ User\ user\ =\ \textcolor{keyword}{new}\ User();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ when(userService.updateUser(\textcolor{keywordtype}{id},\ user)).thenReturn(\textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00110}00110\ \ \ \ \ \ \ \ \ ResponseEntity<User>\ response\ =\ userController.updateUser(\textcolor{keywordtype}{id},\ user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ assertEquals(HttpStatus.NOT\_FOUND,\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).updateUser(\textcolor{keywordtype}{id},\ user);}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00116}00116\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00117}00117\ \ \ \ \ \textcolor{keywordtype}{void}\ testDeleteUser()\ \{}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00118}00118\ \ \ \ \ \ \ \ \ Integer\ \textcolor{keywordtype}{id}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00119}00119\ \ \ \ \ \ \ \ \ ResponseEntity<Void>\ expectedResponse\ =\ ResponseEntity.noContent().build();}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ ResponseEntity<Void>\ response\ =\ userController.deleteUser(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ assertEquals(expectedResponse.getStatusCode(),\ response.getStatusCode());}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00124}00124\ \ \ \ \ \ \ \ \ verify(userService,\ times(1)).deleteUser(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00125}00125\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{_user_controller_tests_8java_source_l00127}00127\ }
+
+\end{DoxyCode}

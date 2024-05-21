@@ -1,0 +1,75 @@
+\doxysection{Car\+Controller.\+java}
+\hypertarget{_car_controller_8java_source}{}\label{_car_controller_8java_source}\index{LuxWheels/server/src/main/java/com/example/server/controller/CarController.java@{LuxWheels/server/src/main/java/com/example/server/controller/CarController.java}}
+\mbox{\hyperlink{_car_controller_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00001}\mbox{\hyperlink{namespacecom_1_1example_1_1server_1_1controller}{00001}}\ \textcolor{keyword}{package\ }com.example.server.controller;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.example.server.entity.Rental;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00006}00006\ \textcolor{keyword}{import}\ com.example.server.entity.User;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00008}00008\ \textcolor{keyword}{import}\ org.apache.logging.log4j.LogManager;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.apache.logging.log4j.Logger;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00010}00010\ \textcolor{keyword}{import}\ org.springframework.beans.factory.annotation.Autowired;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00011}00011\ \textcolor{keyword}{import}\ org.springframework.http.ResponseEntity;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00012}00012\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.DeleteMapping;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00013}00013\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.GetMapping;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00014}00014\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.PathVariable;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00015}00015\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.PostMapping;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00016}00016\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.PutMapping;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00017}00017\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.RequestBody;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00018}00018\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.RequestMapping;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00019}00019\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.RestController;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00021}00021\ \textcolor{keyword}{import}\ com.example.server.ServerApplication;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00022}00022\ \textcolor{keyword}{import}\ com.example.server.entity.Car;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00023}00023\ \textcolor{keyword}{import}\ com.example.server.service.CarService;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00025}00025\ \textcolor{keyword}{import}\ jakarta.transaction.Transactional;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00027}00027\ @RestController}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00028}00028\ @RequestMapping(\textcolor{stringliteral}{"{}/api/cars"{}})}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00029}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller}{00029}}\ public\ class\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller}{CarController}}\ \{}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ Logger\ logger\ =\ LogManager.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller}{CarController}}.class);}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00033}00033\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_car_service}{CarService}}\ carService;}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00036}00036\ \ \ \ \ @PostMapping(\textcolor{stringliteral}{"{}/create"{}})}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00037}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a08ecddfb8c65e9718ce6f67e87f0653c}{00037}}\ \ \ \ \ public\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ create(@RequestBody\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ car)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Create\ a\ car\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ carService.createCar(car);}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00042}00042\ \ \ \ \ @GetMapping}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00043}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a37539b6c5750c22a2d74eaf677d23e3f}{00043}}\ \ \ \ \ \textcolor{keyword}{public}\ ResponseEntity<List<Car>>\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a37539b6c5750c22a2d74eaf677d23e3f}{getAllCars}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Get\ all\ cars\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ResponseEntity.ok(carService.getAllCars());}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00048}00048\ \ \ \ \ @GetMapping(\textcolor{stringliteral}{"{}/\{licensePlate\}"{}})}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00049}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_aee13535b0f0f6fddaf9b8aed5b708b20}{00049}}\ \ \ \ \ public\ ResponseEntity<\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}>\ getCarByLicensePlate(@PathVariable\ Integer\ licensePlate)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Get\ car\ by\ licensePlate\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ResponseEntity.ok(carService.getCarByLicensePlate(licensePlate));}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00054}00054\ \ \ \ \ @PutMapping(\textcolor{stringliteral}{"{}/\{licensePlate\}"{}})}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00055}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a3452e07a05400e7bf4e29e5462d3dea3}{00055}}\ \ \ \ \ public\ ResponseEntity<\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}>\ updateCar(@PathVariable\ Integer\ licensePlate,\ @RequestBody\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ car)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}UpdateCar\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ car.setLicensePlate(licensePlate);}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ updatedCar\ =\ carService.updateCar(licensePlate,\ car);}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ResponseEntity.ok(updatedCar);}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00062}00062\ \ \ \ \ @DeleteMapping(\textcolor{stringliteral}{"{}/\{licensePlate\}"{}})}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00063}00063\ \ \ \ \ @Transactional}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00064}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_ac07e72fc08ce2baeb4bba6e1bd7070d1}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ ResponseEntity<Void>\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_ac07e72fc08ce2baeb4bba6e1bd7070d1}{deleteCar}}(@PathVariable\ Integer\ licensePlate)\ \{}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Delete\ a\ car\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ carService.deleteCar(licensePlate);}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ResponseEntity.noContent().build();}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_car_controller_8java_source_l00069}00069\ \}}
+
+\end{DoxyCode}

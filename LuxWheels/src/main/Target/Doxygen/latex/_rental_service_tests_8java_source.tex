@@ -1,0 +1,101 @@
+\doxysection{Rental\+Service\+Tests.\+java}
+\hypertarget{_rental_service_tests_8java_source}{}\label{_rental_service_tests_8java_source}\index{LuxWheels/server/src/test/java/com/example/server/service/RentalServiceTests.java@{LuxWheels/server/src/test/java/com/example/server/service/RentalServiceTests.java}}
+\mbox{\hyperlink{_rental_service_tests_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.server.service;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.assertEquals;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.assertTrue;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00006}00006\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00008}00008\ \textcolor{keyword}{import}\ java.util.Optional;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00010}00010\ \textcolor{keyword}{import}\ com.example.server.helper.RentalRequest;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00011}00011\ \textcolor{keyword}{import}\ jakarta.persistence.EntityNotFoundException;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00012}00012\ \textcolor{keyword}{import}\ org.junit.jupiter.api.AfterEach;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00013}00013\ \textcolor{keyword}{import}\ org.junit.jupiter.api.BeforeEach;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00014}00014\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00015}00015\ \textcolor{keyword}{import}\ org.mockito.InjectMocks;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00016}00016\ \textcolor{keyword}{import}\ org.mockito.Mock;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00017}00017\ \textcolor{keyword}{import}\ org.mockito.MockitoAnnotations;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00018}00018\ \textcolor{keyword}{import}\ org.springframework.beans.factory.annotation.Autowired;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00019}00019\ \textcolor{keyword}{import}\ org.springframework.boot.test.context.SpringBootTest;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00021}00021\ \textcolor{keyword}{import}\ com.example.server.entity.Car;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00022}00022\ \textcolor{keyword}{import}\ com.example.server.entity.Rental;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00023}00023\ \textcolor{keyword}{import}\ com.example.server.entity.User;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00024}00024\ \textcolor{keyword}{import}\ com.example.server.repository.CarRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00025}00025\ \textcolor{keyword}{import}\ com.example.server.repository.EmailRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00026}00026\ \textcolor{keyword}{import}\ com.example.server.repository.RentalRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00027}00027\ \textcolor{keyword}{import}\ com.example.server.repository.UserRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00029}00029\ @SpringBootTest}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00030}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests}{00030}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests}{RentalServiceTests}}\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00031}00031\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_rental_repository}{RentalRepository}}\ rentalRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00034}00034\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_email_repository}{EmailRepository}}\ emailRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00037}00037\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_user_repository}{UserRepository}}\ userRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00040}00040\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interfacecom_1_1example_1_1server_1_1repository_1_1_car_repository}{CarRepository}}\ carRepository;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00043}00043\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service}{RentalService}}\ rentalService;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00046}00046\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_user_service}{UserService}}\ userService;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00049}00049\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_car_service}{CarService}}\ carService;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ car;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user}{User}}\ user;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}\ rental;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00056}00056\ \ \ \ \ @BeforeEach}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00057}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests_a65b47843b4dc5fe809c2fb9edfd5d2d1}{00057}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests_a65b47843b4dc5fe809c2fb9edfd5d2d1}{setup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ MockitoAnnotations.openMocks(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user}{User}}\ user\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user}{User}}();}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user_a0794f9506617b214a889a87cc58f66d5}{setEmail}}(\textcolor{stringliteral}{"{}test@mail.com"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user_a010ae1d3d0c4080975eec5bcee1aeafa}{setPassword}}(\textcolor{stringliteral}{"{}test"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ userService.createUser(user);}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ this.user\ =\ user;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ car\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}();}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ car.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_a9a147c9bafda83c0c2ae1c81795820b2}{setUser}}(user);}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ carService.createCar(car);}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ this.car\ =\ car;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00071}00071\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00072}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests_a697bee6cee24927076162db44b7655ff}{00072}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests_a697bee6cee24927076162db44b7655ff}{testCreateRental}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1helper_1_1_rental_request}{RentalRequest}}\ rentalRequest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1helper_1_1_rental_request}{RentalRequest}}();}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ rentalRequest.setCarId(this.car.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af759a4ab2c89de07e167127da63fd9a2}{getLicensePlate}}());}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ rentalRequest.setUserId(this.user.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user_a58e430a18ed11f27c9f9118d6aac97e9}{getId}}());}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ rentalRequest.setStartDate(\textcolor{stringliteral}{"{}2024-\/05-\/25"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ rentalRequest.setEndDate(\textcolor{stringliteral}{"{}2024-\/05-\/28"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ rentalRequest.setPrice(599.99);}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ rentalRequest.setCreationDate(\textcolor{stringliteral}{"{}2024-\/05-\/22"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}\ rental\ =\ rentalService.createRental(rentalRequest);}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ this.rental\ =\ rental;}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ assertEquals(rental.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental_a0881e695e95da46407f896703d0b700e}{toString}}(),\ rentalService.getRentalById(rental.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental_ad02817ff48d3a6d41a9fcbd67ff6f712}{getRentalID}}()).toString());}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00087}00087\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00088}00088\ \ \ \ \ @AfterEach}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00089}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests_a85f09515b4a4db77f37bfcf3610fe157}{00089}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service_tests_a85f09515b4a4db77f37bfcf3610fe157}{cleanup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ rentalService.deleteRental(this.rental.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental_ad02817ff48d3a6d41a9fcbd67ff6f712}{getRentalID}}());}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ carService.deleteCar(this.car.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car_af759a4ab2c89de07e167127da63fd9a2}{getLicensePlate}}());}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ userService.deleteUser(this.user.\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_user_a58e430a18ed11f27c9f9118d6aac97e9}{getId}}());}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_rental_service_tests_8java_source_l00095}00095\ \}}
+
+\end{DoxyCode}

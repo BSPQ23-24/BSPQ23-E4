@@ -1,0 +1,110 @@
+\doxysection{User\+Service.\+java}
+\hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}{}\label{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}\index{LuxWheels/client/src/main/java/com/example/client/service/UserService.java@{LuxWheels/client/src/main/java/com/example/client/service/UserService.java}}
+\mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.client.service;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00003}00003\ \textcolor{keyword}{import}\ com.example.client.model.UserModel;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00005}00005\ \textcolor{keyword}{import}\ java.net.http.HttpClient;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00006}00006\ \textcolor{keyword}{import}\ java.net.http.HttpRequest;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.net.http.HttpResponse;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00008}00008\ \textcolor{keyword}{import}\ java.net.URI;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00010}00010\ \textcolor{keyword}{import}\ com.fasterxml.jackson.databind.ObjectMapper;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00013}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service}{00013}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service}{UserService}}\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ HttpClient\ client;}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ String\ baseURL\ =\ \textcolor{stringliteral}{"{}http://localhost:8080/api/users"{}};}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00016}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a6a47c5130626e5395a4414e177ca5640}{00016}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a6a47c5130626e5395a4414e177ca5640}{UserService}}()\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00017}00017\ \ \ \ \ \ \ \ \ this.client\ =\ HttpClient.newHttpClient();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00020}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a567d29258b6bedf3d5cec8a415d2320b}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a567d29258b6bedf3d5cec8a415d2320b}{createUser}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ String\ userJson\ =\ convertUserToJson(user);}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00023}00023\ \ \ \ \ \ \ \ \ HttpRequest\ request\ =\ HttpRequest.newBuilder()}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .uri(URI.create(baseURL\ +\ \textcolor{stringliteral}{"{}/register"{}}))}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .header(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}})}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .POST(HttpRequest.BodyPublishers.ofString(userJson))}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .build();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ HttpResponse<String>\ response\ =\ client.send(request,\ HttpResponse.BodyHandlers.ofString());}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response.body();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00038}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_afc312a8e0e9e2d91633c1dc0c42297e7}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_afc312a8e0e9e2d91633c1dc0c42297e7}{loginUser}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ String\ userJson\ =\ convertUserToJson(user);}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ HttpRequest\ request\ =\ HttpRequest.newBuilder()}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .uri(URI.create(baseURL\ +\ \textcolor{stringliteral}{"{}/login"{}}))}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .header(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}})}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .POST(HttpRequest.BodyPublishers.ofString(userJson))}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .build();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ HttpResponse<String>\ response\ =\ client.send(request,\ HttpResponse.BodyHandlers.ofString());}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(response.body());}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response.body();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{private}\ String\ convertUserToJson(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ ObjectMapper\ mapper\ =\ \textcolor{keyword}{new}\ ObjectMapper();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mapper.writeValueAsString(user);}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00067}00067\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00068}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_ae24fded0f9c5b4a1ad3ec9f6035e6b0f}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_ae24fded0f9c5b4a1ad3ec9f6035e6b0f}{updateUser}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ System.out.println(user);}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ String\ jsonUser\ =\ convertUserToJson(user);}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ HttpRequest\ request\ =\ HttpRequest.newBuilder()}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .uri(URI.create(baseURL\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_ab50d3d221a27f8b6e57ae9c2041c0388}{getId}}()))\ \textcolor{comment}{//\ Suponiendo\ que\ user.getId()\ devuelve\ el\ ID\ del\ usuario}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .header(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}})}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .PUT(HttpRequest.BodyPublishers.ofString(jsonUser))}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .build();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ HttpResponse<String>\ response\ =\ client.send(request,\ HttpResponse.BodyHandlers.ofString());}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response.body();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00086}00086\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00087}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a1502ca094b2b4654214eb61b4e5b830a}{00087}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a1502ca094b2b4654214eb61b4e5b830a}{deleteUser}}(\textcolor{keywordtype}{int}\ userID)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ HttpRequest\ request\ =\ HttpRequest.newBuilder()}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .uri(URI.create(baseURL\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ userID))}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .header(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}})}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .DELETE()}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .build();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ HttpResponse<String>\ response\ =\ client.send(request,\ HttpResponse.BodyHandlers.ofString());}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response.body();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00104}00104\ \}}
+
+\end{DoxyCode}

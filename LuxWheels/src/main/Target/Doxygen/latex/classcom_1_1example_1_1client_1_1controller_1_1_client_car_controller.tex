@@ -1,0 +1,151 @@
+\doxysection{com.\+example.\+client.\+controller.\+Client\+Car\+Controller Class Reference}
+\hypertarget{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller}{}\label{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller}\index{com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}}
+
+
+The Client\+Car\+Controller class provides methods to manage cars in the system.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a0e16abb5148fa0163f6b25149aafe73e}{get\+All\+Cars}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a list of all cars. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_aec4cf9a83d889d16bb24f1da18be2b42}{get\+Car\+By\+License\+Plate}} (Integer license\+Plate)
+\begin{DoxyCompactList}\small\item\em Retrieves a car by its license plate number. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a4d0f642016af74c615f2f57306cf44de}{create\+Car}} (String brand, String location, String model, String year, Car\+Model.\+Car\+Condition condition, String description, Double price\+Per\+Day)
+\begin{DoxyCompactList}\small\item\em Creates a new car with the provided details. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a368de5fb774bb4eae7c9cdcfadaf5165}{delete\+Car}} (int license\+Plate)
+\begin{DoxyCompactList}\small\item\em Deletes a car by its license plate number. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a56f25d8c6088cf9c22d26b8ad2b73b33}{update\+Car}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} car)
+\begin{DoxyCompactList}\small\item\em Updates the details of an existing car. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Client\+Car\+Controller class provides methods to manage cars in the system. 
+
+It interacts with the Car\+Service to perform CRUD operations on Car\+Model objects. \begin{DoxySeeAlso}{See also}
+Car\+Service 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_client_car_controller_8java_source_l00016}{16}} of file \mbox{\hyperlink{_client_car_controller_8java_source}{Client\+Car\+Controller.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a4d0f642016af74c615f2f57306cf44de}\label{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a4d0f642016af74c615f2f57306cf44de} 
+\index{com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}!createCar@{createCar}}
+\index{createCar@{createCar}!com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}}
+\doxysubsubsection{\texorpdfstring{createCar()}{createCar()}}
+{\footnotesize\ttfamily static void com.\+example.\+client.\+controller.\+Client\+Car\+Controller.\+create\+Car (\begin{DoxyParamCaption}\item[{String}]{brand,  }\item[{String}]{location,  }\item[{String}]{model,  }\item[{String}]{year,  }\item[{Car\+Model.\+Car\+Condition}]{condition,  }\item[{String}]{description,  }\item[{Double}]{price\+Per\+Day }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a new car with the provided details. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em brand} & the brand of the car. \\
+\hline
+{\em location} & the location where the car is available. \\
+\hline
+{\em model} & the model of the car. \\
+\hline
+{\em year} & the manufacturing year of the car. \\
+\hline
+{\em condition} & the condition of the car. \\
+\hline
+{\em description} & a description of the car. \\
+\hline
+{\em price\+Per\+Day} & the rental price per day for the car. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_client_car_controller_8java_source_l00050}{50}} of file \mbox{\hyperlink{_client_car_controller_8java_source}{Client\+Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a368de5fb774bb4eae7c9cdcfadaf5165}\label{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a368de5fb774bb4eae7c9cdcfadaf5165} 
+\index{com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}!deleteCar@{deleteCar}}
+\index{deleteCar@{deleteCar}!com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}}
+\doxysubsubsection{\texorpdfstring{deleteCar()}{deleteCar()}}
+{\footnotesize\ttfamily static void com.\+example.\+client.\+controller.\+Client\+Car\+Controller.\+delete\+Car (\begin{DoxyParamCaption}\item[{int}]{license\+Plate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Deletes a car by its license plate number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em license\+Plate} & the license plate number of the car to delete. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_client_car_controller_8java_source_l00072}{72}} of file \mbox{\hyperlink{_client_car_controller_8java_source}{Client\+Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a0e16abb5148fa0163f6b25149aafe73e}\label{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a0e16abb5148fa0163f6b25149aafe73e} 
+\index{com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}!getAllCars@{getAllCars}}
+\index{getAllCars@{getAllCars}!com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}}
+\doxysubsubsection{\texorpdfstring{getAllCars()}{getAllCars()}}
+{\footnotesize\ttfamily static List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ com.\+example.\+client.\+controller.\+Client\+Car\+Controller.\+get\+All\+Cars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves a list of all cars. 
+
+\begin{DoxyReturn}{Returns}
+a list of Car\+Model objects representing all cars in the database. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Car\+Model 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_client_car_controller_8java_source_l00025}{25}} of file \mbox{\hyperlink{_client_car_controller_8java_source}{Client\+Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_aec4cf9a83d889d16bb24f1da18be2b42}\label{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_aec4cf9a83d889d16bb24f1da18be2b42} 
+\index{com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}!getCarByLicensePlate@{getCarByLicensePlate}}
+\index{getCarByLicensePlate@{getCarByLicensePlate}!com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}}
+\doxysubsubsection{\texorpdfstring{getCarByLicensePlate()}{getCarByLicensePlate()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} com.\+example.\+client.\+controller.\+Client\+Car\+Controller.\+get\+Car\+By\+License\+Plate (\begin{DoxyParamCaption}\item[{Integer}]{license\+Plate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves a car by its license plate number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em license\+Plate} & the license plate number to search the car to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the Car\+Model object corresponding to the provided license plate number. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_client_car_controller_8java_source_l00036}{36}} of file \mbox{\hyperlink{_client_car_controller_8java_source}{Client\+Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a56f25d8c6088cf9c22d26b8ad2b73b33}\label{classcom_1_1example_1_1client_1_1controller_1_1_client_car_controller_a56f25d8c6088cf9c22d26b8ad2b73b33} 
+\index{com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}!updateCar@{updateCar}}
+\index{updateCar@{updateCar}!com.example.client.controller.ClientCarController@{com.example.client.controller.ClientCarController}}
+\doxysubsubsection{\texorpdfstring{updateCar()}{updateCar()}}
+{\footnotesize\ttfamily static void com.\+example.\+client.\+controller.\+Client\+Car\+Controller.\+update\+Car (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}}}]{car }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Updates the details of an existing car. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em car} & the Car\+Model object containing updated details of the car. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_client_car_controller_8java_source_l00082}{82}} of file \mbox{\hyperlink{_client_car_controller_8java_source}{Client\+Car\+Controller.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Lux\+Wheels/client/src/main/java/com/example/client/controller/\mbox{\hyperlink{_client_car_controller_8java}{Client\+Car\+Controller.\+java}}\end{DoxyCompactItemize}
