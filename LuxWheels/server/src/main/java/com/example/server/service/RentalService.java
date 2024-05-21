@@ -6,15 +6,21 @@ import com.example.server.entity.User;
 import com.example.server.repository.CarRepository;
 import com.example.server.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.server.entity.Rental;
+import com.example.server.ServerApplication;
 import com.example.server.entity.Car;
 
 import com.example.server.repository.RentalRepository;
 
 @Service
 public class RentalService {
+	
+    private static final Logger logger = LogManager.getLogger(RentalService.class);
 
     @Autowired
     private RentalRepository rentalRepository;
@@ -27,6 +33,8 @@ public class RentalService {
 
 
     public Rental createRental(RentalRequest rentalRequest) {
+    	
+    	logger.info("Create a rental service");
         User user = userRepository.findById(rentalRequest.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
         Car car = carRepository.findById(rentalRequest.getCarId())
@@ -44,19 +52,23 @@ public class RentalService {
     }
 
     public List<Rental> getAllRental() {
+    	logger.info("Get all rentals service");
         return rentalRepository.findAll();
     }
 
     public Rental getRentalById(Integer id) {
+    	logger.info("Get rental by id service");
         return rentalRepository.findById(id).orElse(null);
     }
 
     public Rental updateRental(Integer id, Rental rental) {
+    	logger.info("Update rental service");
         rental.setRentalID(id);
         return rentalRepository.save(rental);
     }
 
     public List<Rental> getRentalsByLicensePlate(Car car) {
+    	logger.info("Get rentals by license plate service");
         return rentalRepository.findRentalsByCar(car);
     }
 
@@ -77,10 +89,12 @@ public class RentalService {
     }
     */
     public void deleteRental(Integer id) {
+    	logger.info("Delete rental service");
         rentalRepository.deleteById(id);
     }
 
     public List<Car> getCarsRentedByUserEmail(String email) {
+    	logger.info("Get Cars by rented user email service");
         return rentalRepository.findAllCarsByUserEmail(email);
     }
 }
