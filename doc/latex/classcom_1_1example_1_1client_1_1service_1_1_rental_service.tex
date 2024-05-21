@@ -1,0 +1,164 @@
+\doxysection{com.\+example.\+client.\+service.\+Rental\+Service Class Reference}
+\hypertarget{classcom_1_1example_1_1client_1_1service_1_1_rental_service}{}\label{classcom_1_1example_1_1client_1_1service_1_1_rental_service}\index{com.example.client.service.RentalService@{com.example.client.service.RentalService}}
+
+
+The Rental\+Service class provides methods to interact with the rental-\/related backend services.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_rental_service_aaf4600c2336f32dd1155a5f070368f7d}{Rental\+Service}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new Rental\+Service instance. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model}{Rental\+Model}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a0dbc70e79628d132cdf7962d905ffda3}{get\+All\+Rentals}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a list of all rentals. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a6c4d5f44354dfe354c4790250011b729}{get\+All\+Rented\+Cars\+By\+User\+Email}} (String email)
+\begin{DoxyCompactList}\small\item\em Retrieves a list of all rented cars by the specified user\textquotesingle{}s email. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_rental_service_ad5454fe20eb31252090c99c660a72736}{get\+Cars\+Rented\+By\+User}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}} u)
+\begin{DoxyCompactList}\small\item\em Retrieves a list of cars rented by the specified user. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model}{Rental\+Model}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a922d5a121177061d657476e1a4c340a0}{get\+Rentals\+By\+License\+Plate}} (Integer license\+Plate)
+\begin{DoxyCompactList}\small\item\em Retrieves a list of rentals by the specified car\textquotesingle{}s license plate. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_rental_service_abc35505c6894f1fcb51abd7c75bd31d3}{create\+Rental}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1helper_1_1_client_rental_request}{Client\+Rental\+Request}} rental\+Request)
+\begin{DoxyCompactList}\small\item\em Creates a new rental. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Rental\+Service class provides methods to interact with the rental-\/related backend services. 
+
+It includes methods to perform CRUD operations on Rental\+Model objects and related operations. 
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source_l00021}{21}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source}{Rental\+Service.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_rental_service_aaf4600c2336f32dd1155a5f070368f7d}\label{classcom_1_1example_1_1client_1_1service_1_1_rental_service_aaf4600c2336f32dd1155a5f070368f7d} 
+\index{com.example.client.service.RentalService@{com.example.client.service.RentalService}!RentalService@{RentalService}}
+\index{RentalService@{RentalService}!com.example.client.service.RentalService@{com.example.client.service.RentalService}}
+\doxysubsubsection{\texorpdfstring{RentalService()}{RentalService()}}
+{\footnotesize\ttfamily com.\+example.\+client.\+service.\+Rental\+Service.\+Rental\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new Rental\+Service instance. 
+
+Initializes the HTTP client and the Object\+Mapper, registering Java\+Time\+Module. 
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source_l00036}{36}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source}{Rental\+Service.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_rental_service_abc35505c6894f1fcb51abd7c75bd31d3}\label{classcom_1_1example_1_1client_1_1service_1_1_rental_service_abc35505c6894f1fcb51abd7c75bd31d3} 
+\index{com.example.client.service.RentalService@{com.example.client.service.RentalService}!createRental@{createRental}}
+\index{createRental@{createRental}!com.example.client.service.RentalService@{com.example.client.service.RentalService}}
+\doxysubsubsection{\texorpdfstring{createRental()}{createRental()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+Rental\+Service.\+create\+Rental (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1helper_1_1_client_rental_request}{Client\+Rental\+Request}}}]{rental\+Request }\end{DoxyParamCaption})}
+
+
+
+Creates a new rental. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rental\+Request} & the Client\+Rental\+Request containing the rental details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the response body as a string, or null if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source_l00154}{154}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source}{Rental\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a0dbc70e79628d132cdf7962d905ffda3}\label{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a0dbc70e79628d132cdf7962d905ffda3} 
+\index{com.example.client.service.RentalService@{com.example.client.service.RentalService}!getAllRentals@{getAllRentals}}
+\index{getAllRentals@{getAllRentals}!com.example.client.service.RentalService@{com.example.client.service.RentalService}}
+\doxysubsubsection{\texorpdfstring{getAllRentals()}{getAllRentals()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model}{Rental\+Model}} $>$ com.\+example.\+client.\+service.\+Rental\+Service.\+get\+All\+Rentals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of all rentals. 
+
+\begin{DoxyReturn}{Returns}
+a list of Rental\+Model objects representing all rentals, or an empty list if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source_l00047}{47}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source}{Rental\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a6c4d5f44354dfe354c4790250011b729}\label{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a6c4d5f44354dfe354c4790250011b729} 
+\index{com.example.client.service.RentalService@{com.example.client.service.RentalService}!getAllRentedCarsByUserEmail@{getAllRentedCarsByUserEmail}}
+\index{getAllRentedCarsByUserEmail@{getAllRentedCarsByUserEmail}!com.example.client.service.RentalService@{com.example.client.service.RentalService}}
+\doxysubsubsection{\texorpdfstring{getAllRentedCarsByUserEmail()}{getAllRentedCarsByUserEmail()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ com.\+example.\+client.\+service.\+Rental\+Service.\+get\+All\+Rented\+Cars\+By\+User\+Email (\begin{DoxyParamCaption}\item[{String}]{email }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of all rented cars by the specified user\textquotesingle{}s email. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & the email of the user.
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list of Car\+Model objects representing the cars rented by the user, or an empty list if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source_l00061}{61}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source}{Rental\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_rental_service_ad5454fe20eb31252090c99c660a72736}\label{classcom_1_1example_1_1client_1_1service_1_1_rental_service_ad5454fe20eb31252090c99c660a72736} 
+\index{com.example.client.service.RentalService@{com.example.client.service.RentalService}!getCarsRentedByUser@{getCarsRentedByUser}}
+\index{getCarsRentedByUser@{getCarsRentedByUser}!com.example.client.service.RentalService@{com.example.client.service.RentalService}}
+\doxysubsubsection{\texorpdfstring{getCarsRentedByUser()}{getCarsRentedByUser()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_car_model}{Car\+Model}} $>$ com.\+example.\+client.\+service.\+Rental\+Service.\+get\+Cars\+Rented\+By\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}}}]{u }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of cars rented by the specified user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & the User\+Model representing the user. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list of Car\+Model objects representing the cars rented by the user, or an empty list if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source_l00098}{98}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source}{Rental\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a922d5a121177061d657476e1a4c340a0}\label{classcom_1_1example_1_1client_1_1service_1_1_rental_service_a922d5a121177061d657476e1a4c340a0} 
+\index{com.example.client.service.RentalService@{com.example.client.service.RentalService}!getRentalsByLicensePlate@{getRentalsByLicensePlate}}
+\index{getRentalsByLicensePlate@{getRentalsByLicensePlate}!com.example.client.service.RentalService@{com.example.client.service.RentalService}}
+\doxysubsubsection{\texorpdfstring{getRentalsByLicensePlate()}{getRentalsByLicensePlate()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_rental_model}{Rental\+Model}} $>$ com.\+example.\+client.\+service.\+Rental\+Service.\+get\+Rentals\+By\+License\+Plate (\begin{DoxyParamCaption}\item[{Integer}]{license\+Plate }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of rentals by the specified car\textquotesingle{}s license plate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em license\+Plate} & the license plate of the car. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list of Rental\+Model objects representing the rentals of the car, or an empty list if an error occurs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source_l00128}{128}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java_source}{Rental\+Service.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/leire/\+Idea\+Projects/\+SPQlux\+Wheels/\+Lux\+Wheels/client/src/main/java/com/example/client/service/\mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_rental_service_8java}{Rental\+Service.\+java}}\end{DoxyCompactItemize}
