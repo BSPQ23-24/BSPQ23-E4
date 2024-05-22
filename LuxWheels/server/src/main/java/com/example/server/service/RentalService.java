@@ -16,14 +16,24 @@ import com.example.server.repository.RentalRepository;
 @Service
 public class RentalService {
 
+    /** The rental repository for performing database operations on rentals. */
     @Autowired
     private RentalRepository rentalRepository;
 
+    /** The user repository for performing database operations on users. */
     @Autowired
     private UserRepository userRepository;
 
+    /** The car repository for performing database operations on cars. */
     @Autowired
     private CarRepository carRepository;
+
+    /**
+     * Creates a new rental based on the provided rental request.
+     *
+     * @param rentalRequest the rental request containing rental details.
+     * @return the created rental entity.
+     */
 
 
     public Rental createRental(RentalRequest rentalRequest) {
@@ -43,19 +53,43 @@ public class RentalService {
         return rentalRepository.save(rental);
     }
 
+    /**
+     * Retrieves all rentals from the database.
+     *
+     * @return a list of all rental entities.
+     */
     public List<Rental> getAllRental() {
         return rentalRepository.findAll();
     }
 
+    /**
+     * Retrieves a rental by its ID.
+     *
+     * @param id the ID of the rental to retrieve.
+     * @return the rental entity if found, or null if not found.
+     */
     public Rental getRentalById(Integer id) {
         return rentalRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Updates an existing rental in the database.
+     *
+     * @param id the ID of the rental to update.
+     * @param rental the updated rental entity.
+     * @return the updated rental entity.
+     */
     public Rental updateRental(Integer id, Rental rental) {
         rental.setRentalID(id);
         return rentalRepository.save(rental);
     }
 
+    /**
+     * Retrieves rentals associated with a specific car.
+     *
+     * @param car the car entity for which to retrieve rentals.
+     * @return a list of rentals associated with the car.
+     **/
     public List<Rental> getRentalsByLicensePlate(Car car) {
         return rentalRepository.findRentalsByCar(car);
     }
@@ -76,10 +110,21 @@ public class RentalService {
         return rentedCars;
     }
     */
+    /**
+     * Deletes a rental by its ID.
+     *
+     * @param id the ID of the rental to delete.
+     */
     public void deleteRental(Integer id) {
         rentalRepository.deleteById(id);
     }
 
+    /**
+     * Retrieves cars rented by a user identified by their email.
+     *
+     * @param email the email of the user.
+     * @return a list of cars rented by the user.
+     */
     public List<Car> getCarsRentedByUserEmail(String email) {
         return rentalRepository.findAllCarsByUserEmail(email);
     }
