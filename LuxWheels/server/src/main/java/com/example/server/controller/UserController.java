@@ -98,7 +98,7 @@ public class UserController {
     /**
      * Endpoint to delete a user by their ID.
      *
-     * @param userId the ID of the user to delete.
+     * @param id the ID of the user to delete.
      * @return a ResponseEntity indicating the result of the operation.
      */
     @DeleteMapping("/{id}")
