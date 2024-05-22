@@ -75,23 +75,35 @@ $(function() {
 <div class="title">com.example.server.controller.RentalController Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html" title="RentalController class handles HTTP requests related to rental operations.">RentalController</a> class handles HTTP requests related to rental operations.  
+ <a href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aba93e80cc776406ee6cd11732ff68f83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1example_1_1server_1_1entity_1_1Rental.html">Rental</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#aba93e80cc776406ee6cd11732ff68f83">create</a> (@RequestBody <a class="el" href="classcom_1_1example_1_1server_1_1helper_1_1RentalRequest.html">RentalRequest</a> rentalRequest)</td></tr>
+<tr class="memdesc:aba93e80cc776406ee6cd11732ff68f83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to create a new rental.  <a href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#aba93e80cc776406ee6cd11732ff68f83">More...</a><br /></td></tr>
 <tr class="separator:aba93e80cc776406ee6cd11732ff68f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae886d6486beff972dbba54da28bb8797"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1example_1_1server_1_1entity_1_1Rental.html">Rental</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#ae886d6486beff972dbba54da28bb8797">getRentalById</a> (@PathVariable Integer rentalId)</td></tr>
+<tr class="memdesc:ae886d6486beff972dbba54da28bb8797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to retrieve a rental by its ID.  <a href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#ae886d6486beff972dbba54da28bb8797">More...</a><br /></td></tr>
 <tr class="separator:ae886d6486beff972dbba54da28bb8797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a237647e1d0fc6920a13a28c4caacf8fb"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1example_1_1server_1_1entity_1_1Rental.html">Rental</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#a237647e1d0fc6920a13a28c4caacf8fb">getAllRentals</a> ()</td></tr>
+<tr class="memdesc:a237647e1d0fc6920a13a28c4caacf8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to retrieve all rentals.  <a href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#a237647e1d0fc6920a13a28c4caacf8fb">More...</a><br /></td></tr>
 <tr class="separator:a237647e1d0fc6920a13a28c4caacf8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acde967a69d66a58847b096076ee99808"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#acde967a69d66a58847b096076ee99808">deleteRental</a> (@PathVariable Integer rentalId)</td></tr>
+<tr class="memdesc:acde967a69d66a58847b096076ee99808"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to delete a rental by its ID.  <a href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#acde967a69d66a58847b096076ee99808">More...</a><br /></td></tr>
 <tr class="separator:acde967a69d66a58847b096076ee99808"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2112c4020a8b921aacd74e2ff39ec611"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; List&lt; <a class="el" href="classcom_1_1example_1_1server_1_1entity_1_1Car.html">Car</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#a2112c4020a8b921aacd74e2ff39ec611">getAllRentedCarsByUserEmail</a> (@PathVariable String email)</td></tr>
+<tr class="memdesc:a2112c4020a8b921aacd74e2ff39ec611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to retrieve all rented cars by a user's email.  <a href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#a2112c4020a8b921aacd74e2ff39ec611">More...</a><br /></td></tr>
 <tr class="separator:a2112c4020a8b921aacd74e2ff39ec611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa22a10fd956b7b6cb081edddac8f2991"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1example_1_1server_1_1entity_1_1Rental.html">Rental</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#aa22a10fd956b7b6cb081edddac8f2991">getRentalsByLicensePlate</a> (@PathVariable Integer licensePlate)</td></tr>
+<tr class="memdesc:aa22a10fd956b7b6cb081edddac8f2991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to retrieve rentals by car license plate.  <a href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html#aa22a10fd956b7b6cb081edddac8f2991">More...</a><br /></td></tr>
 <tr class="separator:aa22a10fd956b7b6cb081edddac8f2991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classcom_1_1example_1_1server_1_1controller_1_1RentalController.html" title="RentalController class handles HTTP requests related to rental operations.">RentalController</a> class handles HTTP requests related to rental operations. </p>
+<p>It includes endpoints to create, retrieve, and delete rentals, as well as to get rentals by user email and car license plate. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aba93e80cc776406ee6cd11732ff68f83"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba93e80cc776406ee6cd11732ff68f83">&#9670;&nbsp;</a></span>create()</h2>
 
@@ -107,6 +119,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Endpoint to create a new rental. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rentalRequest</td><td>the RentalRequest object containing rental details. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the created Rental object. </dd></dl>
 
 </div>
 </div>
@@ -126,6 +147,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Endpoint to delete a rental by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rentalId</td><td>the ID of the rental to delete. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a237647e1d0fc6920a13a28c4caacf8fb"></a>
@@ -142,6 +171,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Endpoint to retrieve all rentals. </p>
+<dl class="section return"><dt>Returns</dt><dd>a list of all Rental objects. </dd></dl>
 
 </div>
 </div>
@@ -161,6 +193,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Endpoint to retrieve all rented cars by a user's email. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">email</td><td>the email of the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a ResponseEntity containing a list of Car objects. </dd></dl>
+
 </div>
 </div>
 <a id="ae886d6486beff972dbba54da28bb8797"></a>
@@ -179,6 +220,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Endpoint to retrieve a rental by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rentalId</td><td>the ID of the rental to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the Rental object. </dd></dl>
+
 </div>
 </div>
 <a id="aa22a10fd956b7b6cb081edddac8f2991"></a>
@@ -196,6 +246,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Endpoint to retrieve rentals by car license plate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">licensePlate</td><td>the license plate of the car. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a list of Rental objects. </dd></dl>
 
 </div>
 </div>
