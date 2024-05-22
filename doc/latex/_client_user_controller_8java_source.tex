@@ -1,0 +1,65 @@
+\doxysection{Client\+User\+Controller.\+java}
+\hypertarget{_client_user_controller_8java_source}{}\label{_client_user_controller_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/controller/ClientUserController.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/client/src/main/java/com/example/client/controller/ClientUserController.java}}
+\mbox{\hyperlink{_client_user_controller_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.client.controller;}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00003}00003\ \textcolor{keyword}{import}\ com.example.client.model.UserModel;}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00004}00004\ \textcolor{keyword}{import}\ com.example.client.service.UserService;}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.fasterxml.jackson.databind.ObjectMapper;}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00011}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller}{00011}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller}{ClientUserController}}\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service}{UserService}}\ userService\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service}{UserService}}();}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00017}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a42d0eed86eb0cc72499cc1aa75191b69}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a42d0eed86eb0cc72499cc1aa75191b69}{loggedUser}};}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00029}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a5d24f76395d19100bcf132ecd0f4e814}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a5d24f76395d19100bcf132ecd0f4e814}{createUser}}(String\ name,\ String\ surname,\ String\ email,\ String\ password,\ String\ birthdate,\ String\ licensenumber)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}();}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_a096287f840a85f48dac620843007046c}{setName}}(name);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_a0ede767cdabb5d351578d7acfd7126ba}{setSurname}}(surname);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_afd044d16b910cf4174838273b42d6437}{setEmail}}(email);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_a566e77562673a15ebaf751e9584cd00c}{setPassword}}(password);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_ae94dac41285c12c4b883a48439e601c0}{setBirthdate}}(birthdate);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_a7ca073710177964c7b91df13e6436f4f}{setLicensenumber}}(licensenumber);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ userService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a567d29258b6bedf3d5cec8a415d2320b}{createUser}}(user);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00047}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a32d92e5344ba6ee66053adc08a019ffd}{00047}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a32d92e5344ba6ee66053adc08a019ffd}{parseUserModel}}(String\ json)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ ObjectMapper\ objectMapper\ =\ \textcolor{keyword}{new}\ ObjectMapper();}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ userModel\ =\ objectMapper.readValue(json,\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}.class);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ userModel;}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ e.printStackTrace();}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00066}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a4b136bc58628f1aba93876c7de8dac3c}{00066}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{boolean}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a4b136bc58628f1aba93876c7de8dac3c}{loginUser}}(String\ name,\ String\ email,\ String\ password)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}();}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_a096287f840a85f48dac620843007046c}{setName}}(name);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_afd044d16b910cf4174838273b42d6437}{setEmail}}(email);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ user.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model_a566e77562673a15ebaf751e9584cd00c}{setPassword}}(password);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ String\ u\ =\ userService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_afc312a8e0e9e2d91633c1dc0c42297e7}{loginUser}}(user);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ System.out.println(u);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (u.equals(\textcolor{stringliteral}{"{}Invalid\ email\ or\ password"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a42d0eed86eb0cc72499cc1aa75191b69}{loggedUser}}\ =\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a32d92e5344ba6ee66053adc08a019ffd}{parseUserModel}}(u);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00087}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a625cbe1d9ad0af35f84e9f4a96997e11}{00087}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a625cbe1d9ad0af35f84e9f4a96997e11}{updateUser}}(\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{UserModel}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ userService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_ae24fded0f9c5b4a1ad3ec9f6035e6b0f}{updateUser}}(user);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00096}\mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a62d6d062b265c407d32d8a286443e0fe}{00096}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1client_1_1controller_1_1_client_user_controller_a62d6d062b265c407d32d8a286443e0fe}{deleteUser}}(\textcolor{keywordtype}{int}\ userId)\ \{}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ userService.\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a1502ca094b2b4654214eb61b4e5b830a}{deleteUser}}(userId);}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_client_user_controller_8java_source_l00099}00099\ \}}
+
+\end{DoxyCode}

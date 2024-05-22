@@ -18,9 +18,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    /** Logger instance for logging purposes. */
-    private static final Logger logger = LogManager.getLogger(ServerApplication.class);
-    /** UserService instance for user-related operations. */
+
+    private static final Logger logger = LogManager.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
     /**
@@ -31,7 +31,7 @@ public class UserController {
      */
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
-        logger.info("register request");
+        logger.info("register request controller");
         logger.info(user);
         User createdUser = userService.createUser(user);
         return ResponseEntity.ok(createdUser);
@@ -44,7 +44,7 @@ public class UserController {
      */
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user) {
-        logger.info("login request");
+        logger.info("login request controller");
         logger.info(user);
         String response = userService.loginUser(user);
         if (response == null || response.isEmpty() || response.equals("{}")) {
@@ -59,7 +59,7 @@ public class UserController {
      */
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
-        logger.info("get all users request");
+        logger.info("get all users request controller");
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }

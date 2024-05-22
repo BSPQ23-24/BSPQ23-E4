@@ -1,5 +1,6 @@
 package com.example.server.service;
 
+import com.example.server.ServerApplication;
 import com.example.server.entity.User;
 import com.example.server.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,6 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 
 import com.example.server.repository.EmailRepository;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +21,9 @@ import java.util.Optional;
  */
 @Service
 public class UserService {
+
+    private static final Logger logger = LogManager.getLogger(UserService.class);
+
 
     /** The user repository for performing database operations on users. */
     @Autowired
@@ -33,6 +40,7 @@ public class UserService {
      * @return the created user
      */
     public User createUser(User user) {
+    	logger.info("Create a user service");
         return userRepository.save(user);
     }
 
@@ -42,6 +50,7 @@ public class UserService {
      * @return a list of all users
      */
     public List<User> getAllUsers() {
+    	logger.info("Get all users service");
         return userRepository.findAll();
     }
 
@@ -52,6 +61,7 @@ public class UserService {
      * @return the retrieved user, or null if not found
      */
     public User getUserById(Integer id) {
+    	logger.info("Get user by id service");
         return userRepository.findById(id).orElse(null);
     }
 
@@ -63,6 +73,7 @@ public class UserService {
      * @return the updated user
      */
     public User updateUser(Integer id, User user) {
+    	logger.info("Update user service");
         user.setId(id);
         return userRepository.save(user);
     }
@@ -74,8 +85,10 @@ public class UserService {
      * @return a JSON representation of the user if the login is successful, or an empty JSON object if not
      */
     public String loginUser(User user) {
-        Optional<User> foundUser = emailRepository.findByEmail(user.getEmail());
-        ObjectMapper mapper = new ObjectMapper();
+    	logger.info("Login user service");
+
+    	Optional<User> foundUser = emailRepository.findByEmail(user.getEmail());
+    	ObjectMapper mapper = new ObjectMapper();
         try {
             if (foundUser.isPresent() && foundUser.get().getPassword().equals(user.getPassword())) {
                 User user1 = foundUser.get();
@@ -88,6 +101,7 @@ public class UserService {
             e.printStackTrace();
             return null;
         }
+        
     }
 
     /**
@@ -96,6 +110,7 @@ public class UserService {
      * @param id the ID of the user to delete
      */
     public void deleteUser(Integer id) {
+    	logger.info("Delete user service");
         userRepository.deleteById(id);
-    }
+    }   
 }

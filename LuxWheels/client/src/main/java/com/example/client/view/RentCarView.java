@@ -16,7 +16,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Stream;
-
+/**
+ * The rentCarView is a UI that shows the dates abaileable of the car selected.
+ * And allows the user logged to rent a car
+ */
 public class RentCarView extends JFrame {
     public static RentCarView instance;
     private MainFrame mainFrame;
@@ -34,8 +37,9 @@ public class RentCarView extends JFrame {
     private Set<LocalDate> unavailableDates;
     private boolean selectingStartDate = true;
 
-    public RentCarView(CarModel selectedCar) {
+    public RentCarView(CarModel selectedCar, MainFrame mainFrame) {
         this.selectedCar = selectedCar;
+        this.mainFrame = mainFrame;
         this.selectedDates = new HashSet<>();
         this.unavailableDates = new HashSet<>();
 
@@ -319,6 +323,8 @@ public class RentCarView extends JFrame {
             JOptionPane.showMessageDialog(this, "Please select both start and end dates.");
             return;
         }
+
+        this.mainFrame.getManageRentedCarsView().loadData();
     }
 
     private void handleCancel() {

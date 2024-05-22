@@ -6,15 +6,21 @@ import com.example.server.entity.User;
 import com.example.server.repository.CarRepository;
 import com.example.server.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.server.entity.Rental;
+import com.example.server.ServerApplication;
 import com.example.server.entity.Car;
 
 import com.example.server.repository.RentalRepository;
 
 @Service
 public class RentalService {
+	
+    private static final Logger logger = LogManager.getLogger(RentalService.class);
 
     /** The rental repository for performing database operations on rentals. */
     @Autowired
@@ -37,6 +43,8 @@ public class RentalService {
 
 
     public Rental createRental(RentalRequest rentalRequest) {
+    	
+    	logger.info("Create a rental service");
         User user = userRepository.findById(rentalRequest.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
         Car car = carRepository.findById(rentalRequest.getCarId())
@@ -59,6 +67,7 @@ public class RentalService {
      * @return a list of all rental entities.
      */
     public List<Rental> getAllRental() {
+    	logger.info("Get all rentals service");
         return rentalRepository.findAll();
     }
 
@@ -69,6 +78,7 @@ public class RentalService {
      * @return the rental entity if found, or null if not found.
      */
     public Rental getRentalById(Integer id) {
+    	logger.info("Get rental by id service");
         return rentalRepository.findById(id).orElse(null);
     }
 
@@ -80,6 +90,7 @@ public class RentalService {
      * @return the updated rental entity.
      */
     public Rental updateRental(Integer id, Rental rental) {
+    	logger.info("Update rental service");
         rental.setRentalID(id);
         return rentalRepository.save(rental);
     }
@@ -91,6 +102,7 @@ public class RentalService {
      * @return a list of rentals associated with the car.
      **/
     public List<Rental> getRentalsByLicensePlate(Car car) {
+    	logger.info("Get rentals by license plate service");
         return rentalRepository.findRentalsByCar(car);
     }
 
@@ -116,6 +128,7 @@ public class RentalService {
      * @param id the ID of the rental to delete.
      */
     public void deleteRental(Integer id) {
+    	logger.info("Delete rental service");
         rentalRepository.deleteById(id);
     }
 
@@ -126,6 +139,7 @@ public class RentalService {
      * @return a list of cars rented by the user.
      */
     public List<Car> getCarsRentedByUserEmail(String email) {
+    	logger.info("Get Cars by rented user email service");
         return rentalRepository.findAllCarsByUserEmail(email);
     }
 }

@@ -1,0 +1,77 @@
+\doxysection{Rental\+Test.\+java}
+\hypertarget{_rental_test_8java_source}{}\label{_rental_test_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/test/java/com/example/server/entity/RentalTest.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/test/java/com/example/server/entity/RentalTest.java}}
+\mbox{\hyperlink{_rental_test_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.server.entity;}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00003}00003\ \textcolor{keyword}{import}\ org.junit.jupiter.api.BeforeEach;}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00004}00004\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00006}00006\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.*;}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00008}00008\ \textcolor{keyword}{class\ }RentalTest\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{private}\ Rental\ rental;}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ User\ user;}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ Car\ car;}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00014}00014\ \ \ \ \ @BeforeEach}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{void}\ setUp()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00016}00016\ \ \ \ \ \ \ \ \ user\ =\ \textcolor{keyword}{new}\ User();}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00017}00017\ \ \ \ \ \ \ \ \ car\ =\ \textcolor{keyword}{new}\ Car();}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00018}00018\ \ \ \ \ \ \ \ \ car.setUser(user);}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ rental\ =\ \textcolor{keyword}{new}\ Rental();}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00022}00022\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetAndGetRentalID()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00024}00024\ \ \ \ \ \ \ \ \ rental.setRentalID(1);}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ assertEquals(1,\ rental.getRentalID());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00028}00028\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetAndGetUser()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ rental.setUser(user);}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ assertEquals(user,\ rental.getUser());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00034}00034\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetAndGetCar()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ rental.setCar(car);}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ assertEquals(car,\ rental.getCar());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00040}00040\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetAndGetStartDate()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ rental.setStartDate(\textcolor{stringliteral}{"{}2023-\/01-\/01"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}2023-\/01-\/01"{}},\ rental.getStartDate());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00046}00046\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00047}00047\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetAndGetEndDate()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ rental.setEndDate(\textcolor{stringliteral}{"{}2023-\/01-\/10"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}2023-\/01-\/10"{}},\ rental.getEndDate());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00052}00052\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetAndGetPrice()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ rental.setPrice(599.99);}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ assertEquals(599.99,\ rental.getPrice());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00058}00058\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetAndGetCreationDate()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ rental.setCreationDate(\textcolor{stringliteral}{"{}2023-\/01-\/01"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}2023-\/01-\/01"{}},\ rental.getCreationDate());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00064}00064\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{void}\ testToString()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ rental\ =\ \textcolor{keyword}{new}\ Rental(user,\ car,\ \textcolor{stringliteral}{"{}2023-\/01-\/01"{}},\ \textcolor{stringliteral}{"{}2023-\/01-\/10"{}},\ 599.99,\ \textcolor{stringliteral}{"{}2023-\/01-\/01"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ String\ expected\ =\ \textcolor{stringliteral}{"{}Rental\{rentalID=null,\ user="{}}\ +\ user.toString()\ +\ \textcolor{stringliteral}{"{},\ car="{}}\ +\ car.toString()\ +\ }
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ startDate='2023-\/01-\/01',\ endDate='2023-\/01-\/10',\ price=599.99,\ creationDate='2023-\/01-\/01'\}"{}};}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ assertEquals(expected,\ rental.toString());}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_test_8java_source_l00071}00071\ \}}
+
+\end{DoxyCode}

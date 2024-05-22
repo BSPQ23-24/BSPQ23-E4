@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: luxwheels
+    networks:
+      - luxwheels-network
+    ports:
+      - "3307:3306"
+
+  server:
+    image: lux-wheels-server
+    container_name: spring-boot-container
+    depends_on:
+      - mysql
+    networks:
+      - luxwheels-network
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/luxwheels
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+networks:
+  luxwheels-network:
+    driver: bridge

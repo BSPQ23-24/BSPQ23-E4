@@ -39,6 +39,7 @@ public class RentalController {
      */
     @PostMapping("/create")
     public Rental create(@RequestBody RentalRequest rentalRequest) {
+    	logger.info("Create a rental controller");
         return rentalService.createRental(rentalRequest);
     }
 
@@ -50,7 +51,7 @@ public class RentalController {
      */
     @GetMapping("/{rentalId}")
     public Rental getRentalById(@PathVariable Integer rentalId) {
-        logger.info("Rental by ID request");
+    	logger.info("rental by id request controller");
         return rentalService.getRentalById(rentalId);
     }
 
@@ -61,8 +62,8 @@ public class RentalController {
      */
     @GetMapping
     public List<Rental> getAllRentals() {
-        List<Rental> rentals = rentalService.getAllRental();
-        logger.info("Get all rentals request");
+    	List<Rental> rentals = rentalService.getAllRental();
+    	logger.info("get all rentals request controller");
         return rentals;
     }
 
@@ -73,8 +74,8 @@ public class RentalController {
      */
     @DeleteMapping("/{rentalId}")
     public void deleteRental(@PathVariable Integer rentalId) {
-        logger.info("Delete rental request");
-        rentalService.deleteRental(rentalId);
+    	logger.info("delete rental request controller");
+        rentalService.deleteRental(rentalId);;
     }
 
     /**
@@ -85,6 +86,7 @@ public class RentalController {
      */
     @GetMapping("/user/{email}")
     public ResponseEntity<List<Car>> getAllRentedCarsByUserEmail(@PathVariable String email) {
+    	logger.info("getAllRentedCars by user email controller");
         return ResponseEntity.ok(rentalService.getCarsRentedByUserEmail(email));
     }
 
@@ -96,9 +98,8 @@ public class RentalController {
      */
     @GetMapping("/car/{licensePlate}")
     public List<Rental> getRentalsByLicensePlate(@PathVariable Integer licensePlate) {
-        System.out.println("Getting rentals matching license plate: " + licensePlate);
+    	logger.info("getRentalsByLicensePlate - ", licensePlate);
         Car car = carService.getCarByLicensePlate(licensePlate);
-        System.out.println("Car with license plate " + licensePlate + ": " + car);
         return rentalService.getRentalsByLicensePlate(car);
     }
 }

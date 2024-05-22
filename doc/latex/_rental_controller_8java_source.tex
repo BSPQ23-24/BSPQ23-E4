@@ -1,0 +1,71 @@
+\doxysection{Rental\+Controller.\+java}
+\hypertarget{_rental_controller_8java_source}{}\label{_rental_controller_8java_source}\index{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/main/java/com/example/server/controller/RentalController.java@{C:/Users/leire/IdeaProjects/SPQluxWheels/LuxWheels/server/src/main/java/com/example/server/controller/RentalController.java}}
+\mbox{\hyperlink{_rental_controller_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.example.server.controller;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00003}00003\ \textcolor{keyword}{import}\ com.example.server.entity.Car;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00004}00004\ \textcolor{keyword}{import}\ com.example.server.entity.Rental;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.example.server.helper.RentalRequest;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00006}00006\ \textcolor{keyword}{import}\ com.example.server.service.CarService;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00007}00007\ \textcolor{keyword}{import}\ com.example.server.service.RentalService;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.apache.logging.log4j.LogManager;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00010}00010\ \textcolor{keyword}{import}\ org.apache.logging.log4j.Logger;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00011}00011\ \textcolor{keyword}{import}\ org.springframework.http.ResponseEntity;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00012}00012\ \textcolor{keyword}{import}\ org.springframework.beans.factory.annotation.Autowired;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00013}00013\ \textcolor{keyword}{import}\ org.springframework.web.bind.annotation.*;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00014}00014\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00016}00016\ @RestController}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00017}00017\ @RequestMapping(\textcolor{stringliteral}{"{}/api/rentals"{}})}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00018}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller}{00018}}\ public\ class\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller}{RentalController}}\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00019}00019\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ Logger\ logger\ =\ LogManager.getLogger(\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller}{RentalController}}.class);}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00022}00022\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_rental_service}{RentalService}}\ rentalService;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00025}00025\ \ \ \ \ @Autowired}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1service_1_1_car_service}{CarService}}\ carService;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00028}00028\ \ \ \ \ @PostMapping(\textcolor{stringliteral}{"{}/create"{}})}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00029}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_aba93e80cc776406ee6cd11732ff68f83}{00029}}\ \ \ \ \ public\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}\ create(@RequestBody\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1helper_1_1_rental_request}{RentalRequest}}\ rentalRequest)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Create\ a\ rental\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rentalService.createRental(rentalRequest);}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00034}00034\ \ \ \ \ @GetMapping(\textcolor{stringliteral}{"{}/\{rentalId\}"{}})}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00035}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_ae886d6486beff972dbba54da28bb8797}{00035}}\ \ \ \ \ public\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}\ getRentalById(@PathVariable\ Integer\ rentalId)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}rental\ by\ id\ request\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rentalService.getRentalById(rentalId);}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00040}00040\ \ \ \ \ @GetMapping}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00041}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af4098c627be2b970919752dc97e6deae}{00041}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Rental>\ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af4098c627be2b970919752dc97e6deae}{getAllRentals}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ List<Rental>\ rentals\ =\ rentalService.getAllRental();}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}get\ all\ rentals\ request\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rentals;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00047}00047\ \ \ \ \ @DeleteMapping(\textcolor{stringliteral}{"{}/\{rentalId\}"{}})}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00048}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_acde967a69d66a58847b096076ee99808}{00048}}\ \ \ \ \ public\ \textcolor{keywordtype}{void}\ deleteRental(@PathVariable\ Integer\ rentalId)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}delete\ rental\ request\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ rentalService.deleteRental(rentalId);;}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00053}00053\ \ \ \ \ @GetMapping(\textcolor{stringliteral}{"{}/user/\{email\}"{}})}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00054}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_af2b9026874737ee731308d508ccadf34}{00054}}\ \ \ \ \ public\ ResponseEntity<List<\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}>>\ getAllRentedCarsByUserEmail(@PathVariable\ String\ email)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}getAllRentedCars\ by\ user\ email\ controller"{}});}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ResponseEntity.ok(rentalService.getCarsRentedByUserEmail(email));}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00059}00059\ \ \ \ \ @GetMapping(\textcolor{stringliteral}{"{}/car/\{licensePlate\}"{}})}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00060}\mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_rental_controller_a645b19292c490075e900c7e3ba1cf133}{00060}}\ \ \ \ \ public\ List<\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_rental}{Rental}}>\ getRentalsByLicensePlate(@PathVariable\ Integer\ licensePlate)\ \{}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}getRentalsByLicensePlate\ -\/\ "{}},\ licensePlate);}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}\ car\ =\ carService.getCarByLicensePlate(licensePlate);}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rentalService.getRentalsByLicensePlate(car);}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rental_controller_8java_source_l00065}00065\ \}}
+
+\end{DoxyCode}

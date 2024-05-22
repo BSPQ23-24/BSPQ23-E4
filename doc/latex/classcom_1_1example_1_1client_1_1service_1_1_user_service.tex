@@ -1,0 +1,142 @@
+\doxysection{com.\+example.\+client.\+service.\+User\+Service Class Reference}
+\hypertarget{classcom_1_1example_1_1client_1_1service_1_1_user_service}{}\label{classcom_1_1example_1_1client_1_1service_1_1_user_service}\index{com.example.client.service.UserService@{com.example.client.service.UserService}}
+
+
+User\+Service class provides methods to interact with the user-\/related API endpoints.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a6a47c5130626e5395a4414e177ca5640}{User\+Service}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the User\+Service class. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a567d29258b6bedf3d5cec8a415d2320b}{create\+User}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}} user)
+\begin{DoxyCompactList}\small\item\em Creates a new user. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_afc312a8e0e9e2d91633c1dc0c42297e7}{login\+User}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}} user)
+\begin{DoxyCompactList}\small\item\em Logs in a user. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_ae24fded0f9c5b4a1ad3ec9f6035e6b0f}{update\+User}} (\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}} user)
+\begin{DoxyCompactList}\small\item\em Updates user information. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1client_1_1service_1_1_user_service_a1502ca094b2b4654214eb61b4e5b830a}{delete\+User}} (int user\+ID)
+\begin{DoxyCompactList}\small\item\em Deletes a user by their ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+User\+Service class provides methods to interact with the user-\/related API endpoints. 
+
+It includes operations to create, login, update, and delete users. 
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00016}{16}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}{User\+Service.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_user_service_a6a47c5130626e5395a4414e177ca5640}\label{classcom_1_1example_1_1client_1_1service_1_1_user_service_a6a47c5130626e5395a4414e177ca5640} 
+\index{com.example.client.service.UserService@{com.example.client.service.UserService}!UserService@{UserService}}
+\index{UserService@{UserService}!com.example.client.service.UserService@{com.example.client.service.UserService}}
+\doxysubsubsection{\texorpdfstring{UserService()}{UserService()}}
+{\footnotesize\ttfamily com.\+example.\+client.\+service.\+User\+Service.\+User\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the User\+Service class. 
+
+Initializes the Http\+Client. 
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00028}{28}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}{User\+Service.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_user_service_a567d29258b6bedf3d5cec8a415d2320b}\label{classcom_1_1example_1_1client_1_1service_1_1_user_service_a567d29258b6bedf3d5cec8a415d2320b} 
+\index{com.example.client.service.UserService@{com.example.client.service.UserService}!createUser@{createUser}}
+\index{createUser@{createUser}!com.example.client.service.UserService@{com.example.client.service.UserService}}
+\doxysubsubsection{\texorpdfstring{createUser()}{createUser()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+User\+Service.\+create\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Creates a new user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & the User\+Model object containing user details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the response body from the API. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00038}{38}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}{User\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_user_service_a1502ca094b2b4654214eb61b4e5b830a}\label{classcom_1_1example_1_1client_1_1service_1_1_user_service_a1502ca094b2b4654214eb61b4e5b830a} 
+\index{com.example.client.service.UserService@{com.example.client.service.UserService}!deleteUser@{deleteUser}}
+\index{deleteUser@{deleteUser}!com.example.client.service.UserService@{com.example.client.service.UserService}}
+\doxysubsubsection{\texorpdfstring{deleteUser()}{deleteUser()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+User\+Service.\+delete\+User (\begin{DoxyParamCaption}\item[{int}]{user\+ID }\end{DoxyParamCaption})}
+
+
+
+Deletes a user by their ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+ID} & the ID of the user to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the response body from the API. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00128}{128}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}{User\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_user_service_afc312a8e0e9e2d91633c1dc0c42297e7}\label{classcom_1_1example_1_1client_1_1service_1_1_user_service_afc312a8e0e9e2d91633c1dc0c42297e7} 
+\index{com.example.client.service.UserService@{com.example.client.service.UserService}!loginUser@{loginUser}}
+\index{loginUser@{loginUser}!com.example.client.service.UserService@{com.example.client.service.UserService}}
+\doxysubsubsection{\texorpdfstring{loginUser()}{loginUser()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+User\+Service.\+login\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Logs in a user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & the User\+Model object containing login details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the response body from the API. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00062}{62}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}{User\+Service.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1client_1_1service_1_1_user_service_ae24fded0f9c5b4a1ad3ec9f6035e6b0f}\label{classcom_1_1example_1_1client_1_1service_1_1_user_service_ae24fded0f9c5b4a1ad3ec9f6035e6b0f} 
+\index{com.example.client.service.UserService@{com.example.client.service.UserService}!updateUser@{updateUser}}
+\index{updateUser@{updateUser}!com.example.client.service.UserService@{com.example.client.service.UserService}}
+\doxysubsubsection{\texorpdfstring{updateUser()}{updateUser()}}
+{\footnotesize\ttfamily String com.\+example.\+client.\+service.\+User\+Service.\+update\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1client_1_1model_1_1_user_model}{User\+Model}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Updates user information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & the User\+Model object containing updated user details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the response body from the API. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source_l00103}{103}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java_source}{User\+Service.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/leire/\+Idea\+Projects/\+SPQlux\+Wheels/\+Lux\+Wheels/client/src/main/java/com/example/client/service/\mbox{\hyperlink{client_2src_2main_2java_2com_2example_2client_2service_2_user_service_8java}{User\+Service.\+java}}\end{DoxyCompactItemize}

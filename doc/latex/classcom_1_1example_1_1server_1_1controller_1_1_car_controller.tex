@@ -1,0 +1,80 @@
+\doxysection{com.\+example.\+server.\+controller.\+Car\+Controller Class Reference}
+\hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_car_controller}{}\label{classcom_1_1example_1_1server_1_1controller_1_1_car_controller}\index{com.example.server.controller.CarController@{com.example.server.controller.CarController}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a08ecddfb8c65e9718ce6f67e87f0653c}{create}} (@Request\+Body \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} car)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ $>$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a37539b6c5750c22a2d74eaf677d23e3f}{get\+All\+Cars}} ()
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_aee13535b0f0f6fddaf9b8aed5b708b20}{get\+Car\+By\+License\+Plate}} (@Path\+Variable Integer license\+Plate)
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a3452e07a05400e7bf4e29e5462d3dea3}{update\+Car}} (@Path\+Variable Integer license\+Plate, @Request\+Body \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} car)
+\item 
+Response\+Entity$<$ Void $>$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_ac07e72fc08ce2baeb4bba6e1bd7070d1}{delete\+Car}} (@Path\+Variable Integer license\+Plate)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_car_controller_8java_source_l00029}{29}} of file \mbox{\hyperlink{_car_controller_8java_source}{Car\+Controller.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a08ecddfb8c65e9718ce6f67e87f0653c}\label{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a08ecddfb8c65e9718ce6f67e87f0653c} 
+\index{com.example.server.controller.CarController@{com.example.server.controller.CarController}!create@{create}}
+\index{create@{create}!com.example.server.controller.CarController@{com.example.server.controller.CarController}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} com.\+example.\+server.\+controller.\+Car\+Controller.\+create (\begin{DoxyParamCaption}\item[{@Request\+Body \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}}]{car }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_car_controller_8java_source_l00037}{37}} of file \mbox{\hyperlink{_car_controller_8java_source}{Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_ac07e72fc08ce2baeb4bba6e1bd7070d1}\label{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_ac07e72fc08ce2baeb4bba6e1bd7070d1} 
+\index{com.example.server.controller.CarController@{com.example.server.controller.CarController}!deleteCar@{deleteCar}}
+\index{deleteCar@{deleteCar}!com.example.server.controller.CarController@{com.example.server.controller.CarController}}
+\doxysubsubsection{\texorpdfstring{deleteCar()}{deleteCar()}}
+{\footnotesize\ttfamily Response\+Entity$<$ Void $>$ com.\+example.\+server.\+controller.\+Car\+Controller.\+delete\+Car (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{license\+Plate }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_car_controller_8java_source_l00064}{64}} of file \mbox{\hyperlink{_car_controller_8java_source}{Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a37539b6c5750c22a2d74eaf677d23e3f}\label{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a37539b6c5750c22a2d74eaf677d23e3f} 
+\index{com.example.server.controller.CarController@{com.example.server.controller.CarController}!getAllCars@{getAllCars}}
+\index{getAllCars@{getAllCars}!com.example.server.controller.CarController@{com.example.server.controller.CarController}}
+\doxysubsubsection{\texorpdfstring{getAllCars()}{getAllCars()}}
+{\footnotesize\ttfamily Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ $>$ com.\+example.\+server.\+controller.\+Car\+Controller.\+get\+All\+Cars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_car_controller_8java_source_l00043}{43}} of file \mbox{\hyperlink{_car_controller_8java_source}{Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_aee13535b0f0f6fddaf9b8aed5b708b20}\label{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_aee13535b0f0f6fddaf9b8aed5b708b20} 
+\index{com.example.server.controller.CarController@{com.example.server.controller.CarController}!getCarByLicensePlate@{getCarByLicensePlate}}
+\index{getCarByLicensePlate@{getCarByLicensePlate}!com.example.server.controller.CarController@{com.example.server.controller.CarController}}
+\doxysubsubsection{\texorpdfstring{getCarByLicensePlate()}{getCarByLicensePlate()}}
+{\footnotesize\ttfamily Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ com.\+example.\+server.\+controller.\+Car\+Controller.\+get\+Car\+By\+License\+Plate (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{license\+Plate }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_car_controller_8java_source_l00049}{49}} of file \mbox{\hyperlink{_car_controller_8java_source}{Car\+Controller.\+java}}.
+
+\Hypertarget{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a3452e07a05400e7bf4e29e5462d3dea3}\label{classcom_1_1example_1_1server_1_1controller_1_1_car_controller_a3452e07a05400e7bf4e29e5462d3dea3} 
+\index{com.example.server.controller.CarController@{com.example.server.controller.CarController}!updateCar@{updateCar}}
+\index{updateCar@{updateCar}!com.example.server.controller.CarController@{com.example.server.controller.CarController}}
+\doxysubsubsection{\texorpdfstring{updateCar()}{updateCar()}}
+{\footnotesize\ttfamily Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}} $>$ com.\+example.\+server.\+controller.\+Car\+Controller.\+update\+Car (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{license\+Plate,  }\item[{@Request\+Body \mbox{\hyperlink{classcom_1_1example_1_1server_1_1entity_1_1_car}{Car}}}]{car }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_car_controller_8java_source_l00055}{55}} of file \mbox{\hyperlink{_car_controller_8java_source}{Car\+Controller.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/leire/\+Idea\+Projects/\+SPQlux\+Wheels/\+Lux\+Wheels/server/src/main/java/com/example/server/controller/\mbox{\hyperlink{_car_controller_8java}{Car\+Controller.\+java}}\end{DoxyCompactItemize}

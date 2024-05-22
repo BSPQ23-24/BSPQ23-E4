@@ -11,7 +11,9 @@ import org.apache.logging.log4j.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-
+/**
+ * The HostedCarsView is a UI that shows the
+ */
 public class HostedCarsView extends JPanel {
 	private static final Logger logger = LogManager.getLogger(LoginView.class);
     private DefaultListModel<CarModel> carListModel;

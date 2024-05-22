@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <doxygen.config.file>${basedir}/Doxyfile</doxygen.config.file>
   </properties>
 
   <modules>
@@ -27,4 +28,17 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.soebes.maven.plugins</groupId>
+        <artifactId>doxygen-maven-plugin</artifactId>
+        <version>1.1.0</version>
+        <configuration>
+          <configurationFile>${doxygen.config.file}</configurationFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>

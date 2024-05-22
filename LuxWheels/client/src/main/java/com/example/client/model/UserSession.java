@@ -1,4 +1,7 @@
 package com.example.client.model;
+/**
+ * The userSession class is a facility of the class user to get the login and out.
+ */
 public class UserSession {
     private static UserSession instance;
     private String email;
